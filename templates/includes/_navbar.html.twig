@@ -1,0 +1,15 @@
+<nav>
+    <div>
+        <a href="{{ path ('home') }}"> calin
+        </a>
+        {% if app.user %}
+{#            {% if (app.user.roles[0] == 'ROLE_ADMIN') %}#}
+{#                <a href="{{ path ('admin_index') }}">Administration</a>#}
+{#            {% endif %}#}
+{#            <a href="{{ path ('app_logout') }}">me deconnecter </a>#}
+        {% else %}
+{#            <a href="{{ path ('app_login') }}"> connexion </a>#}
+{#            <a href="{{ path ('app_register') }}">inscription</a>#}
+        {% endif %}
+    </div>
+</nav>
