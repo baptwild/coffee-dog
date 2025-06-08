@@ -12,16 +12,25 @@ class Dog
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+
     private ?int $id = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: "dogs")]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $owner = null;
+
+    #[ORM\Column(length: 255)]
     private ?string $name = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $age = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255)]
     private ?string $breed = null;
+
+    public const SIZE_PETIT = 'petit';
+    public const SIZE_MOYEN = 'moyen';
+    public const SIZE_GRAND = 'grand';
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $size = null;
@@ -38,6 +47,17 @@ class Dog
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+      public function getOwner(): ?User
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?User $owner): static
+    {
+        $this->owner = $owner;
+        return $this;
     }
 
     public function getName(): ?string
@@ -83,6 +103,10 @@ class Dog
 
     public function setSize(?string $size): static
     {
+        $allowed = [self::SIZE_PETIT, self::SIZE_MOYEN, self::SIZE_GRAND];
+        if (!in_array($size, $allowed, true)) {
+            throw new \InvalidArgumentException("Invalid size: $size");
+        }
         $this->size = $size;
 
         return $this;

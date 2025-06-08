@@ -14,25 +14,40 @@ class Booking
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
-    private ?string $dailyRate = null;
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'bookings')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[ORM\ManyToOne(targetEntity: Dog::class, inversedBy: 'bookings')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Dog $dog = null;
+
+    #[ORM\OneToOne(inversedBy: "booking", targetEntity: Rate::class)]
+    #[ORM\JoinColumn(name: "rate_id", referencedColumnName: "id", nullable: false)]
+    private ?Rate $rate = null;
+
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $effectiveDate = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column]
     private ?bool $isActive = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $startDate = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $arrivalDatetime = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $endDate = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $departureDatetime = null;
+
+    public const STATUS_EN_ATTENTE = 'en_attente';
+    public const STATUS_CONFIRME = 'confirme';
+    public const STATUS_ANNULE = 'annule';
+
+    #[ORM\Column(length: 255)]
     private ?string $status = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: true)]
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $totalCost = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
@@ -46,14 +61,34 @@ class Booking
         return $this->id;
     }
 
-    public function getDailyRate(): ?string
+    public function getUser(): ?User
     {
-        return $this->dailyRate;
+        return $this->user;
     }
 
-    public function setDailyRate(?string $dailyRate): static
+    public function setUser(?User $user): static
     {
-        $this->dailyRate = $dailyRate;
+        $this->user = $user;
+        return $this;
+    }
+
+    public function getDog(): ?Dog
+    {
+        return $this->dog;
+    }
+
+    public function setDog(?Dog $dog): static
+    {
+        $this->dog = $dog;
+        return $this;
+    }
+    public function getRate(): ?Rate
+    {
+        return $this->rate;
+    }
+    public function setRate(?Rate $rate): static
+    {
+        $this->rate = $rate;
 
         return $this;
     }
@@ -82,26 +117,23 @@ class Booking
         return $this;
     }
 
-    public function getStartDate(): ?\DateTimeInterface
+    public function getArrivalDatetime(): ?\DateTimeInterface
     {
-        return $this->startDate;
+        return $this->arrivalDatetime;
     }
-
-    public function setStartDate(?\DateTimeInterface $startDate): static
+    public function setArrivalDatetime(?\DateTimeInterface $arrivalDatetime): static
     {
-        $this->startDate = $startDate;
+        $this->arrivalDatetime = $arrivalDatetime;
 
         return $this;
     }
-
-    public function getEndDate(): ?\DateTimeInterface
+    public function getDepartureDatetime(): ?\DateTimeInterface
     {
-        return $this->endDate;
+        return $this->departureDatetime;
     }
-
-    public function setEndDate(?\DateTimeInterface $endDate): static
+    public function setDepartureDatetime(?\DateTimeInterface $departureDatetime): static
     {
-        $this->endDate = $endDate;
+        $this->departureDatetime = $departureDatetime;
 
         return $this;
     }
@@ -113,6 +145,15 @@ class Booking
 
     public function setStatus(?string $status): static
     {
+        $allowed = [
+            self::STATUS_EN_ATTENTE,
+            self::STATUS_CONFIRME,
+            self::STATUS_ANNULE,
+        ];
+        if (!in_array($status, $allowed, true)) {
+            throw new \InvalidArgumentException("Invalid status: $status");
+        }
+        
         $this->status = $status;
 
         return $this;

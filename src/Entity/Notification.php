@@ -14,21 +14,40 @@ class Notification
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'notifications')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $message = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    public const TYPE_CONFIRMATION = 'confirmation';
+    public const TYPE_RAPPEL = 'rappel';
+    public const TYPE_ANNULATION = 'annulation';
+    public const TYPE_AUTRE = 'autre';
+
+    #[ORM\Column(length: 255)]
     private ?string $type = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column]
     private ?\DateTimeImmutable $sentAt = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column]
     private ?bool $isRead = null;
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
+
+        return $this;
     }
 
     public function getMessage(): ?string
@@ -50,6 +69,15 @@ class Notification
 
     public function setType(?string $type): static
     {
+        $allowed = [
+            self::TYPE_CONFIRMATION,
+            self::TYPE_RAPPEL,
+            self::TYPE_ANNULATION,
+            self::TYPE_AUTRE,
+        ];
+        if (!in_array($type, $allowed, true)) {
+            throw new \InvalidArgumentException(sprintf('Invalid type "%s". Allowed types are: %s', $type, implode(', ', $allowed)));
+        };
         $this->type = $type;
 
         return $this;
