@@ -1,4 +1,4 @@
-# Projet Café des - ESGI
+# Projet Café des Chiens - ESGI
 
 ## 📋 Description
 
