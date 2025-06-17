@@ -1,0 +1,39 @@
+.a_Button {
+   @include buttonDefault;
+
+   &-primary {
+      @include buttonDefault;
+
+      background-color: $color-primary;
+      color: $color-white;
+
+      &:hover {
+         background-color: $color-secondary;
+         color: $color-black;
+      }
+   }
+
+   &-secondary {
+      @include buttonDefault;
+
+      background-color: $color-secondary;
+      color: $color-white;
+
+      &:hover {
+         background-color: $color-tertiary;
+         color: $color-black;
+      }
+   }
+
+   &-tertiary {
+      @include buttonDefault;
+
+      background-color: $color-white;
+      color: $color-black;
+
+      &:hover {
+         background-color: $color-secondary;
+         color: $color-white;
+      }
+   }
+}
