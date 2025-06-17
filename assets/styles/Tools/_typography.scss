@@ -1,0 +1,85 @@
+@font-face {
+   font-family: 'Bellerose';
+   src: url('../../fonts/Bellerose/Bellerose.woff2') format('woff2'),
+      url('../../fonts/Bellerose/Bellerose.woff') format('woff');
+   font-weight: 300;
+   font-style: normal;
+   font-display: swap;
+}
+
+// Text
+@mixin fontSize($size: 16px,
+   $lineHeight: ($size + 10px,
+   )) {
+   font-size: $size;
+   line-height: $lineHeight;
+}
+
+@mixin fontStyle($size: 16px,
+   $weight: 300,
+   $lineHeight: ($size + 10px,
+   )) {
+   @include fontSize($size, $lineHeight);
+   font-weight: $weight;
+}
+
+@mixin title($weight: 300) {
+   font-weight: $weight;
+   text-transform: uppercase;
+}
+
+@mixin resetTitle($weight: 300) {
+   font-family: $font-text;
+   font-weight: $weight;
+   text-transform: initial;
+}
+
+@mixin h1 {
+   @include title($weight: 300);
+   @include fontSize(48px);
+   font-family: $font-title;
+
+   @media screen and (min-width: $screen-m-min) {
+      @include fontSize(64px);
+   }
+}
+
+@mixin h2 {
+   @include title;
+   @include fontSize(36px);
+
+   @media screen and (min-width: $screen-m-min) {
+      @include fontSize(48px);
+   }
+}
+
+@mixin h3 {
+   @include title;
+   @include fontSize(24px);
+
+   @media screen and (min-width: $screen-m-min) {
+      @include fontSize(32px);
+   }
+}
+
+@mixin h4 {
+   @include title;
+   @include fontSize(20px);
+
+   @media screen and (min-width: $screen-m-min) {
+      @include fontSize(24px);
+   }
+}
+
+@mixin body {
+   @include fontSize(14px, 21px);
+
+   @media screen and (min-width: $screen-m-min) {
+      @include fontSize(16px, 24px);
+   }
+}
+
+@mixin body-bold($weight: 500) {
+   @include body;
+   font-weight: $weight;
+}

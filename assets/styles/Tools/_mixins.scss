@@ -1,0 +1,14 @@
+@mixin buttonDefault {
+   @include body-bold;
+
+   cursor: pointer;
+   white-space: nowrap;
+   text-decoration: none;
+   display: inline-flex;
+   justify-content: center;
+   align-items: center;
+   padding: 8px 26px;
+   border: none;
+   border-radius: $border-radius-100;
+   transition: all $animation ease-in-out;
+}
