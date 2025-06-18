@@ -1,3 +1,6 @@
+@use "../Settings/variables";
+@use "../Settings/responsive_variables";
+
 @font-face {
    font-family: 'Bellerose';
    src: url('../../fonts/Bellerose/Bellerose.woff2') format('woff2'),
@@ -29,7 +32,7 @@
 }
 
 @mixin resetTitle($weight: 300) {
-   font-family: $font-text;
+   font-family: variables.$font-text;
    font-weight: $weight;
    text-transform: initial;
 }
@@ -37,9 +40,9 @@
 @mixin h1 {
    @include title($weight: 300);
    @include fontSize(48px);
-   font-family: $font-title;
+   font-family: variables.$font-title;
 
-   @media screen and (min-width: $screen-m-min) {
+   @media screen and (min-width: responsive_variables.$screen-m-min) {
       @include fontSize(64px);
    }
 }
@@ -48,7 +51,7 @@
    @include title;
    @include fontSize(36px);
 
-   @media screen and (min-width: $screen-m-min) {
+   @media screen and (min-width: responsive_variables.$screen-m-min) {
       @include fontSize(48px);
    }
 }
@@ -57,7 +60,7 @@
    @include title;
    @include fontSize(24px);
 
-   @media screen and (min-width: $screen-m-min) {
+   @media screen and (min-width: responsive_variables.$screen-m-min) {
       @include fontSize(32px);
    }
 }
@@ -66,7 +69,7 @@
    @include title;
    @include fontSize(20px);
 
-   @media screen and (min-width: $screen-m-min) {
+   @media screen and (min-width: responsive_variables.$screen-m-min) {
       @include fontSize(24px);
    }
 }
@@ -74,7 +77,7 @@
 @mixin body {
    @include fontSize(14px, 21px);
 
-   @media screen and (min-width: $screen-m-min) {
+   @media screen and (min-width: responsive_variables.$screen-m-min) {
       @include fontSize(16px, 24px);
    }
 }

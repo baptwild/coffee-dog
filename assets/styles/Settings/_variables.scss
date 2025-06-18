@@ -18,5 +18,11 @@ $border-radius: 8px;
 // Border
 $border: 1px solid $color-black;
 
+// Shadow 
+$shadow: drop-shadow(0 4px 4px rgba($color-black, 0.25));
+
 // Animation
 $animation: 300ms;
+
+// Wrapper
+$wrapper: 1512px;
