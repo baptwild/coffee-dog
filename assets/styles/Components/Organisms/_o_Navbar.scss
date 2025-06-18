@@ -1,0 +1,60 @@
+@use "../../Settings/variables";
+@use "../../Settings/responsive_variables";
+@use "../../Tools/typography";
+@use "../../Tools/mixins";
+
+.o_Navbar {
+   @include mixins.wrapper;
+
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   width: 100%;
+
+   &_logo {
+      img {
+         height: 50px;
+         width: auto;
+         display: block;
+      }
+   }
+
+   &_menu {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 40px;
+
+      &-link {
+         @include typography.body-bold;
+
+         color: variables.$color-primary;
+      }
+   }
+
+   &_links {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 24px;
+
+      &-socials {
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         gap: 16px;
+
+         &-link {
+
+
+            img {
+               height: 24px;
+               width: auto;
+               display: block;
+            }
+         }
+      }
+
+      &-login {}
+   }
+}

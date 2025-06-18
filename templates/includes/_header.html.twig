@@ -1,0 +1,45 @@
+<header class="l_Header">
+	<nav class="o_Navbar">
+		<div class="o_Navbar_logo">
+			<a href="{{ path ('home') }}">
+				<img src="{{ asset('build/images/logos/logo-color.svg') }}" alt="Logo Café des Chiens" loading="lazy"/>
+			</a>
+		</div>
+		<div class="o_Navbar_menu">
+			<a class="o_Navbar_menu-link" href="{{ path ('home') }}">
+				Parc
+			</a>
+			<a class="o_Navbar_menu-link" href="{{ path ('home') }}">
+				Éducation
+			</a>
+			<a class="o_Navbar_menu-link" href="{{ path ('home') }}">
+				Tarifs
+			</a>
+			<a class="o_Navbar_menu-link" href="{{ path ('home') }}">
+				Contact
+			</a>
+		</div>
+		<div class="o_Navbar_links">
+			<div class="o_Navbar_links-socials">
+				<a class="o_Navbar_links-socials-link" href="https://www.facebook.com/cafedeschiens">
+					<img src="{{ asset('build/images/icons/facebook.svg') }}" alt="Compte Facebook du Café des Chiens" loading="lazy"/>
+				</a>
+				<a class="o_Navbar_links-socials-link" href="https://www.instagram.com/cafedeschiens">
+					<img src="{{ asset('build/images/icons/instagram.svg') }}" alt="Compte Instagram du Café des Chiens" loading="lazy"/>
+				</a>
+			</div>
+			<div class="o_Navbar_links-login">
+				<button class="a_Button-primary">Connexion</button>
+				{# {% if app.user %}
+													{% if (app.user.roles[0] == 'ROLE_ADMIN') %}
+													   <a href="{{ path ('admin_index') }}">Administration</a>
+													{% endif %}
+													    <a href="{{ path ('app_logout') }}">me deconnecter </a>
+													{% else %}
+												      <a href="{{ path ('app_login') }}"> connexion </a>
+													   <a href="{{ path ('app_register') }}">inscription</a>
+												{% endif %} #}
+			</div>
+		</div>
+	</nav>
+</header>

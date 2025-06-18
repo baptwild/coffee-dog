@@ -1,1 +1,13 @@
-.l_Header {}
+@use "../Settings/variables";
+
+.l_Header {
+   width: 100dvw;
+   height: 80px;
+   background-color: variables.$color-white;
+   z-index: 1000;
+   backdrop-filter: blur(8px);
+   filter: variables.$shadow;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}

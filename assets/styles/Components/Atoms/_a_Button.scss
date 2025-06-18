@@ -1,39 +1,44 @@
+@use "../../Settings/variables";
+@use "../../Settings/responsive_variables";
+@use "../../Tools/mixins";
+@use "../../Tools/typography";
+
 .a_Button {
-   @include buttonDefault;
+   @include mixins.buttonDefault;
 
    &-primary {
-      @include buttonDefault;
+      @include mixins.buttonDefault;
 
-      background-color: $color-primary;
-      color: $color-white;
+      background-color: variables.$color-primary;
+      color: variables.$color-white;
 
       &:hover {
-         background-color: $color-secondary;
-         color: $color-black;
+         background-color: variables.$color-secondary;
+         color: variables.$color-black;
       }
    }
 
    &-secondary {
-      @include buttonDefault;
+      @include mixins.buttonDefault;
 
-      background-color: $color-secondary;
-      color: $color-white;
+      background-color: variables.$color-secondary;
+      color: variables.$color-white;
 
       &:hover {
-         background-color: $color-tertiary;
-         color: $color-black;
+         background-color: variables.$color-tertiary;
+         color: variables.$color-black;
       }
    }
 
    &-tertiary {
-      @include buttonDefault;
+      @include mixins.buttonDefault;
 
-      background-color: $color-white;
-      color: $color-black;
+      background-color: variables.$color-white;
+      color: variables.$color-black;
 
       &:hover {
-         background-color: $color-secondary;
-         color: $color-white;
+         background-color: variables.$color-secondary;
+         color: variables.$color-white;
       }
    }
 }

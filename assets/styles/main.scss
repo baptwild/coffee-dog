@@ -1,29 +1,31 @@
 // Utils
 // Settings
-@import "./Settings/variables";
-@import "./Settings/responsive_variables";
+@use "./Settings/variables";
+@use "./Settings/responsive_variables";
 
 // Tools
-@import "./Tools/mixins";
-@import "./Tools/typography";
+@use "./Tools/mixins";
+@use "./Tools/typography";
 
 // Base
-@import "./Base/reset";
-@import "./Base/base";
+@use "./Base/reset";
+@use "./Base/base";
 
 // Components
 // Atoms
-@import "./Components/Atoms/a_Button";
+@use "./Components/Atoms/a_Button";
 
 // Molecules
-@import "./Components/Molecules/m_Card";
+@use "./Components/Molecules/m_Card";
 
 // Organisms
-@import "./Components/Organisms/o_HeroHome";
+@use "./Components/Organisms/o_HeroHome";
+@use "./Components/Organisms/o_Navbar";
 
 // Layout
-@import "./Layout/l_Header";
-@import "./Layout/l_Footer";
+@use "./Layout/l_Header";
+@use "./Layout/l_Footer";
+@use "./Layout/l_Wrapper";
 
 // Pages
-@import "./Pages/p_Home";
+@use "./Pages/p_Home";
