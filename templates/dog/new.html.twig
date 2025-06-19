@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un chien{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un chien</h1>
+
+    {{ form_start(form) }}
+
+    <div class="form-group">
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.name) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.age) }}
+        {{ form_widget(form.age, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.age) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.breed) }}
+        {{ form_widget(form.breed, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.breed) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.size) }}
+        {{ form_widget(form.size, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.size) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.notes) }}
+        {{ form_widget(form.notes, {'attr': {'class': 'form-control', 'rows': 4}}) }}
+        {{ form_errors(form.notes) }}
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Enregistrer</button>
+
+    {{ form_end(form) }}
+{% endblock %}
