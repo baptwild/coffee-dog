@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!
+{% block title %}
+	Accueil | Le Café des Chiens
 {% endblock %}
 
 {% block body %}
-	{# <p class="home_title">
-			Coucou la page d'accueil
-		</p>
-		<button class="a_Button-primary">Click</button> #}
+	<div class="p_Home">
+		{% include 'components/organisms/_heroHome.html.twig' %}
+
+
+	</div>
 {% endblock %}

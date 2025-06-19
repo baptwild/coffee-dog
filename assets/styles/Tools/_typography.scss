@@ -27,6 +27,7 @@
 }
 
 @mixin title($weight: 300) {
+   font-family: variables.$font-title;
    font-weight: $weight;
    text-transform: uppercase;
 }
@@ -39,38 +40,37 @@
 
 @mixin h1 {
    @include title($weight: 300);
-   @include fontSize(48px);
-   font-family: variables.$font-title;
+   @include fontSize(36px, 46px);
 
    @media screen and (min-width: responsive_variables.$screen-m-min) {
-      @include fontSize(64px);
+      @include fontSize(48px, 58px);
    }
 }
 
 @mixin h2 {
    @include title;
-   @include fontSize(36px);
+   @include fontSize(24px, 34px);
 
    @media screen and (min-width: responsive_variables.$screen-m-min) {
-      @include fontSize(48px);
+      @include fontSize(36px, 46px);
    }
 }
 
 @mixin h3 {
    @include title;
-   @include fontSize(24px);
+   @include fontSize(20px, 30px);
 
    @media screen and (min-width: responsive_variables.$screen-m-min) {
-      @include fontSize(32px);
+      @include fontSize(32px, 42px);
    }
 }
 
 @mixin h4 {
    @include title;
-   @include fontSize(20px);
+   @include fontSize(16px, 26px);
 
    @media screen and (min-width: responsive_variables.$screen-m-min) {
-      @include fontSize(24px);
+      @include fontSize(24px, 34px);
    }
 }
 
