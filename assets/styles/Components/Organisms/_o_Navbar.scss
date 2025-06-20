@@ -27,8 +27,6 @@
 
       &-link {
          @include typography.body-bold;
-
-         color: variables.$color-primary;
       }
    }
 
@@ -45,12 +43,11 @@
          gap: 16px;
 
          &-link {
+            display: flex;
+            align-items: center;
 
-
-            img {
-               height: 24px;
-               width: auto;
-               display: block;
+            i {
+               font-size: 24px;
             }
          }
       }

@@ -34,6 +34,18 @@
       @include mixins.buttonDefault;
 
       background-color: variables.$color-white;
+      color: variables.$color-primary;
+
+      &:hover {
+         background-color: variables.$color-primary;
+         color: variables.$color-white;
+      }
+   }
+
+   &-quarternary {
+      @include mixins.buttonDefault;
+
+      background-color: variables.$color-white;
       color: variables.$color-black;
 
       &:hover {

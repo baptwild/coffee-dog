@@ -1,10 +1,12 @@
-{# <header class="l_header {% if isTransparent is defined and isTransparent %}l_header-transparent{% endif %}"> #}
-
-<header class="l_Header">
+<header class="l_Header {% if isTransparent is defined and isTransparent %}l_Header-transparent{% endif %}">
 	<nav class="o_Navbar">
 		<div class="o_Navbar_logo">
 			<a href="{{ path ('home') }}">
-				<img src="{{ asset('build/images/logos/logo-color.svg') }}" alt="Logo Café des Chiens" loading="lazy"/>
+				{% if isTransparent %}
+					<img src="{{ asset('build/images/logos/logo-white-small.svg') }}" alt="Logo Café des Chiens" loading="lazy"/>
+				{% else %}
+					<img src="{{ asset('build/images/logos/logo-color.svg') }}" alt="Logo Café des Chiens" loading="lazy"/>
+				{% endif %}
 			</a>
 		</div>
 		<div class="o_Navbar_menu">
@@ -24,23 +26,28 @@
 		<div class="o_Navbar_links">
 			<div class="o_Navbar_links-socials">
 				<a class="o_Navbar_links-socials-link" href="https://www.facebook.com/cafedeschiens">
-					<img src="{{ asset('build/images/icons/facebook.svg') }}" alt="Compte Facebook du Café des Chiens" loading="lazy"/>
+					<i class="bi bi-facebook"></i>
 				</a>
 				<a class="o_Navbar_links-socials-link" href="https://www.instagram.com/cafedeschiens">
-					<img src="{{ asset('build/images/icons/instagram.svg') }}" alt="Compte Instagram du Café des Chiens" loading="lazy"/>
+					<i class="bi bi-instagram"></i>
 				</a>
 			</div>
 			<div class="o_Navbar_links-login">
-				<button class="a_Button-primary">Connexion</button>
+				{% if isTransparent %}
+					<button class="a_Button-tertiary">Connexion</button>
+				{% else %}
+					<button class="a_Button-primary">Connexion</button>
+				{% endif %}
+
 				{# {% if app.user %}
-																	{% if (app.user.roles[0] == 'ROLE_ADMIN') %}
-																	   <a href="{{ path ('admin_index') }}">Administration</a>
-																	{% endif %}
-																	    <a href="{{ path ('app_logout') }}">me deconnecter </a>
-																	{% else %}
-																      <a href="{{ path ('app_login') }}"> connexion </a>
-																	   <a href="{{ path ('app_register') }}">inscription</a>
-																{% endif %} #}
+													{% if (app.user.roles[0] == 'ROLE_ADMIN') %}
+														<a href="{{ path ('admin_index') }}">Administration</a>
+													{% endif %}
+														<a href="{{ path ('app_logout') }}">me deconnecter </a>
+													{% else %}
+														<a href="{{ path ('app_login') }}"> connexion </a>
+														<a href="{{ path ('app_register') }}">inscription</a>
+													{% endif %} #}
 			</div>
 		</div>
 	</nav>

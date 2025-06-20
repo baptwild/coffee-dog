@@ -21,7 +21,7 @@
 		{% endblock %}
 	</head>
 	<body>
-		{% include 'includes/_header.html.twig' %}
+		{% include 'includes/_header.html.twig' with { isTransparent: isTransparent|default(false) } %}
 
 		{% block body %}{% endblock %}
 	</body>

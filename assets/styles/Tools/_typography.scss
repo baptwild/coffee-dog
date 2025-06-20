@@ -82,7 +82,7 @@
    }
 }
 
-@mixin body-bold($weight: 500) {
+@mixin body-bold($weight: 600) {
    @include body;
    font-weight: $weight;
 }
