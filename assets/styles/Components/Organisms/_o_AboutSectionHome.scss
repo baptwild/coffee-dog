@@ -1,0 +1,94 @@
+@use "../../Settings/responsive_variables";
+@use "../../Settings/variables";
+@use "../../Tools/typography";
+@use "../../Tools/mixins";
+
+.o_AboutSectionHome {
+   display: flex;
+   flex-direction: column;
+   gap: 80px;
+   margin-top: 80px;
+   width: 100%;
+
+   &_textImageBlock {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 50px;
+
+      &_text {
+         display: flex;
+         flex-direction: column;
+         gap: 35px;
+
+         &-title {
+            @include typography.h2;
+
+            &::after {
+               content: "";
+               display: block;
+               width: 140px;
+               height: 1px;
+               background-color: variables.$color-primary;
+               margin-top: 18px;
+            }
+         }
+
+         &-subtitle {
+            @include typography.h4;
+         }
+
+         &-description {
+            @include typography.body;
+         }
+
+         &-additionnal {
+            @include typography.body-bold;
+         }
+
+         &-button {
+            width: max-content;
+         }
+      }
+
+      &_image {
+         width: 100%;
+
+         img {
+            width: 100%;
+            height: auto;
+            border-radius: variables.$border-radius;
+         }
+      }
+
+      &-reverse {
+         display: flex;
+         flex-direction: column;
+         gap: 80px;
+         margin-bottom: 80px;
+         width: 100%;
+      }
+   }
+
+   @media screen and (min-width: responsive_variables.$screen-m-min) {
+      &_textImageBlock {
+         flex-direction: row;
+         justify-content: space-between;
+         gap: 0;
+
+         &-reverse {
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            gap: 0;
+         }
+
+         &_text {
+            width: 45%;
+         }
+
+         &_image {
+            width: 45%;
+         }
+      }
+   }
+}

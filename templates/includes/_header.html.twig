@@ -2,7 +2,7 @@
 	<nav class="o_Navbar">
 		<div class="o_Navbar_logo">
 			<a href="{{ path ('home') }}">
-				{% if isTransparent %}
+				{% if isTransparent is defined and isTransparent %}
 					<img src="{{ asset('build/images/logos/logo-white-small.svg') }}" alt="Logo Café des Chiens" loading="lazy"/>
 				{% else %}
 					<img src="{{ asset('build/images/logos/logo-color.svg') }}" alt="Logo Café des Chiens" loading="lazy"/>
@@ -24,6 +24,9 @@
 			</a>
 		</div>
 		<div class="o_Navbar_links">
+			<div class="o_Navbar_links-mobileMenu">
+				<i class="bi bi-list"></i>
+			</div>
 			<div class="o_Navbar_links-socials">
 				<a class="o_Navbar_links-socials-link" href="https://www.facebook.com/cafedeschiens">
 					<i class="bi bi-facebook"></i>
@@ -33,21 +36,21 @@
 				</a>
 			</div>
 			<div class="o_Navbar_links-login">
-				{% if isTransparent %}
+				{% if isTransparent is defined and isTransparent %}
 					<button class="a_Button-tertiary">Connexion</button>
 				{% else %}
 					<button class="a_Button-primary">Connexion</button>
 				{% endif %}
 
 				{# {% if app.user %}
-													{% if (app.user.roles[0] == 'ROLE_ADMIN') %}
-														<a href="{{ path ('admin_index') }}">Administration</a>
-													{% endif %}
-														<a href="{{ path ('app_logout') }}">me deconnecter </a>
-													{% else %}
-														<a href="{{ path ('app_login') }}"> connexion </a>
-														<a href="{{ path ('app_register') }}">inscription</a>
-													{% endif %} #}
+																					{% if (app.user.roles[0] == 'ROLE_ADMIN') %}
+																						<a href="{{ path ('admin_index') }}">Administration</a>
+																					{% endif %}
+																						<a href="{{ path ('app_logout') }}">me deconnecter </a>
+																					{% else %}
+																						<a href="{{ path ('app_login') }}"> connexion </a>
+																						<a href="{{ path ('app_register') }}">inscription</a>
+																					{% endif %} #}
 			</div>
 		</div>
 	</nav>
