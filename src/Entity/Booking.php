@@ -22,16 +22,18 @@ class Booking
     #[ORM\JoinColumn(nullable: false)]
     private ?Dog $dog = null;
 
-    #[ORM\OneToOne(inversedBy: "booking", targetEntity: Rate::class)]
-    #[ORM\JoinColumn(name: "rate_id", referencedColumnName: "id", nullable: false)]
+    // #[ORM\OneToOne(targetEntity: Rate::class, inversedBy: "bookings")]
+    // #[ORM\JoinColumn(name: "rate_id", referencedColumnName: "id", nullable: false)]
+    #[ORM\ManyToOne(targetEntity: Rate::class, inversedBy: "bookings")]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Rate $rate = null;
 
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $effectiveDate = null;
+    // #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    // private ?\DateTimeInterface $effectiveDate = null;
 
-    #[ORM\Column]
-    private ?bool $isActive = null;
+    // #[ORM\Column]
+    // private ?bool $isActive = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $arrivalDatetime = null;
@@ -41,8 +43,8 @@ class Booking
     private ?\DateTimeInterface $departureDatetime = null;
 
     public const STATUS_EN_ATTENTE = 'en_attente';
-    public const STATUS_CONFIRME = 'confirme';
-    public const STATUS_ANNULE = 'annule';
+    public const STATUS_CONFIRME = 'confirmé';
+    public const STATUS_ANNULE = 'annulé';
 
     #[ORM\Column(length: 255)]
     private ?string $status = null;
@@ -93,29 +95,29 @@ class Booking
         return $this;
     }
 
-    public function getEffectiveDate(): ?\DateTimeInterface
-    {
-        return $this->effectiveDate;
-    }
+    // public function getEffectiveDate(): ?\DateTimeInterface
+    // {
+    //     return $this->effectiveDate;
+    // }
 
-    public function setEffectiveDate(?\DateTimeInterface $effectiveDate): static
-    {
-        $this->effectiveDate = $effectiveDate;
+    // public function setEffectiveDate(?\DateTimeInterface $effectiveDate): static
+    // {
+    //     $this->effectiveDate = $effectiveDate;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function isActive(): ?bool
-    {
-        return $this->isActive;
-    }
+    // public function isActive(): ?bool
+    // {
+    //     return $this->isActive;
+    // }
 
-    public function setIsActive(?bool $isActive): static
-    {
-        $this->isActive = $isActive;
+    // public function setIsActive(?bool $isActive): static
+    // {
+    //     $this->isActive = $isActive;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getArrivalDatetime(): ?\DateTimeInterface
     {
