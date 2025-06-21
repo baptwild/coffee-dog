@@ -39,6 +39,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $city = null;
 
     #[ORM\Column(type: Types::INTEGER, nullable: true)]
+
+    
     private ?int $zipCode = null;
 
     #[ORM\Column(length: 255, nullable: true)]

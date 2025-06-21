@@ -26,6 +26,9 @@ class Rate
     private ?bool $isActive = null;
 
     #[ORM\OneToMany(targetEntity: Booking::class, mappedBy: 'rate')]
+
+    
+    // #[ORM\OneToMany(mappedBy:'rate', targetEntity: Booking::class, cascade: ['persist', 'remove'])]
     private Collection $bookings;
 
     public function __construct()
@@ -74,28 +77,36 @@ class Rate
         return $this;
     }
 
+
     /**
      * @return Collection<int, Booking>
      */
+
     public function getBookings(): Collection
     {
         return $this->bookings;
     }
 
+
     public function addBooking(Booking $booking): static
     {
         if (!$this->bookings->contains($booking)) {
             $this->bookings->add($booking);
+
+    
             $booking->setRate($this);
         }
 
         return $this;
     }
 
+
     public function removeBooking(Booking $booking): static
     {
         if ($this->bookings->removeElement($booking)) {
             // Set the owning side to null (unless already changed)
+
+
             if ($booking->getRate() === $this) {
                 $booking->setRate(null);
             }
