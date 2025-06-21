@@ -24,8 +24,8 @@
    padding-bottom: 80px;
 
    @media screen and (min-width: responsive_variables.$screen-m-min) {
-      padding-right: $padding;
-      padding-left: $padding;
+      padding-top: $padding;
+      padding-bottom: $padding;
    }
 }
 
