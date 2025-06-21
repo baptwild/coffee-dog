@@ -1,0 +1,93 @@
+@use "../../Settings/responsive_variables";
+@use "../../Settings/variables";
+@use "../../Tools/typography";
+
+.m_TextImageBlock {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   gap: 50px;
+
+   &_content {
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+   }
+
+   &_title {
+      @include typography.h2;
+
+      &::after {
+         content: "";
+         display: block;
+         width: 140px;
+         height: 1px;
+         background-color: variables.$color-primary;
+         margin-top: 18px;
+      }
+   }
+
+   &_subtitle {
+      @include typography.h4;
+   }
+
+   &_description {
+      @include typography.body;
+   }
+
+   &_additionnal {
+      @include typography.body-bold;
+   }
+
+   &_list {
+      &-item {
+         i {
+            font-size: 16px;
+            color: variables.$color-primary;
+            margin-right: 12px;
+         }
+      }
+   }
+
+   &_button {
+      width: max-content;
+   }
+
+   &_image {
+      width: 100%;
+
+      img {
+         width: 100%;
+         height: auto;
+         border-radius: variables.$border-radius;
+      }
+   }
+
+   &-reverse {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+      margin-bottom: 80px;
+      width: 100%;
+   }
+
+   @media screen and (min-width: responsive_variables.$screen-m-min) {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 0;
+
+      &-reverse {
+         flex-direction: row-reverse;
+         justify-content: space-between;
+         gap: 0;
+      }
+
+      &_content {
+         width: 45%;
+      }
+
+      &_image {
+         width: 45%;
+      }
+   }
+}
