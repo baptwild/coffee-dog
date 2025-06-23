@@ -27,15 +27,7 @@
 
       &-title {
          @include typography.h2;
-
-         &::after {
-            content: "";
-            display: block;
-            width: 140px;
-            height: 1px;
-            background-color: variables.$color-white;
-            margin-top: 18px;
-         }
+         @include mixins.underline(variables.$color-white);
       }
 
       &-description {

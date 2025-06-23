@@ -60,3 +60,15 @@
       margin-bottom: $margin;
    }
 }
+
+// Underline
+@mixin underline($color: variables.$color-primary) {
+   &::after {
+      content: "";
+      display: block;
+      width: 140px;
+      height: 1px;
+      background-color: $color;
+      margin-top: 18px;
+   }
+}
