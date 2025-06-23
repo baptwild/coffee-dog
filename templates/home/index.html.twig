@@ -1,11 +1,21 @@
+{% set isTransparent = true %}
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!
+{% block title %}
+	Accueil | Le Café des Chiens
 {% endblock %}
 
 {% block body %}
-	{# <p class="home_title">
-			Coucou la page d'accueil
-		</p>
-		<button class="a_Button-primary">Click</button> #}
+	<div class="p_Home">
+		{% include 'components/organisms/_heroHome.html.twig' %}
+		{% include 'components/organisms/_aboutSectionHome.html.twig' %}
+		{% include 'components/organisms/_aboutMeSectionHome.html.twig' %}
+		{% include 'components/organisms/_needsListHome.html.twig' %}
+		{% include 'components/organisms/_costBannerHome.html.twig' %}
+		{% include 'components/organisms/_benefitListHome.html.twig' %}
+		{% include 'components/organisms/_reinsuranceList.html.twig' %}
+		{% include 'components/organisms/_locationSectionHome.html.twig' %}
+		{% include 'components/organisms/_informationBannerHome.html.twig' %}
+	</div>
 {% endblock %}

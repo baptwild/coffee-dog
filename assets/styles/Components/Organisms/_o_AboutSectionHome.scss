@@ -1,0 +1,11 @@
+@use "../../Settings/responsive_variables";
+@use "../../Tools/mixins";
+
+.o_AboutSectionHome {
+   @include mixins.margin;
+
+   display: flex;
+   flex-direction: column;
+   gap: 80px;
+   width: 100%;
+}

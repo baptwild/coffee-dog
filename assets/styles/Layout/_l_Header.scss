@@ -1,13 +1,22 @@
 @use "../Settings/variables";
 
 .l_Header {
-   width: 100dvw;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
    height: 80px;
-   background-color: variables.$color-white;
    z-index: 1000;
    backdrop-filter: blur(8px);
    filter: variables.$shadow;
    display: flex;
    align-items: center;
    justify-content: center;
+   background-color: variables.$color-white;
+   color: variables.$color-primary;
+
+   &-transparent {
+      background-color: transparent;
+      color: variables.$color-white;
+   }
 }

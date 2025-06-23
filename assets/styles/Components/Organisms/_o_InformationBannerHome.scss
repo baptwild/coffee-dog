@@ -1,0 +1,66 @@
+@use "../../Settings/variables";
+@use "../../Settings/responsive_variables";
+@use "../../Tools/mixins";
+@use "../../Tools/typography";
+
+.o_InformationBannerHome {
+   @include mixins.padding;
+
+   background-color: variables.$color-quinery;
+   color: variables.$color-white;
+   width: 100%;
+
+   &_content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 50px;
+   }
+
+   &_opening,
+   &_prices {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      width: 100%;
+   }
+
+   &_title {
+      @include typography.h2;
+      @include mixins.underline(variables.$color-white);
+   }
+
+   &_description {
+      @include typography.body;
+   }
+
+   &_button {
+      width: max-content;
+   }
+
+   &_icon {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+
+      i {
+         font-size: 24px;
+      }
+
+      &-text {
+         @include typography.body-bold;
+      }
+   }
+
+   @media screen and (min-width: responsive_variables.$screen-m-min) {
+      &_content {
+         flex-direction: row;
+         justify-content: space-between;
+      }
+
+      &_opening,
+      &_prices {
+         max-width: 40%;
+      }
+   }
+}

@@ -1,0 +1,16 @@
+@use "../../Settings/responsive_variables";
+@use "../../Tools/mixins";
+
+.o_CardList {
+   @include mixins.margin;
+
+   display: flex;
+   flex-direction: column;
+   gap: 35px;
+
+   @media screen and (min-width: responsive_variables.$screen-s-min) {
+      flex-direction: row;
+      gap: 35px;
+      justify-content: space-between;
+   }
+}

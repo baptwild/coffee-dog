@@ -17,10 +17,18 @@
 
 // Molecules
 @use "./Components/Molecules/m_Card";
+@use "./Components/Molecules/m_ReinsuranceItem";
+@use "./Components/Molecules/m_TextImageBlock";
 
 // Organisms
+@use "./Components/Organisms/o_AboutMeSectionHome";
+@use "./Components/Organisms/o_AboutSectionHome";
+@use "./Components/Organisms/o_CardList";
+@use "./Components/Organisms/o_CostBannerHome";
 @use "./Components/Organisms/o_HeroHome";
+@use "./Components/Organisms/o_InformationBannerHome";
 @use "./Components/Organisms/o_Navbar";
+@use "./Components/Organisms/o_ReinsuranceList";
 
 // Layout
 @use "./Layout/l_Header";

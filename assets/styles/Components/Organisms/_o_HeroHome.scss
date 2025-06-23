@@ -1,1 +1,85 @@
-.o_HeroHome {}
+@use "../../Settings/responsive_variables";
+@use "../../Settings/variables";
+@use "../../Tools/typography";
+@use "../../Tools/mixins";
+
+.o_HeroHome {
+   width: 100%;
+   min-height: 100dvh;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   background-color: variables.$color-primary;
+   padding-top: 80px;
+   position: relative;
+
+   &_content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 48px;
+   }
+
+   &_logo {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      img {
+         width: 80%;
+         height: auto;
+      }
+   }
+
+   &_information {
+      text-align: center;
+      color: variables.$color-white;
+
+      &-title {
+         @include typography.h1;
+
+         padding: 0 10px 20px 10px;
+         border-bottom: 1px solid variables.$color-white;
+         max-width: 345px;
+      }
+
+      &-subtitle {
+         @include typography.h3;
+      }
+
+      &-address {
+         @include typography.title;
+         @include typography.fontSize(16px);
+
+         margin-top: 16px;
+      }
+   }
+
+   &_scroll {
+      position: absolute;
+      bottom: 20px;
+      cursor: pointer;
+
+      i {
+         font-size: 32px;
+         color: variables.$color-white;
+      }
+   }
+
+   @media screen and (min-width: responsive_variables.$screen-m-min) {
+      &_logo {
+         img {
+            width: 575px;
+            height: auto;
+         }
+      }
+
+      &_information {
+         &-title {
+            max-width: 100%;
+         }
+      }
+   }
+}
