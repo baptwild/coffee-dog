@@ -1,1 +1,115 @@
-.l_Footer {}
+@use "../Settings/variables";
+@use "../Settings/responsive_variables";
+@use "../Tools/mixins";
+@use "../Tools/typography";
+
+.l_Footer {
+   @include mixins.padding;
+
+   background-color: variables.$color-primary;
+   color: variables.$color-white;
+
+   &_content {
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+   }
+
+   &_logo {
+      img {
+         width: 130px;
+         height: auto;
+      }
+   }
+
+   &_title {
+      @include typography.h4;
+      @include mixins.underline(variables.$color-white);
+
+      margin-bottom: 25px;
+   }
+
+   &_menu {
+      &_list {
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+      }
+
+      &_item {
+
+         &-link {
+            @include typography.body-bold;
+         }
+      }
+   }
+
+   &_opening {
+      width: 200px;
+
+      &-list {
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+      }
+
+      &-item {
+         display: flex;
+         flex-direction: row;
+         justify-content: space-between;
+         align-items: center;
+
+         &-day,
+         &-time {
+            @include typography.body-bold;
+         }
+      }
+   }
+
+   &_contact {
+
+      &-list {
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+      }
+
+      &-item {
+         display: inline-flex;
+         align-items: center;
+
+         i {
+            font-size: 24px;
+            margin-right: 12px;
+         }
+      }
+
+      &-text {
+         @include typography.body-bold;
+      }
+
+      &-social {
+         display: flex;
+         flex-direction: row;
+         gap: 20px;
+         margin-top: 50px;
+
+         &-link {
+            i {
+               font-size: 32px;
+            }
+         }
+      }
+
+      &-info {
+         margin-top: 50px;
+      }
+   }
+
+   @media screen and (min-width: responsive_variables.$screen-m-min) {
+      &_content {
+         flex-direction: row;
+         justify-content: space-between;
+      }
+   }
+}
