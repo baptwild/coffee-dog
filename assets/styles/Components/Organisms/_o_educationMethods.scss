@@ -1,0 +1,61 @@
+@use "../../Settings/variables";
+@use "../../Settings/responsive_variables";
+@use "../../Tools/typography";
+@use "../../Tools/mixins";
+
+.o_EducationMethods {
+   @include mixins.margin;
+
+   display: flex;
+   flex-direction: column;
+   gap: 35px;
+
+   &_intro {
+
+      &-title {
+         @include typography.h2;
+         @include mixins.underline;
+      }
+
+      &-subtitle {
+         margin-top: 20px;
+      }
+   }
+
+   &_section {
+
+      &-title {
+         @include typography.h4;
+      }
+
+      &-text {
+         margin-top: 16px;
+      }
+   }
+
+   &_image {
+      margin-top: 15px;
+      width: 100%;
+
+      img {
+         width: 100%;
+         height: auto;
+         border-radius: variables.$border-radius;
+      }
+   }
+
+   &_cardList {
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+      margin-top: 50px;
+   }
+
+   @media screen and (min-width: responsive_variables.$screen-s-min) {
+      &_cardList {
+         flex-direction: row;
+         gap: 35px;
+         justify-content: space-between;
+      }
+   }
+}

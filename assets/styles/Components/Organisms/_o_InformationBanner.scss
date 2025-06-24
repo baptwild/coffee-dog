@@ -3,7 +3,7 @@
 @use "../../Tools/mixins";
 @use "../../Tools/typography";
 
-.o_InformationBannerHome {
+.o_InformationBanner {
    @include mixins.padding;
 
    background-color: variables.$color-quinery;

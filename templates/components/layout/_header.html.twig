@@ -13,7 +13,7 @@
 			<a class="o_Navbar_menu-link" href="{{ path ('home') }}">
 				Parc
 			</a>
-			<a class="o_Navbar_menu-link" href="{{ path ('home') }}">
+			<a class="o_Navbar_menu-link" href="{{ path ('education') }}">
 				Éducation
 			</a>
 			<a class="o_Navbar_menu-link" href="{{ path ('home') }}">
@@ -43,14 +43,14 @@
 				{% endif %}
 
 				{# {% if app.user %}
-									{% if (app.user.roles[0] == 'ROLE_ADMIN') %}
-										<a href="{{ path ('admin_index') }}">Administration</a>
-									{% endif %}
-										<a href="{{ path ('app_logout') }}">me deconnecter </a>
-								{% else %}
-									<a href="{{ path ('app_login') }}"> connexion </a>
-									<a href="{{ path ('app_register') }}">inscription</a>
-								{% endif %} #}
+													{% if (app.user.roles[0] == 'ROLE_ADMIN') %}
+														<a href="{{ path ('admin_index') }}">Administration</a>
+													{% endif %}
+														<a href="{{ path ('app_logout') }}">me deconnecter </a>
+												{% else %}
+													<a href="{{ path ('app_login') }}"> connexion </a>
+													<a href="{{ path ('app_register') }}">inscription</a>
+												{% endif %} #}
 			</div>
 		</div>
 	</nav>

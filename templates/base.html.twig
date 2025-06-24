@@ -21,10 +21,10 @@
 		{% endblock %}
 	</head>
 	<body>
-		{% include 'includes/_header.html.twig' with { isTransparent: isTransparent|default(false) } %}
+		{% include 'components/layout/_header.html.twig' with { isTransparent: isTransparent|default(false) } %}
 
 		{% block body %}{% endblock %}
 
-		{% include 'includes/_footer.html.twig' %}
+		{% include 'components/layout/_footer.html.twig' %}
 	</body>
 </html>

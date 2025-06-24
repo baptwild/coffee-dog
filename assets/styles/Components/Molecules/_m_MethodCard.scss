@@ -1,0 +1,55 @@
+@use "../../Settings/variables";
+@use "../../Settings/responsive_variables";
+@use "../../Tools/typography";
+
+.m_MethodCard {
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+   min-height: max-content;
+   border: 1px solid rgba(variables.$color-black, 0.2);
+   border-radius: variables.$border-radius;
+   padding: 60px 20px;
+
+   &_icon {
+      font-size: 64px;
+      text-align: center;
+   }
+
+   &_content {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 50px;
+   }
+
+   &_title {
+      @include typography.h4;
+   }
+
+   &_list {
+      @include typography.body;
+
+      margin-top: 24px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+   }
+
+   &_item {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+
+      i {
+         font-size: 20px;
+         color: variables.$color-primary;
+      }
+   }
+
+   @media screen and (min-width: responsive_variables.$screen-s-min) {
+      min-height: 500px;
+      width: 30%;
+   }
+}

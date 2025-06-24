@@ -1,0 +1,50 @@
+@use "../../Settings/variables";
+@use "../../Settings/responsive_variables";
+@use "../../Tools/mixins";
+@use "../../Tools/typography";
+
+.o_HeroStaticPage {
+   width: 100%;
+   height: 100dvh;
+   background-color: variables.$color-white;
+   position: relative;
+
+   &_content {
+      width: 100%;
+      height: 100%;
+   }
+
+   &_image {
+      width: 100%;
+      height: 100dvh;
+
+      img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
+   }
+
+   &_information {
+      position: absolute;
+      top: 45%;
+      left: 20px;
+      z-index: 5;
+
+      &-title {
+         @include typography.h1;
+      }
+
+      &-subtitle {
+         @include typography.h2;
+
+         margin-top: 20px;
+      }
+   }
+
+   @media screen and (min-width: responsive_variables.$screen-m-min) {
+      &_information {
+         left: 48px;
+      }
+   }
+}
