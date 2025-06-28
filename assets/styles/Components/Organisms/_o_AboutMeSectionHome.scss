@@ -31,23 +31,23 @@
       }
 
       &-description {
-         margin-top: 30px;
+         margin-top: 2rem;
       }
 
       &-button {
-         margin-top: 50px;
+         margin-top: 3rem;
       }
    }
 
    @media screen and (min-width: responsive_variables.$screen-m-min) {
       &_content {
          flex-direction: row;
-         gap: 100px;
+         gap: 5rem;
          justify-content: center;
       }
 
       &_text {
-         max-width: 600px;
+         max-width: 40%;
       }
    }
 }

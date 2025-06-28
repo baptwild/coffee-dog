@@ -11,7 +11,7 @@
    justify-content: center;
    align-items: center;
    background-color: variables.$color-primary;
-   padding-top: 80px;
+   padding-top: 5rem;
    position: relative;
 
    &_content {
@@ -19,7 +19,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 48px;
+      gap: 5rem;
    }
 
    &_logo {
@@ -40,9 +40,9 @@
       &-title {
          @include typography.h1;
 
-         padding: 0 10px 20px 10px;
+         padding: 0 1rem 1.5rem 1rem;
          border-bottom: 1px solid variables.$color-white;
-         max-width: 345px;
+         max-width: 21.5rem;
       }
 
       &-subtitle {
@@ -53,17 +53,17 @@
          @include typography.title;
          @include typography.fontSize(16px);
 
-         margin-top: 16px;
+         margin-top: 1rem;
       }
    }
 
    &_scroll {
       position: absolute;
-      bottom: 20px;
+      bottom: 1.5rem;
       cursor: pointer;
 
       i {
-         font-size: 32px;
+         font-size: 2rem;
          color: variables.$color-white;
       }
    }
