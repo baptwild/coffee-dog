@@ -5,7 +5,10 @@
 			<p class="m_TextImageBlock_description">
 				Le Café des Chiens est un centre aéré canin qui va vous permettre de laisser votre chien la journée entre les mains d’une professionnelle où il pourra s'amuser et bien plus encore... Fini le calvaire pour lui de vous attendre toute la journée. Sa bande de copains l’attendra avec impatience toutes les semaines.
 			</p>
-			<button class="a_Button-primary m_TextImageBlock_button">Comment ça marche ?</button>
+			{% include 'components/atoms/_button.html.twig' with {
+					label: 'Comment ça marche ?',
+					class: 'a_Button-primary m_TextImageBlock_button'
+			} %}
 		</div>
 		<div class="m_TextImageBlock_image">
 			<img src="{{ asset('build/images/cours-collectifs-pour-chiens.webp') }}" alt="Un chien qui s'amuse en extérieur" loading="lazy"/>

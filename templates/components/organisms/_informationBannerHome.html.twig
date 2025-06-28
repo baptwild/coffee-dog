@@ -21,7 +21,11 @@
 			<p class="o_InformationBanner_description">
 				À la journée ou demi-journée, choisissez ce qui vous convient le mieux.
 			</p>
-			<a class="a_Button-primary o_InformationBanner_button" href="{{ path ('prices') }}">En savoir plus</a>
+			{% include 'components/atoms/_button.html.twig' with {
+				url: path ('prices'),
+				label: 'En savoir plus',
+				class: 'a_Button-primary o_InformationBanner_button'
+			} %}
 		</div>
 	</div>
 </section>

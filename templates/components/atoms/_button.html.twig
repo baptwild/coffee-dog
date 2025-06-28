@@ -1,0 +1,9 @@
+{% if url is defined %}
+	<a href="{{ url }}" class="{{ class|default('a_Button') }}">
+		{{ label }}
+	</a>
+{% else %}
+	<button type="button" class="{{ class|default('a_Button') }}">
+		{{ label }}
+	</button>
+{% endif %}
