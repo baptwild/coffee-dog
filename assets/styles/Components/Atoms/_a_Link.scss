@@ -1,0 +1,8 @@
+@use '../../Tools/typography';
+
+.a_Link {
+
+   &-label {
+      @include typography.body-bold;
+   }
+}

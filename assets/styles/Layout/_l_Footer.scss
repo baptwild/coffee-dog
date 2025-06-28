@@ -77,6 +77,11 @@
       &-item {
          display: inline-flex;
          align-items: center;
+      }
+
+      &-link {
+         display: inline-flex;
+         align-items: center;
 
          i {
             font-size: 1.5rem;

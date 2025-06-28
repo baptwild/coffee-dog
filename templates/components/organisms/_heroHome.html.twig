@@ -13,7 +13,9 @@
 			</h3>
 		</div>
 	</div>
-	<a class="o_HeroHome_scroll" href="#a-propos">
-		<i class="bi bi-chevron-down"></i>
-	</a>
+	{% include 'components/atoms/_link.html.twig' with {
+		url: '#a-propos',
+		icon: 'bi bi-chevron-down',
+		class: 'o_HeroHome_scroll'
+	} %}
 </section>

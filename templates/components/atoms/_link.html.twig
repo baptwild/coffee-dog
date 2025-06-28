@@ -1,0 +1,8 @@
+<a href="{{ url }}" class="{{ class|default('a_Link') }}" {{ target is defined and target ? 'target="' ~ target ~ '"' }}>
+	{% if icon is defined %}
+		<i class="{{ icon }}"></i>
+	{% endif %}
+	{% if label is defined %}
+		<span class="a_Link-label">{{ label }}</span>
+	{% endif %}
+</a>
