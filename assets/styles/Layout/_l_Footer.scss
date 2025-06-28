@@ -37,7 +37,6 @@
       }
 
       &_item {
-
          &-link {
             @include typography.body-bold;
          }
@@ -67,16 +66,10 @@
    }
 
    &_contact {
-
       &-list {
          display: flex;
          flex-direction: column;
          gap: 1rem;
-      }
-
-      &-item {
-         display: inline-flex;
-         align-items: center;
       }
 
       &-link {

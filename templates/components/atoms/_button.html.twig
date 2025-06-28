@@ -1,5 +1,5 @@
 {% if url is defined %}
-	<a href="{{ url }}" class="{{ class|default('a_Button') }}">
+	<a href="{{ url }}" class="a_Button {{ class|default('') }}">
 		{{ label }}
 	</a>
 {% else %}
