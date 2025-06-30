@@ -27,10 +27,12 @@
    &_description {
       @include typography.body;
 
-      display: block;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease, opacity 0.3s ease;
+      transition: max-height variables.$animation ease-in, opacity variables.$animation ease-in;
       opacity: 0;
 
       p {
@@ -42,10 +44,21 @@
       }
 
       ul {
-         li {}
-      }
+         display: flex;
+         flex-direction: column;
+         gap: 0.75rem;
 
-      em {}
+         li {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+
+            i {
+               font-size: 1rem;
+               color: variables.$color-primary;
+            }
+         }
+      }
 
       &.visible {
          max-height: max-content;
