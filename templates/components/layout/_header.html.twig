@@ -53,27 +53,27 @@
 				{% if isTransparent is defined and isTransparent %}
 					{% include 'components/atoms/_button.html.twig' with {
 						label: 'Connexion',
-						class: 'a_Button-tertiary'
+						class: 'a_Button-tertiary o_Navbar_login-button'
 					} %}
 				{% else %}
 					{% include 'components/atoms/_button.html.twig' with {
 						label: 'Connexion',
-						class: 'a_Button-primary'
+						class: 'a_Button-primary o_Navbar_login-button'
 					} %}
 				{% endif %}
 
 				{# {% if app.user %}
-																																																																																					{% if (app.user.roles[0] == 'ROLE_ADMIN') %}
-																																																																																						<a href="{{ path ('admin_index') }}">Administration</a>
-																																																																																					{% endif %}
-																																																																																					<a href="{{ path ('app_logout') }}">me deconnecter
-																																																																																					</a>
-																																																																																				{% else %}
-																																																																																					<a href="{{ path ('app_login') }}">
-																																																																																						connexion
-																																																																																					</a>
-																																																																																					<a href="{{ path ('app_register') }}">inscription</a>
-																																																																																				{% endif %} #}
+																																																																																													{% if (app.user.roles[0] == 'ROLE_ADMIN') %}
+																																																																																														<a href="{{ path ('admin_index') }}">Administration</a>
+																																																																																													{% endif %}
+																																																																																													<a href="{{ path ('app_logout') }}">me deconnecter
+																																																																																													</a>
+																																																																																												{% else %}
+																																																																																													<a href="{{ path ('app_login') }}">
+																																																																																														connexion
+																																																																																													</a>
+																																																																																													<a href="{{ path ('app_register') }}">inscription</a>
+																																																																																												{% endif %} #}
 			</div>
 		</div>
 	</nav>

@@ -1,17 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.l_Header-transparent')
+  const loginButton = document.querySelector('.o_Navbar_login-button')
 
-  if (!header) return
+  if (!header || !loginButton) return
 
   const toggleTransparency = () => {
-    if (window.scrollY > 10) {
-      header.classList.remove('l_Header-transparent')
-    } else {
-      header.classList.add('l_Header-transparent')
-    }
+    const scrolled = window.scrollY > 10
+
+    header.classList.toggle('l_Header-transparent', !scrolled)
+    loginButton.classList.toggle('a_Button-tertiary', !scrolled)
+    loginButton.classList.toggle('a_Button-primary', scrolled)
   }
 
   window.addEventListener('scroll', toggleTransparency)
-
   toggleTransparency()
 })
