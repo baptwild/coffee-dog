@@ -4,6 +4,7 @@
 .a_Link {
    display: inline-block;
    color: inherit;
+   transition: color variables.$animation ease-in-out;
 
    &-label {
       @include typography.body-bold;
@@ -19,6 +20,11 @@
          background-color: currentColor;
          transition: width variables.$animation ease-in-out;
       }
+   }
+
+   &:hover,
+   &:focus {
+      color: variables.$color-quaternary;
    }
 
    &:hover &-label::after,

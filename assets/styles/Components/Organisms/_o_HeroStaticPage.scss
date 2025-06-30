@@ -7,16 +7,19 @@
    width: 100%;
    height: 100dvh;
    background-color: variables.$color-white;
-   background-image: url("../../../images/hero-static-page.webp");
+   background-image: url("../../../images/hero-static-page-mobile.webp");
    background-size: cover;
-   background-position: center;
+   background-position: right;
    background-repeat: no-repeat;
+
    display: flex;
    align-items: center;
    justify-content: flex-start;
 
    &_information {
       @include mixins.wrapper;
+
+      margin-top: 18rem;
 
       &-title {
          @include typography.h1;
@@ -38,6 +41,14 @@
       i {
          font-size: 2rem;
          color: variables.$color-black;
+      }
+   }
+
+   @media screen and (min-width: responsive_variables.$screen-m-min) {
+      background-image: url("../../../images/hero-static-page.webp");
+
+      &_information {
+         margin-top: 0;
       }
    }
 }
