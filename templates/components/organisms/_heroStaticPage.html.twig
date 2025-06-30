@@ -1,0 +1,11 @@
+<section class="o_HeroStaticPage">
+	<div class="o_HeroStaticPage_information">
+		<h1 class="o_HeroStaticPage_information-title">{{ title }}</h1>
+		<h2 class="o_HeroStaticPage_information-subtitle">{{ subtitle }}</h2>
+	</div>
+	{% include 'components/atoms/_link.html.twig' with {
+		url: '#a-propos',
+		icon: 'bi bi-chevron-down',
+		class: 'o_HeroStaticPage_scroll'
+	} %}
+</section>

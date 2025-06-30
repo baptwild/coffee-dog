@@ -1,0 +1,18 @@
+{# {% set isTransparent = true %} #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Tarifs | Le Café des Chiens - Élise Collin
+{% endblock %}
+
+{% block body %}
+	<div class="p_Static">
+		{% include 'components/organisms/_heroStaticPage.html.twig' with {
+         title: "Tarifs",
+         subtitle: "Élise Collin"
+      } %}
+		{% include 'components/organisms/_priceCardList.html.twig' %}
+		{% include 'components/organisms/_informationBannerStatic.html.twig' %}
+	</div>
+{% endblock %}

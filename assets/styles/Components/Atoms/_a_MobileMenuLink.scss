@@ -1,0 +1,24 @@
+@use '../../Settings/variables';
+@use '../../Tools/typography';
+
+.a_MobileMenuLink {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
+   padding-bottom: 2rem;
+   border-bottom: 1px solid variables.$color-white;
+
+   &_label {
+      @include typography.h3;
+   }
+
+   &_icon {
+      font-size: 1.5rem;
+   }
+
+   &:last-child {
+      border-bottom: none;
+   }
+}

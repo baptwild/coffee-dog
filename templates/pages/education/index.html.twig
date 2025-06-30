@@ -1,0 +1,19 @@
+{# {% set isTransparent = true %} #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Éducation Canine | Élise Collin
+{% endblock %}
+
+{% block body %}
+	<div class="p_Static">
+		{% include 'components/organisms/_heroStaticPage.html.twig' with {
+			title: "Éducateur canin",
+			subtitle: "Élise Collin"
+		} %}
+		{% include 'components/organisms/_aboutMeSectionEducation.html.twig' %}
+		{% include 'components/organisms/_educationMethods.html.twig' %}
+		{% include 'components/organisms/_informationBannerStatic.html.twig' %}
+	</div>
+{% endblock %}

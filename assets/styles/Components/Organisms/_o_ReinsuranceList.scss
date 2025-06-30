@@ -10,13 +10,13 @@
    &_list {
       display: flex;
       flex-direction: column;
-      gap: 70px;
+      gap: 4rem;
    }
 
    @media screen and (min-width: responsive_variables.$screen-s-min) {
       &_list {
          flex-direction: row;
-         gap: 35px;
+         gap: 2.5rem;
          justify-content: space-between;
          align-items: flex-start;
       }

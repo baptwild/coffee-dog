@@ -9,7 +9,11 @@
 				<p class="o_AboutMeSectionHome_text-description">
 					Passionnée par le monde animal depuis ma tendre enfance je me suis lancée dans l'éducation canine en 2017. Depuis environ 8 ans je faisais du gardiennage de chiens et mon amour pour ceux-ci m'a conduite à chercher un travail avec eux.
 				</p>
-				<a class="a_Button-tertiary o_AboutMeSectionHome_text-button" href="#">En savoir plus</a>
+				{% include 'components/atoms/_button.html.twig' with {
+					url: '#',
+					label: 'En savoir plus',
+					class: 'a_Button-tertiary o_AboutMeSectionHome_text-button'
+				} %}
 			</div>
 		</div>
 	</div>

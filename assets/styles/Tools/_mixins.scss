@@ -12,16 +12,16 @@
    display: inline-flex;
    justify-content: center;
    align-items: center;
-   padding: 8px 26px;
+   padding: 0.5rem 1.5rem;
    border: none;
    border-radius: variables.$border-radius-100;
    transition: all variables.$animation ease-in-out;
 }
 
 // Padding
-@mixin padding($padding: 120px) {
-   padding-top: 80px;
-   padding-bottom: 80px;
+@mixin padding($padding: 7.5rem) {
+   padding-top: 5rem;
+   padding-bottom: 5rem;
 
    @media screen and (min-width: responsive_variables.$screen-m-min) {
       padding-top: $padding;
@@ -29,9 +29,9 @@
    }
 }
 
-@mixin paddingWrapper($padding: 48px) {
-   padding-right: 20px;
-   padding-left: 20px;
+@mixin paddingWrapper($padding: 3rem) {
+   padding-right: 1.25rem;
+   padding-left: 1.25rem;
 
    @media screen and (min-width: responsive_variables.$screen-m-min) {
       padding-right: $padding;
@@ -40,7 +40,7 @@
 }
 
 // Wrapper
-@mixin wrapper($size: variables.$wrapper, $padding: 48px) {
+@mixin wrapper($size: variables.$wrapper, $padding: 3rem) {
    @include paddingWrapper($padding);
    margin-left: auto;
    margin-right: auto;
@@ -51,9 +51,9 @@
 }
 
 // Margin
-@mixin margin($margin: 120px) {
-   margin-top: 80px;
-   margin-bottom: 80px;
+@mixin margin($margin: 7.5rem) {
+   margin-top: 5rem;
+   margin-bottom: 5rem;
 
    @media screen and (min-width: responsive_variables.$screen-m-min) {
       margin-top: $margin;
@@ -66,9 +66,9 @@
    &::after {
       content: "";
       display: block;
-      width: 140px;
+      width: 8.5rem;
       height: 1px;
       background-color: $color;
-      margin-top: 18px;
+      margin-top: 1.25rem;
    }
 }

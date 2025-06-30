@@ -1,0 +1,80 @@
+<header class="l_Header {% if isTransparent is defined and isTransparent %}l_Header-transparent{% endif %}">
+	<nav class="o_Navbar">
+		<a href="{{ path ('home') }}">
+			<img class="o_Navbar_logo o_Navbar_logo-white" src="{{ asset('build/images/logos/logo-white-small.svg') }}" alt="Logo Café des Chiens" loading="lazy"/>
+			<img class="o_Navbar_logo o_Navbar_logo-color" src="{{ asset('build/images/logos/logo-color.svg') }}" alt="Logo Café des Chiens" loading="lazy"/>
+		</a>
+		<div class="o_Navbar_menu">
+			{% include 'components/atoms/_link.html.twig' with {
+				url: path('home'),
+				label: 'Parc',
+				class: 'o_Navbar_menu-link'
+			} %}
+
+			{% include 'components/atoms/_link.html.twig' with {
+				url: path('education'),
+				label: 'Éducation',
+				class: 'o_Navbar_menu-link'
+			} %}
+
+			{% include 'components/atoms/_link.html.twig' with {
+				url: path('prices'),
+				label: 'Tarifs',
+				class: 'o_Navbar_menu-link'
+			} %}
+
+			{% include 'components/atoms/_link.html.twig' with {
+				url: path('home'),
+				label: 'Contact',
+				class: 'o_Navbar_menu-link'
+			} %}
+		</div>
+		<div class="o_Navbar_links">
+			<div class="o_Navbar_links-mobileMenu">
+				<i class="bi bi-list"></i>
+			</div>
+			<div class="o_Navbar_links-socials">
+				{% include 'components/atoms/_link.html.twig' with {
+  				   url: 'https://www.facebook.com/cafedeschiens',
+  					icon: 'bi bi-facebook',
+					class: 'o_Navbar_links-socials-link',
+  					target: '_blank'
+				} %}
+
+				{% include 'components/atoms/_link.html.twig' with {
+					url: 'https://www.instagram.com/cafedeschiens',
+					icon: 'bi bi-instagram',
+					class: 'o_Navbar_links-socials-link',
+					target: '_blank'
+				} %}
+
+			</div>
+			<div class="o_Navbar_links-login">
+				{% if isTransparent is defined and isTransparent %}
+					{% include 'components/atoms/_button.html.twig' with {
+						label: 'Connexion',
+						class: 'a_Button-tertiary o_Navbar_login-button'
+					} %}
+				{% else %}
+					{% include 'components/atoms/_button.html.twig' with {
+						label: 'Connexion',
+						class: 'a_Button-primary o_Navbar_login-button'
+					} %}
+				{% endif %}
+
+				{# {% if app.user %}
+																																																																																													{% if (app.user.roles[0] == 'ROLE_ADMIN') %}
+																																																																																														<a href="{{ path ('admin_index') }}">Administration</a>
+																																																																																													{% endif %}
+																																																																																													<a href="{{ path ('app_logout') }}">me deconnecter
+																																																																																													</a>
+																																																																																												{% else %}
+																																																																																													<a href="{{ path ('app_login') }}">
+																																																																																														connexion
+																																																																																													</a>
+																																																																																													<a href="{{ path ('app_register') }}">inscription</a>
+																																																																																												{% endif %} #}
+			</div>
+		</div>
+	</nav>
+</header>

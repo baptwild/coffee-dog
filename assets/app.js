@@ -11,3 +11,8 @@ import './styles/main.scss'
 
 // Bootstrap icons
 import 'bootstrap-icons/font/bootstrap-icons.css'
+
+// Import additional JS files
+import './js/menuToggle.js'
+import './js/headerScroll.js'
+import './js/reveal.js'

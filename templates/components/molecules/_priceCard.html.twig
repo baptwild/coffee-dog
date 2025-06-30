@@ -1,0 +1,26 @@
+<div class="m_PriceCard">
+	<div class="m_PriceCard_image">
+		<img src="{{ asset(image) }}" alt="{{ title }}" loading="lazy"/>
+	</div>
+	<div class="m_PriceCard_content">
+		<div class="m_PriceCard_info">
+			<h4 class="m_PriceCard_title">{{ title }}</h4>
+			<p class="m_PriceCard_price">{{ price }}</p>
+			<ul class="m_PriceCard_list">
+				{% for item in description %}
+					<li class="m_PriceCard_item">
+						<i class="bi bi-check-lg"></i>
+						<span>{{ item }}</span>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="m_PriceCard_footer">
+			{% include 'components/atoms/_button.html.twig' with {
+				url: link,
+				label: label,
+				class: 'a_Button-primary m_PriceCard_button'
+			} %}
+		</div>
+	</div>
+</div>
