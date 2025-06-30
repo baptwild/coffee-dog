@@ -3,7 +3,7 @@
 		{{ label }}
 	</a>
 {% else %}
-	<button type="button" class="{{ class|default('a_Button') }}">
+	<button type="button" class="a_Button {{ class|default('') }}">
 		{{ label }}
 	</button>
 {% endif %}

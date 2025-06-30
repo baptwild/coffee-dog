@@ -7,29 +7,16 @@
    width: 100%;
    height: 100dvh;
    background-color: variables.$color-white;
-   position: relative;
-
-   &_content {
-      width: 100%;
-      height: 100%;
-   }
-
-   &_image {
-      width: 100%;
-      height: 100dvh;
-
-      img {
-         width: 100%;
-         height: 100%;
-         object-fit: cover;
-      }
-   }
+   background-image: url("../../../images/hero-static-page.webp");
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
 
    &_information {
-      position: absolute;
-      top: 45%;
-      left: 1.5rem;
-      z-index: 5;
+      @include mixins.wrapper;
 
       &-title {
          @include typography.h1;
@@ -51,12 +38,6 @@
       i {
          font-size: 2rem;
          color: variables.$color-black;
-      }
-   }
-
-   @media screen and (min-width: responsive_variables.$screen-m-min) {
-      &_information {
-         left: 3rem;
       }
    }
 }

@@ -1,12 +1,7 @@
 <section class="o_HeroStaticPage">
-	<div class="o_HeroStaticPage_content">
-		<div class="o_HeroStaticPage_image">
-			<img src="{{ asset('build/images/hero-static-page.webp') }}" alt="Élise Collin - Éducatrice Canine" loading="lazy"/>
-		</div>
-		<div class="o_HeroStaticPage_information">
-			<h1 class="o_HeroStaticPage_information-title">{{ title }}</h1>
-			<h2 class="o_HeroStaticPage_information-subtitle">{{ subtitle }}</h2>
-		</div>
+	<div class="o_HeroStaticPage_information">
+		<h1 class="o_HeroStaticPage_information-title">{{ title }}</h1>
+		<h2 class="o_HeroStaticPage_information-subtitle">{{ subtitle }}</h2>
 	</div>
 	{% include 'components/atoms/_link.html.twig' with {
 		url: '#a-propos',
