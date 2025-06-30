@@ -21,10 +21,8 @@
 		{% endblock %}
 	</head>
 	<body>
-		<div data-controller="menu">
-			{% include 'components/layout/_header.html.twig' with { isTransparent: isTransparent|default(false) } %}
-			{% include 'components/molecules/_mobileMenu.html.twig' %}
-		</div>
+		{% include 'components/layout/_header.html.twig' with { isTransparent: isTransparent|default(false) } %}
+		{% include 'components/molecules/_mobileMenu.html.twig' %}
 
 		{% block body %}{% endblock %}
 

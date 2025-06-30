@@ -26,6 +26,39 @@
 
    &_description {
       @include typography.body;
+
+      display: block;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+
+      p {
+         @include typography.body;
+      }
+
+      strong {
+         @include typography.body-bold;
+      }
+
+      ul {
+         li {}
+      }
+
+      em {}
+
+      &.visible {
+         max-height: max-content;
+         opacity: 1;
+         overflow: visible;
+      }
+
+      &.hidden {
+         display: block;
+         max-height: 0;
+         opacity: 0;
+         overflow: hidden;
+      }
    }
 
    &_additionnal {
