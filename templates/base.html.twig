@@ -17,12 +17,14 @@
 		{% endblock %}
 
 		{% block javascripts %}
-
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
 	<body>
-		{% include 'components/layout/_header.html.twig' with { isTransparent: isTransparent|default(false) } %}
+		<div data-controller="menu">
+			{% include 'components/layout/_header.html.twig' with { isTransparent: isTransparent|default(false) } %}
+			{% include 'components/molecules/_mobileMenu.html.twig' %}
+		</div>
 
 		{% block body %}{% endblock %}
 

@@ -15,10 +15,12 @@
 // Atoms
 @use "./Components/Atoms/a_Button";
 @use "./Components/Atoms/a_Link";
+@use "./Components/Atoms/a_MobileMenuLink";
 
 // Molecules
 @use "./Components/Molecules/m_Card";
 @use "./Components/Molecules/m_MethodCard";
+@use "./Components/Molecules/m_MobileMenu";
 @use "./Components/Molecules/m_PriceCard";
 @use "./Components/Molecules/m_ReinsuranceItem";
 @use "./Components/Molecules/m_TextImageBlock";
