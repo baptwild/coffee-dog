@@ -1,11 +1,8 @@
-<header class="l_Header {% if isTransparent is defined and isTransparent %}l_Header-transparent{% endif %}">
+<header class="l_Header {% if isTransparent is defined and isTransparent %}l_Header-transparent{% endif %}" data-controller="header">
 	<nav class="o_Navbar">
 		<a href="{{ path ('home') }}">
-			{% if isTransparent is defined and isTransparent %}
-				<img class="o_Navbar_logo" src="{{ asset('build/images/logos/logo-white-small.svg') }}" alt="Logo Café des Chiens" loading="lazy"/>
-			{% else %}
-				<img class="o_Navbar_logo" src="{{ asset('build/images/logos/logo-color.svg') }}" alt="Logo Café des Chiens" loading="lazy"/>
-			{% endif %}
+			<img class="o_Navbar_logo o_Navbar_logo-white" src="{{ asset('build/images/logos/logo-white-small.svg') }}" alt="Logo Café des Chiens" loading="lazy"/>
+			<img class="o_Navbar_logo o_Navbar_logo-color" src="{{ asset('build/images/logos/logo-color.svg') }}" alt="Logo Café des Chiens" loading="lazy"/>
 		</a>
 		<div class="o_Navbar_menu">
 			{% include 'components/atoms/_link.html.twig' with {
@@ -66,17 +63,17 @@
 				{% endif %}
 
 				{# {% if app.user %}
-																																																													{% if (app.user.roles[0] == 'ROLE_ADMIN') %}
-																																																														<a href="{{ path ('admin_index') }}">Administration</a>
-																																																													{% endif %}
-																																																													<a href="{{ path ('app_logout') }}">me deconnecter
-																																																													</a>
-																																																												{% else %}
-																																																													<a href="{{ path ('app_login') }}">
-																																																														connexion
-																																																													</a>
-																																																													<a href="{{ path ('app_register') }}">inscription</a>
-																																																												{% endif %} #}
+																																																																																	{% if (app.user.roles[0] == 'ROLE_ADMIN') %}
+																																																																																		<a href="{{ path ('admin_index') }}">Administration</a>
+																																																																																	{% endif %}
+																																																																																	<a href="{{ path ('app_logout') }}">me deconnecter
+																																																																																	</a>
+																																																																																{% else %}
+																																																																																	<a href="{{ path ('app_login') }}">
+																																																																																		connexion
+																																																																																	</a>
+																																																																																	<a href="{{ path ('app_register') }}">inscription</a>
+																																																																																{% endif %} #}
 			</div>
 		</div>
 	</nav>

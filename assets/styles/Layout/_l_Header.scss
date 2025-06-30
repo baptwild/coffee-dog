@@ -1,6 +1,8 @@
 @use "../Settings/variables";
 
 .l_Header {
+   $logo: '.o_Navbar_logo';
+
    position: fixed;
    top: 0;
    left: 0;
@@ -15,8 +17,28 @@
    background-color: variables.$color-white;
    color: variables.$color-primary;
 
+   #{$logo} {
+      &-color {
+         display: block;
+      }
+
+      &-white {
+         display: none;
+      }
+   }
+
    &-transparent {
       background-color: transparent;
       color: variables.$color-white;
+
+      #{$logo} {
+         &-color {
+            display: none;
+         }
+
+         &-white {
+            display: block;
+         }
+      }
    }
 }
