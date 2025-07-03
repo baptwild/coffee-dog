@@ -7,32 +7,16 @@
    @include mixins.buttonDefault;
 
    &-primary {
-      @include mixins.buttonDefault;
-
       background-color: variables.$color-primary;
       color: variables.$color-white;
 
       &:hover {
          background-color: variables.$color-secondary;
-         color: variables.$color-black;
+         color: variables.$color-white;
       }
    }
 
    &-secondary {
-      @include mixins.buttonDefault;
-
-      background-color: variables.$color-secondary;
-      color: variables.$color-white;
-
-      &:hover {
-         background-color: variables.$color-tertiary;
-         color: variables.$color-black;
-      }
-   }
-
-   &-tertiary {
-      @include mixins.buttonDefault;
-
       background-color: variables.$color-white;
       color: variables.$color-primary;
 
@@ -42,11 +26,9 @@
       }
    }
 
-   &-quarternary {
-      @include mixins.buttonDefault;
-
+   &-tertiary {
       background-color: variables.$color-white;
-      color: variables.$color-black;
+      color: variables.$color-primary;
 
       &:hover {
          background-color: variables.$color-secondary;
