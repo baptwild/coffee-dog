@@ -9,6 +9,8 @@
    width: 100%;
    padding-bottom: 2rem;
    border-bottom: 1px solid variables.$color-white;
+   color: variables.$color-white;
+   transition: color variables.$animation ease-in-out;
 
    &_label {
       @include typography.h3;
@@ -20,5 +22,10 @@
 
    &:last-child {
       border-bottom: none;
+   }
+
+   &:hover,
+   &:focus {
+      color: variables.$color-primary;
    }
 }

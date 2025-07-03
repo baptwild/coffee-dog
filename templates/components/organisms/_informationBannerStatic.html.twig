@@ -15,18 +15,18 @@
 		</div>
 		<div class="o_InformationBanner_prices">
 			<h4 class="o_InformationBanner_title">Comment me contacter</h4>
-			<div class="o_InformationBanner_icon">
-				<i class="bi bi-telephone-fill"></i>
-				<span class="o_InformationBanner_icon-text">
-					06 30 20 93 94
-				</span>
-			</div>
-			<div class="o_InformationBanner_icon">
-				<i class="bi bi-envelope-fill"></i>
-				<span class="o_InformationBanner_icon-text">
-					contact@cafedeschien.com
-				</span>
-			</div>
+			{% include 'components/atoms/_link.html.twig' with {
+				url: 'tel:+33630209394',
+				icon: 'bi bi-telephone-fill',
+				label: '06 30 20 93 94',
+				class: 'o_InformationBanner_icon a_Link-noUnderline'
+			} %}
+			{% include 'components/atoms/_link.html.twig' with {
+				url: 'mailto:contact@cafedeschiens.com',
+				icon: 'bi bi-envelope-fill',
+				label: 'contact@cafedeschiens.com',
+				class: 'o_InformationBanner_icon a_Link-noUnderline'
+			} %}
 		</div>
 	</div>
 </section>

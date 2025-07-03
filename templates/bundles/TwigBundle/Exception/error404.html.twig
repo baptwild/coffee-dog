@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page non trouvée - 404
+{% endblock %}
+
+{% block body %}
+	<div class="p_Static">
+		<div class="o_ErrorPage l_Wrapper">
+			<h1 class="o_ErrorPage_title">Woof woofps...</h1>
+			<h2 class="o_ErrorPage_subtitle">La page que vous cherchez semble avoir fuguée !</h2>
+			<p class="o_ErrorPage_text">
+				Mais pas de panique, on va vous aider à la retrouver !
+			</p>
+			{% include 'components/atoms/_button.html.twig' with {
+				url: path('home'),
+				label: "Retour à l'accueil",
+				class: 'a_Button-primary o_ErrorPage_button'
+			} %}
+		</div>
+	</div>
+{% endblock %}

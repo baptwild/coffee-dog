@@ -1,0 +1,77 @@
+<section class="o_ContactPage l_Wrapper" id="a-propos">
+	<div class="o_ContactPage_contact">
+		<h2 class="o_ContactPage_contact-title">Éducation canine</h2>
+		<h3 class="o_ContactPage_contact-subtitle">Élise Collin - Éducatrice canine</h3>
+		<p class="o_ContactPage_contact-info">
+			Grenoble et son agglomération | Isère
+		</p>
+		<ul class="o_ContactPage_contact-list">
+			<li class="o_ContactPage_contact-item">
+				{% include 'components/atoms/_link.html.twig' with {
+					url: 'tel:+33630209394',
+					icon: 'bi bi-telephone-fill',
+					label: '06 30 20 93 94',
+               class: 'o_ContactPage_contact-link a_Link-noUnderline'
+
+				} %}
+			</li>
+			<li class="o_ContactPage_contact-item">
+				{% include 'components/atoms/_link.html.twig' with {
+					url: 'mailto:contact@cafedeschiens.com',
+					icon: 'bi bi-envelope-fill',
+					label: 'contact@cafedeschiens.com',
+               class: 'o_ContactPage_contact-link a_Link-noUnderline'
+				} %}
+			</li>
+		</ul>
+		<div class="o_ContactPage_contact-social">
+			{% include 'components/atoms/_link.html.twig' with {
+				url: 'https://www.facebook.com/cafedeschiens',
+				icon: 'bi bi-facebook',
+				class: 'o_ContactPage_contact-social-link',
+				target: '_blank'
+			} %}
+
+			{% include 'components/atoms/_link.html.twig' with {
+				url: 'https://www.instagram.com/cafedeschiens',
+				icon: 'bi bi-instagram',
+				class: 'o_ContactPage_contact-social-link',
+				target: '_blank'
+			} %}
+		</div>
+	</div>
+	<div class="o_ContactPage_contact">
+		<h2 class="o_ContactPage_contact-title">Le Café des Chiens</h2>
+		<h3 class="o_ContactPage_contact-subtitle">Horaires d'ouverture</h3>
+		<ul class="o_ContactPage_opening-list">
+			<li class="o_ContactPage_opening-item">
+				<span class="o_ContactPage_opening-item-day">Lundi :</span>
+				<span class="o_ContactPage_opening-item-time">Fermé</span>
+			</li>
+			<li class="o_ContactPage_opening-item">
+				<span class="o_ContactPage_opening-item-day">Mardi :</span>
+				<span class="o_ContactPage_opening-item-time">8h - 19h</span>
+			</li>
+			<li class="o_ContactPage_opening-item">
+				<span class="o_ContactPage_opening-item-day">Mercredi :</span>
+				<span class="o_ContactPage_opening-item-time">8h - 19h</span>
+			</li>
+			<li class="o_ContactPage_opening-item">
+				<span class="o_ContactPage_opening-item-day">Jeudi :</span>
+				<span class="o_ContactPage_opening-item-time">8h - 19h</span>
+			</li>
+			<li class="o_ContactPage_opening-item">
+				<span class="o_ContactPage_opening-item-day">Vendredi :</span>
+				<span class="o_ContactPage_opening-item-time">8h - 19h</span>
+			</li>
+			<li class="o_ContactPage_opening-item">
+				<span class="o_ContactPage_opening-item-day">Samedi :</span>
+				<span class="o_ContactPage_opening-item-time">Fermé</span>
+			</li>
+			<li class="o_ContactPage_opening-item">
+				<span class="o_ContactPage_opening-item-day">Dimanche :</span>
+				<span class="o_ContactPage_opening-item-time">Fermé</span>
+			</li>
+		</ul>
+	</div>
+</section>
