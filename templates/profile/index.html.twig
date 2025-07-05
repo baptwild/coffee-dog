@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil{% endblock %}
+
+{% block body %}
+    <h1>Mes informations</h1>
+
+    {{ form_start(form) }}
+    <div id="user-info">
+        {{ form_row(form.firstName) }}
+        {{ form_row(form.lastName) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.phoneNumber) }}
+        {{ form_row(form.address) }}
+        {{ form_row(form.complementaryAddress) }}
+        {{ form_row(form.zipCode) }}
+        {{ form_row(form.city) }}
+    </div>
+
+    <button type="button" class="btn btn-secondary" id="edit-btn">Modifier</button>
+    <button type="submit" class="btn btn-primary" id="save-btn" style="display: none;">Enregistrer</button>
+    {{ form_end(form) }}
+
+    <script>
+        document.getElementById('edit-btn').addEventListener('click', () => {
+            const fields = document.querySelectorAll('#user-info input');
+            fields.forEach(field => field.removeAttribute('readonly'));
+
+            document.getElementById('edit-btn').style.display = 'none';
+            document.getElementById('save-btn').style.display = 'inline-block';
+        });
+    </script>
+{% endblock %}

@@ -24,7 +24,16 @@
 		{% include 'components/layout/_header.html.twig' with { isTransparent: isTransparent|default(false) } %}
 		{% include 'components/molecules/_mobileMenu.html.twig' %}
 
-		{% block body %}{% endblock %}
+		{% block body %}
+			{% for label, messages in app.flashes %}
+				{% for message in messages %}
+					<div class="alert alert-{{ label }}">
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endfor %}
+
+		{% endblock %}
 
 		{% include 'components/layout/_footer.html.twig' %}
 	</body>
