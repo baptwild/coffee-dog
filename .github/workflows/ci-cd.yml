@@ -1,0 +1,56 @@
+name: Symfony CI/CD
+
+on:
+  push:
+    branches:
+      - '*' # Run CI on all branches
+  pull_request:
+    branches:
+      - main # Run CI for PRs to main
+
+jobs:
+  symfony-ci:
+    name: CI - Symfony Tests
+    runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: symfony_ci
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, intl, pdo_mysql, dom, curl, xml, zip
+          coverage: none
+
+      - name: Install Composer dependencies
+        run: composer install --no-progress --prefer-dist
+
+      - name: Set up .env.test
+        run: |
+          cp .env .env.test
+          echo "DATABASE_URL=mysql://root:root@127.0.0.1:3306/symfony_ci" >> .env.test
+
+      - name: Run migrations
+        run: symfony console doctrine:migrations:migrate --no-interaction --env=test
+
+      - name: Run PHPUnit tests
+        run: ./vendor/bin/phpunit
+
+      - name: Load fixtures
+        run: symfony console doctrine:fixtures:load --no-interaction --env=test
