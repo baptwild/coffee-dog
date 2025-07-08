@@ -34,7 +34,7 @@ final class Version20250620102042 extends AbstractMigration
             ) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB
         SQL);
         $this->addSql(<<<'SQL'
-            ALTER TABLE booking ADD user_id INT NOT NULL, ADD dog_id INT NOT NULL, ADD rate_id INT NOT NULL, ADD arrival_datetime DATETIME NOT NULL, ADD departure_datetime DATETIME NOT NULL, DROP daily_rate, DROP start_date, DROP end_date, CHANGE effective_date effective_date DATETIME NOT NULL, CHANGE is_active is_active TINYINT(1) NOT NULL, CHANGE status status VARCHAR(255) NOT NULL, CHANGE total_cost total_cost NUMERIC(10, 2) NOT NULL
+            ALTER TABLE booking ADD user_id INT NOT NULL, ADD dog_id INT NOT NULL, ADD rate_id INT NOT NULL, ADD arrival_datetime DATETIME NOT NULL, ADD departure_datetime DATETIME NOT NULL, CHANGE effective_date effective_date DATETIME NOT NULL, CHANGE is_active is_active TINYINT(1) NOT NULL, CHANGE status status VARCHAR(255) NOT NULL, CHANGE total_cost total_cost NUMERIC(10, 2) NOT NULL
         SQL);
         $this->addSql(<<<'SQL'
             ALTER TABLE booking ADD CONSTRAINT FK_E00CEDDEA76ED395 FOREIGN KEY (user_id) REFERENCES `user` (id)
