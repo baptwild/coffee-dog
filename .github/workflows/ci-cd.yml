@@ -42,14 +42,27 @@ jobs:
         run: composer install --no-progress --prefer-dist
 
       - name: Create clean .env.test
+        # run: |
+        #   echo "KERNEL_CLASS='App\\Kernel'" > .env.test
+        #   echo "APP_SECRET='\$ecretf0rt3st'" >> .env.test
+        #   echo "SYMFONY_DEPRECATIONS_HELPER=999999" >> .env.test
+        #   echo "PANTHER_APP_ENV=panther" >> .env.test
+        #   echo "PANTHER_ERROR_SCREENSHOT_DIR=./var/error-screenshots" >> .env.test
+        #   echo "DATABASE_URL=mysql://root:root@127.0.0.1:3306/symfony_ci?serverVersion=10.4.32-MariaDB&charset=utf8mb4" >> .env.test
+        #   echo "APP_ENV=test" >> .env.test
         run: |
-          echo "KERNEL_CLASS='App\\Kernel'" > .env.test
-          echo "APP_SECRET='\$ecretf0rt3st'" >> .env.test
-          echo "SYMFONY_DEPRECATIONS_HELPER=999999" >> .env.test
-          echo "PANTHER_APP_ENV=panther" >> .env.test
-          echo "PANTHER_ERROR_SCREENSHOT_DIR=./var/error-screenshots" >> .env.test
-          echo "DATABASE_URL=mysql://root:root@127.0.0.1:3306/symfony_ci_test?serverVersion=10.4.32-MariaDB&charset=utf8mb4" >> .env.test
-          echo "APP_ENV=test" >> .env.test
+          cat <<EOF > .env.test
+          KERNEL_CLASS=App\\Kernel
+          APP_SECRET=\$ecretf0rt3st
+          SYMFONY_DEPRECATIONS_HELPER=999999
+          PANTHER_APP_ENV=panther
+          PANTHER_ERROR_SCREENSHOT_DIR=./var/error-screenshots
+          DATABASE_URL="mysql://root:root@127.0.0.1:3306/symfony_ci_test?serverVersion=10.4.32-MariaDB&charset=utf8mb4"
+          APP_ENV=test
+          EOF
+
+      - name: Clear Symfony cache
+        run: php bin/console cache:clear --env=test
 
       - name: Run migrations
         run: php bin/console doctrine:migrations:migrate --no-interaction --env=test
@@ -59,3 +72,6 @@ jobs:
 
       - name: Load fixtures
         run: php bin/console doctrine:fixtures:load --no-interaction --env=test
+
+      - name: Debug env
+        run: php bin/console debug:container --env=test --parameter env(DATABASE_URL)
