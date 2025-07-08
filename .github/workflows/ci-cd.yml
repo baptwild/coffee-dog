@@ -3,7 +3,7 @@ name: Symfony CI/CD
 on:
   push:
     branches:
-      - '*' # Run CI on all branches
+      - '**' # Run CI on all branches
   pull_request:
     branches:
       - main # Run CI for PRs to main
