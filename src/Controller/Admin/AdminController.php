@@ -13,7 +13,7 @@ final class AdminController extends AbstractController
     #[Route('/index', name: 'index')]
     public function adminIndex(): Response
     {
-        return $this->render('admin/index.html.twig', [
+        return $this->render('admin/form.html.twig', [
             'controller_name' => 'AdminController',
         ]);
     }
@@ -22,7 +22,7 @@ final class AdminController extends AbstractController
     public function new(): Response
     {
         // Logic for creating a new admin resource can be added here
-        return $this->render('admin/new.html.twig', [
+        return $this->render('admin/form.html.twig', [
             'controller_name' => 'AdminController',
         ]);
     }

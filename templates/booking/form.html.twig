@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ is_edit ? 'Modifier la réservation' : 'Nouvelle réservation' }} | Le Café des Chiens
+{% endblock %}
+
+{% block body %}
+    <div class="m_Form_container l_Wrapper">
+        <div class="m_Form">
+            <h1 class="m_Form_title">
+                {{ is_edit ? 'Modifier la réservation' : 'Créer une nouvelle réservation' }}
+            </h1>
+
+            {{ form_start(form) }}
+
+            <div class="a_Input">
+                {{ form_label(form.dog) }}
+                {{ form_widget(form.dog) }}
+                {{ form_errors(form.dog) }}
+            </div>
+
+            <div class="a_Input">
+                {{ form_label(form.effectiveDate) }}
+                {{ form_widget(form.effectiveDate, { attr: {'class': 'js-datepicker'} }) }}
+                {{ form_errors(form.effectiveDate) }}
+            </div>
+
+            <div class="a_Input">
+                {{ form_label(form.arrivalDatetime) }}
+                {{ form_widget(form.arrivalDatetime, { attr: {'class': 'js-timepicker-arrival'} }) }}
+                {{ form_errors(form.arrivalDatetime) }}
+            </div>
+
+            <div class="a_Input">
+                {{ form_label(form.departureDatetime) }}
+                {{ form_widget(form.departureDatetime, { attr: {'class': 'js-timepicker-departure'} }) }}
+                {{ form_errors(form.departureDatetime) }}
+            </div>
+
+            {% include 'components/atoms/_button.html.twig' with {
+                label: is_edit ? 'Mettre à jour' : 'Créer',
+                class: 'a_Button-primary m_Form_button',
+                type: 'submit'
+            } %}
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        flatpickr(".js-datepicker", {
+            dateFormat: "Y-m-d",
+            minDate: "today",
+            maxDate: new Date().fp_incr(10),
+            disable: [
+                function(date) {
+                    return !(date.getDay() >= 2 && date.getDay() <= 5); // mardi à vendredi
+                }
+            ],
+            locale: "fr"
+        });
+
+        flatpickr(".js-timepicker-arrival", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i",
+            time_24hr: true,
+            minuteIncrement: 30,
+            minTime: "08:00",
+            maxTime: "13:00"
+        });
+
+        flatpickr(".js-timepicker-departure", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i",
+            time_24hr: true,
+            minuteIncrement: 30,
+            minTime: "11:00",
+            maxTime: "18:00"
+        });
+    </script>
+{% endblock %}

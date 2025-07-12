@@ -11,7 +11,7 @@ final class PricesController extends AbstractController
    #[Route('/tarifs', name: 'prices')]
    public function index(): Response
    {
-      return $this->render('pages/prices/index.html.twig', [
+      return $this->render('pages/prices/form.html.twig', [
          'controller_name' => 'PricesController',
       ]);
    }

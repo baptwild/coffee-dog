@@ -1,20 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DogController!{% endblock %}
+{% block title %}
+    {{ dogs|length > 1 ? 'Mes chiens' : 'Mon chien' }}
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <div class="l_Wrapper">
+        <h1 class="m_Form_title">{{ dogs|length > 1 ? 'Mes chiens' : 'Mon chien' }}</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        {% if dogs is empty %}
+            <p>Vous n'avez pas encore enregistré de chien.</p>
+        {% else %}
+            <div class="m_DogCards">
+                {% for dog in dogs %}
+                    <div class="m_DogCard">
+                        <div class="m_DogCard_image">
+                            {% if dog.photo %}
+                                <img src="{{ asset('uploads/photos/' ~ dog.photo) }}" alt="Photo de {{ dog.name }}">
+                            {% else %}
+                                <img src="{{ asset('images/default-dog.png') }}" alt="Chien par défaut">
+                            {% endif %}
+                        </div>
+                        <div class="m_DogCard_content">
+                            <h2 class="m_DogCard_title">{{ dog.name }}</h2>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Users/wild/Desktop/cours/M1/projet-M1/coffee-dog/src/Controller/DogController.php</code></li>
-        <li>Your template at <code>/Users/wild/Desktop/cours/M1/projet-M1/coffee-dog/templates/dog/index.html.twig</code></li>
-    </ul>
-</div>
+                            <div class="m_DogCard_actions">
+                                {% include 'components/atoms/_button.html.twig' with {
+                                    label: 'Modifier',
+                                    class: 'a_Button-primary',
+                                    url: path('app_dog_edit', {'id': dog.id})
+                                } %}
+
+                                <form method="post" action="{{ path('app_dog_delete', {'id': dog.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer ce chien ?');" style="display:inline;">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ dog.id) }}">
+                                    {% include 'components/atoms/_button.html.twig' with {
+                                        label: 'Supprimer',
+                                        class: 'a_Button-danger',
+                                        type: 'submit'
+                                    } %}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="m_Form_navigate mt-6">
+            {% include 'components/atoms/_button.html.twig' with {
+                label: 'Ajouter un chien',
+                class: 'a_Button-primary',
+                url: path('app_dog_new')
+            } %}
+        </div>
+    </div>
 {% endblock %}
