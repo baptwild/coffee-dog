@@ -29,10 +29,26 @@
 		</ul>
 		<div class="m_MobileMenu_footer">
 			<div class="m_MobileMenu_login">
-				{% include 'components/atoms/_button.html.twig' with {
-				label: 'Connexion',
-				class: 'a_Button-secondary'
-			} %}
+				{% if app.user %}
+					{# {% if 'ROLE_ADMIN' in app.user.roles %}
+											{% include 'components/atoms/_button.html.twig' with {
+												label: 'Admin',
+												class: 'a_Button-secondary',
+												url: path('admin')
+											} %}
+										{% endif %} #}
+					{% include 'components/atoms/_button.html.twig' with {
+						label: 'Déconnexion',
+						class: 'a_Button-secondary',
+						url: path('app_logout')
+					} %}
+				{% else %}
+					{% include 'components/atoms/_button.html.twig' with {
+						label: 'Connexion',
+						class: 'a_Button-secondary',
+						url: path('app_login')
+					} %}
+				{% endif %}
 			</div>
 			<div class="m_MobileMenu_social">
 				{% include 'components/atoms/_link.html.twig' with {

@@ -72,3 +72,14 @@
       margin-top: 1.25rem;
    }
 }
+
+@mixin underlineTitle($color: variables.$color-primary) {
+   &::after {
+      content: "";
+      display: block;
+      width: 10rem;
+      height: 4px;
+      background-color: $color;
+      margin: 2rem auto 0 auto;
+   }
+}

@@ -16,18 +16,37 @@ class UserInitRegistrationFormType extends AbstractType
     {
         $builder
             ->add('firstName', TextType::class, [
-                'label' => 'Prénom',
+                'label' => 'Prénom :',
+                'attr' => [
+                    'placeholder' => 'Votre prénom...'
+                ]
             ])
             ->add('lastName', TextType::class, [
-                'label' => 'Nom',
+                'label' => 'Nom :',
+                'attr' => [
+                    'placeholder' => 'Votre nom...'
+                ]
             ])
             ->add('email', TextType::class, [
-                'label' => 'Email',
+                'label' => 'Email :',
+                'attr' => [
+                    'placeholder' => 'Votre email...'
+                ]
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'first_options'  => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Confirmez le mot de passe'],
+                'first_options'  => [
+                    'label' => 'Mot de passe :',
+                    'attr' => [
+                        'placeholder' => 'Votre mot de passe...'
+                    ]
+                ],
+                'second_options' => [
+                    'label' => 'Confirmez le mot de passe :',
+                    'attr' => [
+                        'placeholder' => 'Confirmez votre mot de passe...'
+                    ]
+                ],
                 'invalid_message' => 'Les mots de passe doivent correspondre.',
                 'mapped' => false,
                 'required' => true,
