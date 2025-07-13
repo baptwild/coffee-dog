@@ -31,6 +31,13 @@
 		</div>
 		<div class="o_Navbar_links">
 			<div class="o_Navbar_links-mobileMenu">
+				{% if app.user %}
+					{% include 'components/atoms/_link.html.twig' with {
+						url: path('profile'),
+						icon: 'bi bi-person-circle',
+						class: 'o_Navbar_links-mobileMenu-link',
+					} %}
+				{% endif %}
 				<i class="bi bi-list"></i>
 			</div>
 			<div class="o_Navbar_links-socials">
@@ -48,16 +55,24 @@
 					target: '_blank'
 				} %}
 
+				{% if app.user %}
+					{% include 'components/atoms/_link.html.twig' with {
+						url: path('profile'),
+						icon: 'bi bi-person-circle',
+						class: 'o_Navbar_links-socials-link',
+					} %}
+				{% endif %}
+
 			</div>
 			<div class="o_Navbar_links-login">
 				{% if app.user %}
 					{# {% if 'ROLE_ADMIN' in app.user.roles %}
-											{% include 'components/atoms/_button.html.twig' with {
-												label: 'Admin',
-												class: 'a_Button-secondary o_Navbar_login-button',
-												url: path('admin')
-												} %}
-										{% endif %} #}
+																																					{% include 'components/atoms/_button.html.twig' with {
+																																						label: 'Admin',
+																																						class: 'a_Button-secondary o_Navbar_login-button',
+																																						url: path('admin')
+																																						} %}
+																																				{% endif %} #}
 					{% include 'components/atoms/_button.html.twig' with {
 						label: 'Déconnexion',
 						class: 'a_Button-primary o_Navbar_login-button',

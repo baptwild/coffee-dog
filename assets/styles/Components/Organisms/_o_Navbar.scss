@@ -38,8 +38,16 @@
       &-mobileMenu {
          cursor: pointer;
          display: flex;
+         flex-direction: row;
          align-items: center;
          justify-content: center;
+         gap: 2rem;
+
+         &-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+         }
 
 
          i {
