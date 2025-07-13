@@ -42,11 +42,19 @@
 					} %}
 				</li>
 				<li class="l_Footer_menu_item">
-					{% include 'components/atoms/_button.html.twig' with {
-						url: path('home'),
-						label: 'Connexion',
-						class: 'a_Button-tertiary l_Footer_menu_item'
-					} %}
+					{% if app.user %}
+						{% include 'components/atoms/_button.html.twig' with {
+							url: path('app_logout'),
+							label: 'Déconnexion',
+							class: 'a_Button-tertiary l_Footer_menu_item'
+						} %}
+					{% else %}
+						{% include 'components/atoms/_button.html.twig' with {
+							url: path('app_login'),
+							label: 'Connexion',
+							class: 'a_Button-tertiary l_Footer_menu_item'
+						} %}
+					{% endif %}
 				</li>
 			</li>
 		</ul>

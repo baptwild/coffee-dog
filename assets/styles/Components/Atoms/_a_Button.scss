@@ -35,4 +35,14 @@
          color: variables.$color-white;
       }
    }
+
+   &-quarternary {
+      background-color: variables.$color-secondary;
+      color: variables.$color-white;
+
+      &:hover {
+         background-color: variables.$color-primary;
+         color: variables.$color-white;
+      }
+   }
 }

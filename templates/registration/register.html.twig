@@ -1,15 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+{% block title %}Inscription | Le Café des Chiens
+{% endblock %}
 
 {% block body %}
-    <h1>Créer un compte</h1>
-
-    {{ form_start(registrationForm) }}
-    {{ form_row(registrationForm.firstName) }}
-    {{ form_row(registrationForm.lastName) }}
-    {{ form_row(registrationForm.email) }}
-    {{ form_row(registrationForm.password) }}
-    <button class="btn btn-primary">Continuer</button>
-    {{ form_end(registrationForm) }}
+	<div class="m_Form_container l_Wrapper">
+		<div class="m_Form">
+			<h1 class="m_Form_title">Créer un compte</h1>
+			{{ form_start(registrationForm) }}
+			{{ form_row(registrationForm.firstName) }}
+			{{ form_row(registrationForm.lastName) }}
+			{{ form_row(registrationForm.email) }}
+			{{ form_row(registrationForm.password) }}
+			{% include 'components/atoms/_button.html.twig' with {
+                label: 'Continuer',
+                class: 'a_Button-primary m_Form_button',
+                type: 'submit'
+            } %}
+			{{ form_end(registrationForm) }}
+		</div>
+		<div class="m_Form_navigate">
+			<p class="m_Form_navigate-text">J'ai déjà un compte :</p>
+			{% include 'components/atoms/_button.html.twig' with {
+                label: 'Connexion',
+                class: 'a_Button-primary',
+                url: path('app_login')
+            } %}
+		</div>
+	</div>
 {% endblock %}
