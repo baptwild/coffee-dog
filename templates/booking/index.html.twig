@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des réservations{% endblock %}
+
+{% block body %}
+    <h1>Liste des réservations</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Utilisateur</th>
+            <th>Chien</th>
+            <th>Statut</th>
+            <th>Arrivée</th>
+            <th>Départ</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.id }}</td>
+                <td>{{ booking.user.email }}</td>
+                <td>{{ booking.dog.name }}</td>
+                <td>{{ booking.status }}</td>
+                <td>{{ booking.arrivalDatetime|date('Y-m-d H:i') }}</td>
+                <td>{{ booking.departureDatetime|date('Y-m-d H:i') }}</td>
+                <td>
+                    <a href="{{ path('app_booking_edit', {id: booking.id}) }}" class="btn btn-sm btn-primary">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucune réservation trouvée.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_booking_new') }}" class="btn btn-success">Créer une nouvelle réservation</a>
+{% endblock %}

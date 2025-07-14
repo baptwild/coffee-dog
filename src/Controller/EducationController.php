@@ -11,7 +11,7 @@ final class EducationController extends AbstractController
    #[Route('/education-canine', name: 'education')]
    public function index(): Response
    {
-      return $this->render('pages/education/index.html.twig', [
+      return $this->render('pages/education/form.html.twig', [
          'controller_name' => 'EducationController',
       ]);
    }

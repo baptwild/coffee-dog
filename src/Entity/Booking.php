@@ -19,13 +19,12 @@ class Booking
     private ?User $user = null;
 
     #[ORM\ManyToOne(targetEntity: Dog::class, inversedBy: 'bookings')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?Dog $dog = null;
 
-    #[ORM\OneToOne(inversedBy: "booking", targetEntity: Rate::class)]
-    #[ORM\JoinColumn(name: "rate_id", referencedColumnName: "id", nullable: false)]
+    #[ORM\ManyToOne(targetEntity: Rate::class, inversedBy: 'bookings')]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Rate $rate = null;
-
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $effectiveDate = null;
@@ -47,8 +46,9 @@ class Booking
     #[ORM\Column(length: 255)]
     private ?string $status = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
-    private ?string $totalCost = null;
+    #[ORM\ManyToOne(targetEntity: Invoice::class, inversedBy: 'bookings')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Invoice $invoice = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $createdAt = null;
@@ -159,14 +159,14 @@ class Booking
         return $this;
     }
 
-    public function getTotalCost(): ?string
+    public function getInvoice(): ?Invoice
     {
-        return $this->totalCost;
+        return $this->invoice;
     }
 
-    public function setTotalCost(?string $totalCost): static
+    public function setInvoice(?Invoice $invoice): static
     {
-        $this->totalCost = $totalCost;
+        $this->invoice = $invoice;
 
         return $this;
     }

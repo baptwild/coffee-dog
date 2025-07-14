@@ -13,13 +13,18 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/dog', name: 'app_dog_')]
 final class DogController extends AbstractController
 {
-    #[Route('/index', name: 'index')]
-    public function index(): Response
+    #[Route('/', name: 'index')]
+    public function index(EntityManagerInterface $entityManager): Response
     {
+        $user = $this->getUser();
+
+        $dogs = $entityManager->getRepository(Dog::class)->findBy(['owner' => $user]);
+
         return $this->render('dog/index.html.twig', [
-            'controller_name' => 'DogController',
+            'dogs' => $dogs,
         ]);
     }
+
 
     #[Route('/new', name: 'new')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
@@ -41,7 +46,7 @@ final class DogController extends AbstractController
             return $this->redirectToRoute('app_dog_index');
         }
 
-        return $this->render('dog/new.html.twig', [
+        return $this->render('dog/form.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -65,7 +70,7 @@ final class DogController extends AbstractController
             return $this->redirectToRoute('app_dog_index');
         }
 
-        return $this->render('dog/edit.html.twig', [
+        return $this->render('dog/form.html.twig', [
             'form' => $form->createView(),
             'dog' => $dog,
         ]);
