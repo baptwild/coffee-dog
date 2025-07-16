@@ -20,6 +20,7 @@
 
 // Molecules
 @use "./Components/Molecules/m_Card";
+@use "./Components/Molecules/m_DogCard";
 @use "./Components/Molecules/m_Form";
 @use "./Components/Molecules/m_MethodCard";
 @use "./Components/Molecules/m_MobileMenu";
@@ -35,6 +36,7 @@
 @use "./Components/Organisms/o_CardList";
 @use "./Components/Organisms/o_ContactPage";
 @use "./Components/Organisms/o_CostBannerHome";
+@use "./Components/Organisms/o_Dogs";
 @use "./Components/Organisms/o_EducationMethods";
 @use "./Components/Organisms/o_ErrorPage";
 @use "./Components/Organisms/o_HeroHome";
