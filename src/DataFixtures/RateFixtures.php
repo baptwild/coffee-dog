@@ -15,7 +15,7 @@ class RateFixtures extends Fixture
 
         foreach ($types as $rateIndex => $type) {
             $rate = new Rate();
-            $rate->setRate(mt_rand(20, 100));
+            $rate->setRate(number_format(mt_rand(20, 100), 2, '.', ''));
             $rate->setRateType($type);
             $rate->setIsActive(true);
             $manager->persist($rate);

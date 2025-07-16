@@ -42,7 +42,7 @@ class BookingFixtures extends Fixture implements DependentFixtureInterface
             $booking->setArrivalDatetime($arrival);
             $booking->setDepartureDatetime($departure);
             $booking->setStatus($faker->randomElement(['en_attente', 'confirmé', 'annulé']));
-            $booking->setTotalCost(mt_rand(50, 500));
+            // $booking->setTotalCost(mt_rand(50, 500));
             $booking->setCreatedAt(new \DateTime());
             $booking->setUpdatedAt(new \DateTime());
 
