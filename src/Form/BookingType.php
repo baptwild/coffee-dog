@@ -47,7 +47,7 @@ class BookingType extends AbstractType
 
             ->add('effectiveDate', DateType::class, [
                 'widget' => 'single_text',
-                'label' => 'Date de réservation',
+                'label' => 'Date de réservation :',
                 'html5' => false,
                 'attr' => [
                     'class' => 'js-datepicker',
@@ -55,13 +55,13 @@ class BookingType extends AbstractType
             ])
             ->add('arrivalDatetime', TimeType::class, [
                 'widget' => 'single_text',
-                'label' => 'Heure d\'arrivée',
+                'label' => 'Heure d\'arrivée :',
                 'hours' => range(8, 13),
                 'minutes' => [0, 30],
             ])
             ->add('departureDatetime', TimeType::class, [
                 'widget' => 'single_text',
-                'label' => 'Heure de départ',
+                'label' => 'Heure de départ :',
                 'hours' => range(11, 18),
                 'minutes' => [0, 30],
             ]);

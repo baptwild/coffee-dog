@@ -56,11 +56,15 @@
 
       .date-card-option,
       .time-card-option {
+         @include typography.body-bold;
+
          border: 1px solid variables.$color-primary;
+         color: variables.$color-secondary;
          border-radius: variables.$border-radius-half;
          padding: 0.5rem 2rem;
          text-align: center;
          cursor: pointer;
+
          transition: all 0.2s;
 
          &:hover {

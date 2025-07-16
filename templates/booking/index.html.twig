@@ -4,10 +4,10 @@
 {% endblock %}
 
 {% block body %}
-	<section class="l_Wrapper">
-		<h1>Liste des réservations</h1>
+	<section class="o_Booking l_Wrapper">
+		<h1 class="o_Booking_title">Liste des réservations</h1>
 
-		<table class="table">
+		<table class="o_Booking_table">
 			<thead>
 				<tr>
 					<th>ID</th>
@@ -29,7 +29,11 @@
 						<td>{{ booking.arrivalDatetime|date('Y-m-d H:i') }}</td>
 						<td>{{ booking.departureDatetime|date('Y-m-d H:i') }}</td>
 						<td>
-							<a href="{{ path('app_booking_edit', {id: booking.id}) }}" class="btn btn-sm btn-primary">Modifier</a>
+							{% include 'components/atoms/_button.html.twig' with {
+								label: 'Modifier',
+								class: 'a_Button-primary',
+								url: path('app_booking_edit', {id: booking.id})
+							} %}
 						</td>
 					</tr>
 				{% else %}
@@ -40,6 +44,10 @@
 			</tbody>
 		</table>
 
-		<a href="{{ path('app_booking_new') }}" class="btn btn-success">Créer une nouvelle réservation</a>
+		{% include 'components/atoms/_button.html.twig' with {
+         label: 'Créer une nouvelle réservation',
+         class: 'a_Button-primary',
+			url: path('app_booking_new')
+      } %}
 	</section>
 {% endblock %}

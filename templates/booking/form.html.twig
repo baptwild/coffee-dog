@@ -20,10 +20,8 @@
 				{{ form_errors(form.dog) }}
 			</div>
 
-			{# Effective date cards #}
 			<div class="a_Input a_Input_booking">
 				{{ form_label(form.effectiveDate) }}
-				{# This will render the hidden input field for effectiveDate #}
 				{{ form_widget(form.effectiveDate, {'attr': {'class': 'js-datepicker hidden'}}) }}
 
 				<div class="a_Input_booking-cards date-cards"></div>
@@ -31,10 +29,8 @@
 				{{ form_errors(form.effectiveDate) }}
 			</div>
 
-			{# Arrival time #}
 			<div class="a_Input a_Input_booking">
 				{{ form_label(form.arrivalDatetime) }}
-				{# This will render the hidden input field for arrivalDatetime #}
 				{{ form_widget(form.arrivalDatetime, {'attr': {'class': 'js-timepicker-arrival hidden'}}) }}
 
 				<div class="a_Input_booking-cards arrival-time-cards" data-target="#{{ form.arrivalDatetime.vars.id }}"></div>
@@ -42,10 +38,8 @@
 				{{ form_errors(form.arrivalDatetime) }}
 			</div>
 
-			{# Departure time #}
 			<div class="a_Input a_Input_booking">
 				{{ form_label(form.departureDatetime) }}
-				{# This will render the hidden input field for departureDatetime #}
 				{{ form_widget(form.departureDatetime, {'attr': {'class': 'js-timepicker-departure hidden'}}) }}
 
 				<div class="a_Input_booking-cards departure-time-cards" data-target="#{{ form.departureDatetime.vars.id }}"></div>
