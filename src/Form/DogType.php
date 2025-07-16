@@ -19,11 +19,11 @@ class DogType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom du chien',
+                'label' => 'Nom du chien :',
             ])
 
             ->add('photo', FileType::class, [
-                'label' => 'Photo du chien (JPG, PNG)',
+                'label' => 'Photo du chien (JPG, PNG) :',
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
@@ -35,21 +35,21 @@ class DogType extends AbstractType
                 ],
             ])
 
-        ->add('age', IntegerType::class, [
-                'label' => 'Âge du chien',
+            ->add('age', IntegerType::class, [
+                'label' => 'Âge du chien :',
                 'required' => false,
             ])
             ->add('breed', TextType::class, [
-                'label' => 'Race du chien',
+                'label' => 'Race du chien :',
             ])
             ->add('size', ChoiceType::class, [
-                'label' => 'Taille du chien',
+                'label' => 'Taille du chien :',
                 'choices' => [
                     'Petit' => Dog::SIZE_PETIT,
                     'Moyen' => Dog::SIZE_MOYEN,
                     'Grand' => Dog::SIZE_GRAND,
                 ],
-                'placeholder' => 'Sélectionnez une taille',
+                'placeholder' => 'Sélectionnez une taille...',
                 'required' => false,
             ])
             ->add('notes', TextareaType::class, [

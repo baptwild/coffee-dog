@@ -36,14 +36,13 @@ class BookingType extends AbstractType
                     'label' => 'Réservation active',
                     'required' => false,
                 ]);
-
         }
 
         $builder
             ->add('dog', EntityType::class, [
                 'class' => Dog::class,
                 'choice_label' => 'name',
-                'label' => 'Choisir un chien',
+                'label' => 'Pour quel chien ?',
             ])
 
             ->add('effectiveDate', DateType::class, [

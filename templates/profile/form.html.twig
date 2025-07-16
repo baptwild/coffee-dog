@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil | Le Café des Chiens
+{% endblock %}
+
+{% block body %}
+	<div class="m_Form_container l_Wrapper">
+		<div class="m_Form">
+			<h1 class="m_Form_title">Mes informations</h1>
+
+			{{ form_start(form) }}
+			{{ form_row(form.firstName) }}
+			{{ form_row(form.lastName) }}
+			{{ form_row(form.email) }}
+			{{ form_row(form.phoneNumber) }}
+			{{ form_row(form.address) }}
+			{{ form_row(form.complementaryAddress) }}
+			{{ form_row(form.zipCode) }}
+			{{ form_row(form.city) }}
+
+			{% include 'components/atoms/_button.html.twig' with {
+            label: 'Modifier',
+            class: 'a_Button-quarternary m_Form_button  m_Form_profile-edit',
+         } %}
+			{% include 'components/atoms/_button.html.twig' with {
+            label: 'Enregistrer', 
+            class: 'a_Button-primary m_Form_button m_Form_profile-save',
+            type: 'submit'
+         } %}
+
+			{{ form_end(form) }}
+		</div>
+	</div>
+
+	<script>
+		document.querySelector('.m_Form_profile-edit').addEventListener('click', () => {
+const fields = document.querySelectorAll('.a_Input input');
+fields.forEach(field => field.removeAttribute('readonly'));
+
+document.querySelector('.m_Form_profile-edit').style.display = 'none';
+document.querySelector('.m_Form_profile-save').style.display = 'inline-block';
+});
+	</script>
+{% endblock %}

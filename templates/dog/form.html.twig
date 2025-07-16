@@ -1,64 +1,63 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{ dog is defined and dog.id ? 'Modifier le chien' : 'Ajouter un chien' }}
+	{{ dog is defined and dog.id ? 'Modifier le chien' : 'Ajouter un chien' }}
 {% endblock %}
 
 {% block body %}
-    <div class="m_Form_container l_Wrapper">
-        <div class="m_Form">
-            <h1 class="m_Form_title">
-                {{ dog is defined and dog.id ? 'Modifier le chien' : 'Ajouter un chien' }}
-            </h1>
+	<div class="m_Form_container l_Wrapper">
+		<div class="m_Form">
+			<h1 class="m_Form_title">
+				{{ dog is defined and dog.id ? 'Modifier le chien' : 'Ajouter un chien' }}
+			</h1>
 
-            {{ form_start(form) }}
+			{{ form_start(form) }}
 
-            <div class="a_Input">
-                {{ form_label(form.name) }}
-                {{ form_widget(form.name, { attr: { class: 'a_Input_field' } }) }}
-                {{ form_errors(form.name) }}
-            </div>
+			<div class="a_Input">
+				{{ form_label(form.name) }}
+				{{ form_widget(form.name, { attr: { class: 'a_Input_field' } }) }}
+				{{ form_errors(form.name) }}
+			</div>
 
-            <div class="a_Input">
-                {{ form_label(form.age) }}
-                {{ form_widget(form.age, { attr: { class: 'a_Input_field' } }) }}
-                {{ form_errors(form.age) }}
-            </div>
+			<div class="a_Input">
+				{{ form_label(form.age) }}
+				{{ form_widget(form.age, { attr: { class: 'a_Input_field' } }) }}
+				{{ form_errors(form.age) }}
+			</div>
 
-            <div class="a_Input">
-                {{ form_label(form.breed) }}
-                {{ form_widget(form.breed, { attr: { class: 'a_Input_field' } }) }}
-                {{ form_errors(form.breed) }}
-            </div>
+			<div class="a_Input">
+				{{ form_label(form.breed) }}
+				{{ form_widget(form.breed, { attr: { class: 'a_Input_field' } }) }}
+				{{ form_errors(form.breed) }}
+			</div>
 
-            <div class="a_Input">
-                {{ form_label(form.size) }}
-                {{ form_widget(form.size, { attr: { class: 'a_Input_field' } }) }}
-                {{ form_errors(form.size) }}
-            </div>
+			<div class="a_Input">
+				{{ form_label(form.size) }}
+				{{ form_widget(form.size, { attr: { class: 'a_Input_field' } }) }}
+				{{ form_errors(form.size) }}
+			</div>
 
-            <div class="a_Input">
-                {{ form_label(form.notes) }}
-                {{ form_widget(form.notes, { attr: { class: 'a_Input_field', rows: 4 } }) }}
-                {{ form_errors(form.notes) }}
-            </div>
+			<div class="a_Input">
+				{{ form_label(form.notes) }}
+				{{ form_widget(form.notes, { attr: { class: 'a_Input_field', rows: 4 } }) }}
+				{{ form_errors(form.notes) }}
+			</div>
 
-            {% if form.photo is defined %}
-                <div class="a_Input">
-                    {{ form_label(form.photo) }}
-                    {{ form_widget(form.photo, { attr: { class: 'a_Input_field' } }) }}
-                    {{ form_errors(form.photo) }}
-                </div>
-            {% endif %}
+			{% if form.photo is defined %}
+				<div class="a_Input">
+					{{ form_label(form.photo) }}
+					{{ form_widget(form.photo, { attr: { class: 'a_Input_field' } }) }}
+					{{ form_errors(form.photo) }}
+				</div>
+			{% endif %}
 
-            {# Bouton personnalisé #}
-            {% include 'components/atoms/_button.html.twig' with {
+			{% include 'components/atoms/_button.html.twig' with {
                 label: dog is defined and dog.id ? 'Mettre à jour' : 'Ajouter',
                 class: 'a_Button-primary m_Form_button',
                 type: 'submit'
             } %}
 
-            {{ form_end(form) }}
-        </div>
-    </div>
+			{{ form_end(form) }}
+		</div>
+	</div>
 {% endblock %}

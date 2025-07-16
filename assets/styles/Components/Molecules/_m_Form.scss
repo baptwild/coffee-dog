@@ -6,7 +6,6 @@
 .m_Form {
    border-radius: variables.$border-radius;
    border: variables.$border;
-   // filter: variables.$shadow;
 
    display: flex;
    flex-direction: column;
@@ -31,6 +30,7 @@
       @include mixins.underlineTitle;
 
       text-transform: none;
+      text-align: center;
    }
 
    form {

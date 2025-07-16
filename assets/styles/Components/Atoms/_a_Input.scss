@@ -14,7 +14,9 @@
       text-transform: none;
    }
 
-   input {
+   input,
+   textarea,
+   select {
       border-radius: variables.$border-radius-half;
       border: 1px solid variables.$color-primary;
       padding: 0.5rem 1rem;
@@ -23,6 +25,59 @@
       &:focus {
          outline: none;
          border: 2px solid variables.$color-secondary;
+      }
+   }
+
+   select,
+   option {
+      cursor: pointer;
+   }
+
+   option {
+      border-radius: variables.$border-radius-half;
+      border: 1px solid variables.$color-primary;
+      padding: 0.5rem 1rem;
+      transition: border-color variables.$animation ease-in-out;
+
+      &:focus {
+         outline: none;
+         border: 2px solid variables.$color-secondary;
+      }
+   }
+
+   &_booking {
+      &-cards {
+         display: flex;
+         flex-direction: row;
+         gap: 1rem;
+         overflow-x: auto;
+         scrollbar-width: none;
+      }
+
+      .date-card-option,
+      .time-card-option {
+         border: 1px solid variables.$color-primary;
+         border-radius: variables.$border-radius-half;
+         padding: 0.5rem 2rem;
+         text-align: center;
+         cursor: pointer;
+         transition: all 0.2s;
+
+         &:hover {
+            background: variables.$color-primary;
+            color: variables.$color-white;
+            border-color: variables.$color-white;
+         }
+
+         &.selected {
+            background: variables.$color-primary;
+            color: variables.$color-white;
+            border-color: variables.$color-white;
+         }
+      }
+
+      .hidden {
+         display: none;
       }
    }
 
@@ -40,8 +95,24 @@
          margin-bottom: 1rem;
       }
 
-      input {
+      input,
+      textarea,
+      select {
          width: 45%;
+      }
+
+      &_booking {
+         display: flex;
+         flex-direction: column;
+         justify-content: flex-start;
+         align-items: flex-start;
+         gap: 1rem;
+         margin-left: 0;
+
+         &-cards {
+            flex-wrap: wrap;
+            overflow-x: none;
+         }
       }
    }
 }
