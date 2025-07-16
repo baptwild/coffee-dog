@@ -13,38 +13,38 @@
 
 			{{ form_start(form) }}
 
-			<div class="a_Input">
+			<div class="a_Input a_Input-dog">
 				{{ form_label(form.name) }}
 				{{ form_widget(form.name, { attr: { class: 'a_Input_field' } }) }}
 				{{ form_errors(form.name) }}
 			</div>
 
-			<div class="a_Input">
+			<div class="a_Input a_Input-dog">
 				{{ form_label(form.age) }}
 				{{ form_widget(form.age, { attr: { class: 'a_Input_field' } }) }}
 				{{ form_errors(form.age) }}
 			</div>
 
-			<div class="a_Input">
+			<div class="a_Input a_Input-dog">
 				{{ form_label(form.breed) }}
 				{{ form_widget(form.breed, { attr: { class: 'a_Input_field' } }) }}
 				{{ form_errors(form.breed) }}
 			</div>
 
-			<div class="a_Input">
+			<div class="a_Input a_Input-dog">
 				{{ form_label(form.size) }}
 				{{ form_widget(form.size, { attr: { class: 'a_Input_field' } }) }}
 				{{ form_errors(form.size) }}
 			</div>
 
-			<div class="a_Input">
+			<div class="a_Input a_Input-dog">
 				{{ form_label(form.notes) }}
 				{{ form_widget(form.notes, { attr: { class: 'a_Input_field', rows: 4 } }) }}
 				{{ form_errors(form.notes) }}
 			</div>
 
 			{% if form.photo is defined %}
-				<div class="a_Input">
+				<div class="a_Input a_Input-dog">
 					{{ form_label(form.photo) }}
 					{{ form_widget(form.photo, { attr: { class: 'a_Input_field' } }) }}
 					{{ form_errors(form.photo) }}
