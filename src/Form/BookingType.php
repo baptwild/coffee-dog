@@ -36,19 +36,18 @@ class BookingType extends AbstractType
                     'label' => 'Réservation active',
                     'required' => false,
                 ]);
-
         }
 
         $builder
             ->add('dog', EntityType::class, [
                 'class' => Dog::class,
                 'choice_label' => 'name',
-                'label' => 'Choisir un chien',
+                'label' => 'Pour quel chien ?',
             ])
 
             ->add('effectiveDate', DateType::class, [
                 'widget' => 'single_text',
-                'label' => 'Date de réservation',
+                'label' => 'Date de réservation :',
                 'html5' => false,
                 'attr' => [
                     'class' => 'js-datepicker',
@@ -56,13 +55,13 @@ class BookingType extends AbstractType
             ])
             ->add('arrivalDatetime', TimeType::class, [
                 'widget' => 'single_text',
-                'label' => 'Heure d\'arrivée',
+                'label' => 'Heure d\'arrivée :',
                 'hours' => range(8, 13),
                 'minutes' => [0, 30],
             ])
             ->add('departureDatetime', TimeType::class, [
                 'widget' => 'single_text',
-                'label' => 'Heure de départ',
+                'label' => 'Heure de départ :',
                 'hours' => range(11, 18),
                 'minutes' => [0, 30],
             ]);

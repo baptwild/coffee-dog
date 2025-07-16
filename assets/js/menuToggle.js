@@ -1,6 +1,6 @@
 const initMobileMenu = () => {
   const menu = document.querySelector('.m_MobileMenu')
-  const toggleButton = document.querySelector('.o_Navbar_links-mobileMenu')
+  const toggleButton = document.querySelector('.m_MobileMenu_open')
   const closeButton = document.querySelector('.m_MobileMenu_close')
 
   if (!menu || !toggleButton || !closeButton) {
