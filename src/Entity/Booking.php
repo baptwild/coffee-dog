@@ -26,8 +26,8 @@ class Booking
     #[ORM\JoinColumn(nullable: true)]
     private ?Rate $rate = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $effectiveDate = null;
+    // #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    // private ?\DateTimeInterface $effectiveDate = null;
     
 
     // #[ORM\Column]

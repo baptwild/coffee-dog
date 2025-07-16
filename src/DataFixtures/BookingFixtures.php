@@ -47,6 +47,8 @@ class BookingFixtures extends Fixture implements DependentFixtureInterface
             $booking->setUpdatedAt(new \DateTime());
 
             $manager->persist($booking);
+
+            $this->addReference('booking_' . $i, $booking);
         
         }
 
