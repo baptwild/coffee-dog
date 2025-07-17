@@ -2,28 +2,25 @@
 
 namespace App\Controller\Admin;
 
+use App\Repository\BookingRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 
-
-#[Route(path: '/admin', name: 'app_admin_')]
-final class AdminController extends AbstractController
+#[Route('/admin')]
+class AdminController extends AbstractController
 {
-    #[Route('/index', name: 'index')]
-    public function adminIndex(): Response
+    #[Route('', name: 'admin_dashboard')]
+    public function index(BookingRepository $bookingRepository): Response
     {
-        return $this->render('admin/form.html.twig', [
-            'controller_name' => 'AdminController',
-        ]);
-    }
+        $today = new \DateTimeImmutable();
 
-    #[Route('/new', name: 'new')]
-    public function new(): Response
-    {
-        // Logic for creating a new admin resource can be added here
-        return $this->render('admin/form.html.twig', [
-            'controller_name' => 'AdminController',
+        $bookingsToday = $bookingRepository->findBy(['effectiveDate' => $today]);
+        $dogsPresent = array_filter($bookingsToday, fn($b) => $b->isActive());
+
+        return $this->render('admin/index.html.twig', [
+            'bookingsToday' => $bookingsToday,
+            'dogsPresent' => $dogsPresent,
         ]);
     }
 }

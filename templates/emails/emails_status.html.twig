@@ -1,0 +1,11 @@
+<h2>Bonjour {{ booking.dog.owner.firstname }},</h2>
+
+{% if booking.status == constant('App\\Entity\\Booking::STATUS_CONFIRME') %}
+    <p>Votre réservation pour <strong>{{ booking.dog.name }}</strong> le {{ booking.effectiveDate|date('d/m/Y') }} a été <strong>confirmée</strong>.</p>
+{% elseif booking.status == constant('App\\Entity\\Booking::STATUS_ANNULE') %}
+    <p>Nous sommes désolés, mais la réservation pour <strong>{{ booking.dog.name }}</strong> le {{ booking.effectiveDate|date('d/m/Y') }} a été <strong>refusée</strong>.</p>
+{% else %}
+    <p>La réservation a été mise à jour.</p>
+{% endif %}
+
+<p>Merci de votre confiance,<br>Le Café des Chiens 🐾</p>

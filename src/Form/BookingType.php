@@ -71,6 +71,7 @@ class BookingType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Booking::class,
+            'is_admin' => false,
         ]);
     }
 }
