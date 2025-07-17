@@ -33,7 +33,7 @@
 			<div class="o_Navbar_links-mobileMenu">
 				{% if app.user %}
 					{% include 'components/atoms/_link.html.twig' with {
-						url: path('profile'),
+						url: path('profile_dashboard'),
 						icon: 'bi bi-person-circle',
 						class: 'o_Navbar_links-mobileMenu-link',
 					} %}
@@ -57,7 +57,7 @@
 
 				{% if app.user %}
 					{% include 'components/atoms/_link.html.twig' with {
-						url: path('profile'),
+						url: path('profile_dashboard'),
 						icon: 'bi bi-person-circle',
 						class: 'o_Navbar_links-socials-link',
 					} %}
