@@ -24,7 +24,7 @@
 					<tr>
 						<td>{{ booking.id }}</td>
 						<td>{{ booking.user.email }}</td>
-						<td>{{ booking.dog.name }}</td>
+                        <td>{{ booking.dog.name is defined and booking.dog.name is not null ? booking.dog.name : '—' }}</td>
 						<td>{{ booking.status }}</td>
 						<td>{{ booking.arrivalDatetime|date('Y-m-d H:i') }}</td>
 						<td>{{ booking.departureDatetime|date('Y-m-d H:i') }}</td>
