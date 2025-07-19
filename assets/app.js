@@ -1,7 +1,6 @@
 import './bootstrap.js'
 
 import './styles/main.scss'
-
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 // Import JS files

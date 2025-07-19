@@ -14,8 +14,8 @@
    }
 
    @media screen and (min-width: responsive_variables.$screen-s-min) {
-      overflow-x: none;
+      overflow-x: visible;
       display: block;
-      white-space: wrap;
+      white-space: normal;
    }
 }

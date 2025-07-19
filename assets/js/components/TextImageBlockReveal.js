@@ -22,18 +22,9 @@ export const TextImageBlockReveal = ($containerElement) => {
       '.m_TextImageBlock_description.hidden'
     )
 
-    if (!dom.button || !dom.hiddenDescription) {
-      console.warn(
-        'TextImageBlockReveal: Missing required sub-elements or description is not initially hidden within container.',
-        {
-          container: dom.container,
-          button: dom.button,
-          hiddenDescription: dom.hiddenDescription,
-        }
-      )
+    if (!dom.button) {
       return false
     }
-
     return true
   }
 
