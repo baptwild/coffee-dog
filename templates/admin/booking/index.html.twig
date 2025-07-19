@@ -40,15 +40,15 @@
 						<td class="m_Table_actions">
 							{% include 'components/atoms/_button.html.twig' with {
                         label: 'Modifier',
-                        class: 'a_Button-primary',
+                        class: 'a_Button a_Button-primary',
                         url: path('admin_booking_edit', { id: booking.id })
                      } %}
 
-							<form method="post" action="{{ path('admin_booking_delete', { id: booking.id }) }}" onsubmit="return confirm('Supprimer cette réservation ?');">
+							<form class="m_Table_actions-delete" method="post" action="{{ path('admin_booking_delete', { id: booking.id }) }}" onsubmit="return confirm('Supprimer cette réservation ?');">
 								<input type="hidden" name="_token" value="{{ csrf_token('delete-booking-' ~ booking.id) }}">
 								{% include 'components/atoms/_button.html.twig' with {
                            label: 'Supprimer',
-                           class: 'a_Button-quarternary',
+                           class: 'a_Button a_Button-quarternary',
                         } %}
 							</form>
 						</td>
