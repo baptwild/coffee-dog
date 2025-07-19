@@ -1,33 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Dashboard Admin{% endblock %}
+{% block title %}Dashboard Admin
+{% endblock %}
 
 {% block body %}
-    <div class="l_Wrapper m_AdminDashboard">
-        <h1 class="m_Form_title">Tableau de bord - Administration</h1>
+	<section class="o_Dashboard l_Wrapper">
+		<h1 class="o_Dashboard_title">Tableau de bord - Administrateur</h1>
 
-        <section class="m_Card">
-            <h2 class="m_Card_title">Réservations du jour ({{ bookingsToday|length }})</h2>
-            {% if bookingsToday %}
-                <ul>
-                    {% for booking in bookingsToday %}
-                        <li>
-                            {{ booking.dog.name }} – {{ booking.arrivalDatetime|date('H:i') }} → {{ booking.departureDatetime|date('H:i') }}
-                            ({{ booking.status }}) - {{ booking.isActive ? '✅ Active' : '⛔️ Inactive' }}
-                        </li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>Aucune réservation aujourd’hui.</p>
-            {% endif %}
-        </section>
+		<div class="o_Dashboard_section">
+			<h2 class="o_Dashboard_section-title">Réservations du jour ({{ bookingsToday|length }})</h2>
+			{% if bookingsToday %}
+				<ul>
+					{% for booking in bookingsToday %}
+						<li>
+							{{ booking.dog.name }}
+							–
+							{{ booking.arrivalDatetime|date('H:i') }}
+							→
+							{{ booking.departureDatetime|date('H:i') }}
+							({{ booking.status }}) -
+							{{ booking.isActive ? '✅ Active' : '⛔️ Inactive' }}
+						</li>
+					{% endfor %}
+				</ul>
+			{% else %}
+				<p>Aucune réservation aujourd’hui.</p>
+			{% endif %}
+		</div>
 
-        <section class="m_Card">
-            <h2 class="m_Card_title">Liens rapides</h2>
-            <ul>
-                <li><a href="{{ path('admin_booking_index') }}">Voir toutes les réservations</a></li>
-                <li><a href="{{ path('admin_booking_index') }}">Créer une nouvelle réservation</a></li>
-            </ul>
-        </section>
-    </div>
+		<div class="o_Dashboard_section">
+			<h2 class="o_Dashboard_section-title">Liens rapides</h2>
+			<div class="o_Dashboard_section-buttons">
+				{% include 'components/atoms/_button.html.twig' with {
+                    label: 'Voir toutes les réservations',
+                    class: 'a_Button-quarternary',
+                    url: path('admin_booking_index')
+                } %}
+
+				{% include 'components/atoms/_button.html.twig' with {
+                    label: 'Créer une nouvelle réservation',
+                    class: 'a_Button-primary',
+                    url: path('admin_booking_index')
+                } %}
+			</div>
+		</div>
+	</section>
 {% endblock %}

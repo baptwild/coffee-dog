@@ -13,50 +13,9 @@
       margin-bottom: 3rem;
    }
 
-   &_table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 2rem;
-
-      overflow-x: auto;
-      display: block;
-      white-space: nowrap;
-
-      th,
-      td {
-         padding: 1rem 1.25rem;
-         text-align: left;
-         border: 2px solid variables.$color-primary;
-      }
-
-      th {
-         @include typography.body-bold;
-         background-color: variables.$color-secondary;
-         color: variables.$color-white;
-      }
-
-      tbody {
-         tr {
-            &:nth-child(even) {
-               background-color: variables.$color-light;
-            }
-         }
-      }
-
-      td:last-child {
-         text-align: center;
-         white-space: nowrap;
-      }
-
-      td[colspan="7"] {
-         text-align: center;
-         padding: 2rem;
-      }
-   }
-
    @media screen and (min-width: responsive_variables.$screen-s-min) {
-      overflow-x: none;
+      overflow-x: visible;
       display: block;
-      white-space: wrap;
+      white-space: normal;
    }
 }

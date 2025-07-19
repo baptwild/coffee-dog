@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des réservations{% endblock %}
+{% block title %}Liste des réservations
+{% endblock %}
 
 {% block body %}
 	<section class="o_Booking l_Wrapper">
@@ -12,42 +13,42 @@
 			{% endif %}
 		</h1>
 
-		<table class="o_Booking_table">
+		<table class="m_Table">
 			<thead>
-			<tr>
-				{% if is_granted('ROLE_ADMIN') %}
-					<th>Utilisateur</th>
-				{% endif %}
-				<th>Chien</th>
-				<th>Statut</th>
-				<th>Arrivée</th>
-				<th>Départ</th>
-				<th>Actions</th>
-			</tr>
-			</thead>
-			<tbody>
-			{% for booking in bookings %}
 				<tr>
 					{% if is_granted('ROLE_ADMIN') %}
-						<td>{{ booking.user.email }}</td>
+						<th>Utilisateur</th>
 					{% endif %}
-					<td>{{ booking.dog.name ?? '—' }}</td>
-					<td>{{ booking.status }}</td>
-					<td>{{ booking.arrivalDatetime|date('Y-m-d H:i') }}</td>
-					<td>{{ booking.departureDatetime|date('Y-m-d H:i') }}</td>
-					<td>
-						{% include 'components/atoms/_button.html.twig' with {
+					<th>Chien</th>
+					<th>Statut</th>
+					<th>Arrivée</th>
+					<th>Départ</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for booking in bookings %}
+					<tr>
+						{% if is_granted('ROLE_ADMIN') %}
+							<td>{{ booking.user.email }}</td>
+						{% endif %}
+						<td>{{ booking.dog.name ?? '—' }}</td>
+						<td>{{ booking.status }}</td>
+						<td>{{ booking.arrivalDatetime|date('Y-m-d H:i') }}</td>
+						<td>{{ booking.departureDatetime|date('Y-m-d H:i') }}</td>
+						<td>
+							{% include 'components/atoms/_button.html.twig' with {
 							label: 'Modifier',
 							class: 'a_Button-primary',
 							url: path('app_booking_edit', {id: booking.id})
 						} %}
-					</td>
-				</tr>
-			{% else %}
-				<tr>
-					<td colspan="{{ is_granted('ROLE_ADMIN') ? 6 : 5 }}">Aucune réservation trouvée.</td>
-				</tr>
-			{% endfor %}
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="{{ is_granted('ROLE_ADMIN') ? 6 : 5 }}">Aucune réservation trouvée.</td>
+					</tr>
+				{% endfor %}
 			</tbody>
 		</table>
 

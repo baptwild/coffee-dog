@@ -28,12 +28,13 @@ class BookingType extends AbstractType
                 ->add('status', ChoiceType::class, [
                     'choices' => [
                         'En attente' => Booking::STATUS_EN_ATTENTE,
-                        'Confirmé' => Booking::STATUS_CONFIRME,
-                        'Annulé' => Booking::STATUS_ANNULE,
+                        'Confirmée' => Booking::STATUS_CONFIRME,
+                        'Annulée' => Booking::STATUS_ANNULE,
                     ],
+                    'label' => 'Statut de la réservation :',
                 ])
                 ->add('isActive', CheckboxType::class, [
-                    'label' => 'Réservation active',
+                    'label' => 'Réservation active ?',
                     'required' => false,
                 ]);
         }
@@ -47,7 +48,7 @@ class BookingType extends AbstractType
 
             ->add('effectiveDate', DateType::class, [
                 'widget' => 'single_text',
-                'label' => 'Date de réservation :',
+                'label' => 'Pour quel jour ?',
                 'html5' => false,
                 'attr' => [
                     'class' => 'js-datepicker',

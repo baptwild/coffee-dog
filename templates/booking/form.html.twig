@@ -47,6 +47,30 @@
 				{{ form_errors(form.departureDatetime) }}
 			</div>
 
+			{% if form.status is defined %}
+				<div class="a_Input a_Input_booking">
+					{{ form_label(form.status) }}
+					{{ form_widget(form.status) }}
+					{{ form_errors(form.status) }}
+				</div>
+			{% endif %}
+
+			{% if form.isActive is defined %}
+				<div class="a_Input a_Input_booking">
+					{{ form_label(form.isActive) }}
+					{{ form_widget(form.isActive, {'attr': {'class': 'js-isActive hidden'}}) }}
+
+					<div class="a_ToggleSwitch switch js-form-toggle-container">
+						<input type="checkbox" class="js-toggle-input" data-target="{{ form.isActive.vars.id }}" {% if booking.isActive %} checked {% endif %}>
+						<span class="slider round"></span>
+					</div>
+					<p class="a_Input_booking-status" data-form-status-text="{{ booking.id }}">{{ booking.isActive ? '✅ Active' : '⛔️ Inactive' }}</p>
+
+					{{ form_errors(form.isActive) }}
+				</div>
+			{% endif %}
+
+
 			{% include 'components/atoms/_button.html.twig' with {
             label: is_edit ? 'Mettre à jour' : 'Réserver',
             class: 'a_Button-primary m_Form_button',
@@ -54,6 +78,7 @@
          } %}
 
 			{{ form_end(form) }}
+
 		</div>
 	</div>
 {% endblock %}

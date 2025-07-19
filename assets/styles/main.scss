@@ -17,6 +17,7 @@
 @use "./Components/Atoms/a_Input";
 @use "./Components/Atoms/a_Link";
 @use "./Components/Atoms/a_MobileMenuLink";
+@use "./Components/Atoms/a_ToggleSwitch";
 
 // Molecules
 @use "./Components/Molecules/m_Card";
@@ -26,6 +27,7 @@
 @use "./Components/Molecules/m_MobileMenu";
 @use "./Components/Molecules/m_PriceCard";
 @use "./Components/Molecules/m_ReinsuranceItem";
+@use "./Components/Molecules/m_Table";
 @use "./Components/Molecules/m_TextImageBlock";
 
 // Organisms
@@ -36,6 +38,7 @@
 @use "./Components/Organisms/o_CardList";
 @use "./Components/Organisms/o_ContactPage";
 @use "./Components/Organisms/o_CostBannerHome";
+@use "./Components/Organisms/o_Dashboard";
 @use "./Components/Organisms/o_Dogs";
 @use "./Components/Organisms/o_EducationMethods";
 @use "./Components/Organisms/o_ErrorPage";

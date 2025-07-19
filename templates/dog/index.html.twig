@@ -26,18 +26,18 @@
 
 							<div class="m_DogCard_actions">
 								{% include 'components/atoms/_button.html.twig' with {
-                                    label: 'Modifier',
-                                    class: 'a_Button-primary',
-                                    url: path('app_dog_edit', {'id': dog.id})
-                                } %}
+                           label: 'Modifier',
+                           class: 'a_Button-primary',
+                           url: path('app_dog_edit', {'id': dog.id})
+                        } %}
 
 								<form method="post" action="{{ path('app_dog_delete', {'id': dog.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer ce chien ?');" style="display:inline;">
 									<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ dog.id) }}">
 									{% include 'components/atoms/_button.html.twig' with {
-                                        label: 'Supprimer',
-                                        class: 'a_Button-danger',
-                                        type: 'submit'
-                                    } %}
+                              label: 'Supprimer',
+                              class: 'a_Button-quarternary',
+                              type: 'submit'
+                           } %}
 								</form>
 							</div>
 						</div>
@@ -46,9 +46,9 @@
 			</div>
 		{% endif %}
 		{% include 'components/atoms/_button.html.twig' with {
-            label: 'Ajouter un chien',
-            class: 'a_Button-primary o_Dogs_button',
-            url: path('app_dog_new')
-            } %}
+         label: 'Ajouter un chien',
+         class: 'a_Button-primary o_Dogs_button',
+         url: path('app_dog_new')
+      } %}
 	</section>
 {% endblock %}
