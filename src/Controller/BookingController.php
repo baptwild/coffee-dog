@@ -22,7 +22,10 @@ final class BookingController extends AbstractController
             throw $this->createAccessDeniedException('Vous devez être connecté pour voir vos réservations.');
         }
 
-        $bookings = $bookingRepository->findBy(['user' => $user], ['createdAt' => 'DESC']);
+        $bookings = $this->isGranted('ROLE_ADMIN')
+            ? $bookingRepository->findBy([], ['createdAt' => 'DESC']) // Admin : tout
+            : $bookingRepository->findBy(['user' => $user], ['createdAt' => 'DESC']); // User : que les siennes
+
 
         return $this->render('booking/index.html.twig', [
             'bookings' => $bookings,
@@ -126,7 +129,16 @@ final class BookingController extends AbstractController
     #[Route('/{id}/edit', name: 'edit')]
     public function edit(Request $request, Booking $booking, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(BookingType::class, $booking);
+        $user = $this->getUser();
+
+        if (!$this->isGranted('ROLE_ADMIN') && $booking->getUser() !== $user) {
+            throw $this->createAccessDeniedException("Vous ne pouvez modifier que vos propres réservations.");
+        }
+
+        $form = $this->createForm(BookingType::class, $booking, [
+            'is_admin' => $this->isGranted('ROLE_ADMIN'),
+        ]);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
