@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon tableau de bord | Le Café des Chiens{% endblock %}
+
+{% block body %}
+    <div class="m_ProfileDashboard l_Wrapper">
+        <h1 class="m_ProfileDashboard_title">Bienvenue {{ user.firstName }} 👋</h1>
+
+        <section class="m_ProfileDashboard_section">
+            <h2 class="m_ProfileDashboard_subtitle">Infos principales</h2>
+            <ul class="m_ProfileDashboard_infoList">
+                <li><strong>Nom :</strong> {{ user.lastName }}</li>
+                <li><strong>Email :</strong> {{ user.email }}</li>
+            </ul>
+            <a href="{{ path('profile_infos') }}" class="a_Button-quarternary">Voir / Modifier mes infos</a>
+        </section>
+
+        <section class="m_ProfileDashboard_section">
+            <h2 class="m_ProfileDashboard_subtitle">Mes chiens</h2>
+            {% if dogs %}
+                <p><strong>{{ dogs.name }}</strong> ({{ dogs.breed }})</p>
+                <a href="{{ path('app_dog_index') }}" class="a_Button-quarternary">Voir mes chiens</a>
+            {% else %}
+                <p>Vous n'avez pas encore ajouté de chien.</p>
+                <a href="{{ path('app_dog_new') }}" class="a_Button-primary">Ajouter un chien</a>
+            {% endif %}
+        </section>
+
+        <section class="m_ProfileDashboard_section">
+            <h2 class="m_ProfileDashboard_subtitle">Mes réservations ce mois-ci</h2>
+
+            {% if bookings|length > 0 %}
+                <ul class="m_ProfileDashboard_bookingList">
+                    {% for booking in bookings %}
+                        <li>
+                            Du {{ booking.arrivalDatetime|date('d/m/Y') }}
+                            au {{ booking.departureDatetime|date('d/m/Y') }}
+                            {% if booking.dog %}
+                                – pour <strong>{{ booking.dog.name }}</strong>
+                            {% endif %}
+                            – Statut : <em>{{ booking.status|capitalize }}</em>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+                <p><strong>Total :</strong> {{ totalBookings }} réservation(s), {{ totalCost|number_format(2, ',', ' ') }} €</p>
+                <a href="{{ path('app_booking_index') }}" class="a_Button-quarternary">Voir toutes mes réservations</a>
+            {% else %}
+                <p>Aucune réservation ce mois-ci.</p>
+            {% endif %}
+        </section>
+    </div>
+{% endblock %}
