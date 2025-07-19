@@ -1,21 +1,78 @@
 import './bootstrap.js'
-/*
- * Welcome to your app's main JavaScript file!
- *
- * We recommend including the built version of this JavaScript file
- * (and its CSS file) in your base layout (base.html.twig).
- */
 
-// any CSS you import will output into a single css file (app.css in this case)
 import './styles/main.scss'
 
-// Bootstrap icons
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
-// Import additional JS files
-import './js/menuToggle.js'
-import './js/headerScroll.js'
-import './js/reveal.js'
-import './js/bookingDateTimePicker.js'
-import './js/formToggleSwitch.js'
-import './js/tableToggleSwitch.js'
+// Import JS files
+import HeaderScroll from './js/components/HeaderScroll.js'
+import MobileMenu from './js/components/MobileMenu.js'
+import TextImageBlockReveal from './js/components/TextImageBlockReveal.js'
+
+import ToggleSwitchForm from './js/components/ToggleSwitchForm.js'
+import ToggleSwitchTable from './js/components/ToggleSwitchTable.js'
+
+import DateSelector from './js/components/DateSelector.js'
+import TimeSelector from './js/components/TimeSelector.js'
+
+import { ARRIVAL_TIMES, DEPARTURE_TIMES } from './js/utils/timeUtils.js'
+
+// Initialize JavaScript components
+const initializeComponents = () => {
+  console.log('Initializing JavaScript components...')
+
+  // HeaderScroll
+  const headerElement = document.querySelector('.l_Header-transparent')
+  if (headerElement) {
+    const component = HeaderScroll(headerElement)
+    component.init()
+  }
+
+  // MobileMenu
+  const mobileMenuElement = document.querySelector('.m_MobileMenu')
+  if (mobileMenuElement) {
+    const component = MobileMenu(mobileMenuElement)
+    component.init()
+  }
+
+  // ToggleSwitchForm
+  document
+    .querySelectorAll('.js-form-toggle-container')
+    .forEach((container) => {
+      const component = new ToggleSwitchForm(container)
+      component.init()
+    })
+
+  // ToggleSwitchTable
+  document
+    .querySelectorAll('.js-admin-booking-toggle-container')
+    .forEach((container) => {
+      const component = new ToggleSwitchTable(container)
+      component.init()
+    })
+
+  // Date and Time
+  const dateSelectorContainer = document.querySelector('.date-cards')
+  if (dateSelectorContainer) {
+    const component = DateSelector(dateSelectorContainer)
+    component.init()
+  }
+
+  document.querySelectorAll('.arrival-time-cards').forEach((container) => {
+    const component = TimeSelector(container, { timesArray: ARRIVAL_TIMES })
+    component.init()
+  })
+
+  document.querySelectorAll('.departure-time-cards').forEach((container) => {
+    const component = TimeSelector(container, { timesArray: DEPARTURE_TIMES })
+    component.init()
+  })
+
+  // TextImageBlockReveal
+  document.querySelectorAll('.m_TextImageBlock').forEach((container) => {
+    const component = TextImageBlockReveal(container)
+    component.init()
+  })
+}
+
+document.addEventListener('turbo:load', initializeComponents)
