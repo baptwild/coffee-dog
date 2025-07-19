@@ -5,27 +5,25 @@
 
 {% block body %}
 	<section class="o_Booking l_Wrapper">
-		<h1 class="o_Booking_title">Liste des réservations</h1>
+		<h1 class="o_Booking_title">Mes réservations</h1>
 
-		<table class="o_Booking_table">
+		<table class="m_Table">
 			<thead>
 				<tr>
-					<th>ID</th>
-					<th>Utilisateur</th>
 					<th>Chien</th>
-					<th>Statut</th>
-					<th>Arrivée</th>
-					<th>Départ</th>
+					<th>Statut de la réservation</th>
+					<th>Date de la réservation</th>
+					<th>Heure d'arrivée</th>
+					<th>Heure de départ</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
 				{% for booking in bookings %}
 					<tr>
-						<td>{{ booking.id }}</td>
-						<td>{{ booking.user.email }}</td>
-                        <td>{{ booking.dog.name is defined and booking.dog.name is not null ? booking.dog.name : '—' }}</td>
+						<td>{{ booking.dog.name is defined and booking.dog.name is not null ? booking.dog.name : '—' }}</td>
 						<td>{{ booking.status }}</td>
+						<td>{{ booking.effectiveDate|date('d/m/Y') }}</td>
 						<td>{{ booking.arrivalDatetime|date('Y-m-d H:i') }}</td>
 						<td>{{ booking.departureDatetime|date('Y-m-d H:i') }}</td>
 						<td>

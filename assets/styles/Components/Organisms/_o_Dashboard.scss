@@ -1,0 +1,42 @@
+@use "../../Settings/variables";
+@use "../../Settings/responsive_variables";
+@use "../../Tools/mixins";
+@use "../../Tools/typography";
+
+.o_Dashboard {
+   @include mixins.margin;
+
+   display: flex;
+   flex-direction: column;
+
+   &_title {
+      @include typography.h2;
+      @include mixins.underline;
+
+      margin-bottom: 3rem;
+   }
+
+   &_section {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      width: 100%;
+      min-height: 10rem;
+      border: 1px solid rgba(variables.$color-black, 0.2);
+      border-radius: variables.$border-radius;
+      padding: 2rem;
+      margin-bottom: 3rem;
+
+      &-title {
+         @include typography.h4;
+         @include mixins.underline;
+      }
+
+      &-buttons {
+         display: flex;
+         flex-direction: column;
+         gap: 1rem;
+         max-width: fit-content;
+      }
+   }
+}

@@ -1,53 +1,64 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Réservations | Admin | Le Café des Chiens
+	Réservations | Admin | Le Café des Chiens
 {% endblock %}
 
 {% block body %}
-    <div class="m_Form_container l_Wrapper">
-        <h1 class="m_Form_title">Liste des réservations</h1>
+	<section class="o_Dashboard l_Wrapper">
 
-        <table class="m_Table">
-            <thead>
-            <tr>
-                <th>Chien</th>
-                <th>Date</th>
-                <th>Arrivée</th>
-                <th>Départ</th>
-                <th>Statut</th>
-                <th>Active</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for booking in bookings %}
-                <tr>
-                    <td>{{ booking.dog ? booking.dog.name : '—' }}</td>
-                    <td>{{ booking.effectiveDate|date('d/m/Y') }}</td>
-                    <td>{{ booking.arrivalDatetime|date('H:i') }}</td>
-                    <td>{{ booking.departureDatetime|date('H:i') }}</td>
-                    <td>{{ booking.status }}</td>
-                    <td>{{ booking.isActive ? 'Oui' : 'Non' }}</td>
-                    <td class="m_Table_actions">
-                        {% include 'components/atoms/_button.html.twig' with {
-                            label: 'Modifier',
-                            class: 'a_Button-small a_Button-primary',
-                            url: path('admin_booking_edit', { id: booking.id })
-                        } %}
+		<h1 class="o_Dashboard_title">Liste des réservations</h1>
 
-                        <form method="post" action="{{ path('admin_booking_delete', { id: booking.id }) }}" onsubmit="return confirm('Supprimer cette réservation ?');">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete-booking-' ~ booking.id) }}">
-                            <button class="a_Button-small a_Button-danger">Supprimer</button>
-                        </form>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="8">Aucune réservation enregistrée.</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
+		<table class="m_Table">
+			<thead>
+				<tr>
+					<th>Chien</th>
+					<th>Date</th>
+					<th>Heure d'arrivée</th>
+					<th>Heure de départ</th>
+					<th>Statut de la réservation</th>
+					<th>Réservation active ?</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for booking in bookings %}
+					<tr>
+						<td>{{ booking.dog ? booking.dog.name : '—' }}</td>
+						<td>{{ booking.effectiveDate|date('d/m/Y') }}</td>
+						<td>{{ booking.arrivalDatetime|date('H:i') }}</td>
+						<td>{{ booking.departureDatetime|date('H:i') }}</td>
+						<td>{{ booking.status }}</td>
+						<td>
+							<div class="a_ToggleSwitch switch js-admin-booking-toggle-container">
+								<input type="checkbox" class="js-toggle-input" data-booking-id="{{ booking.id }}" data-toggle-url="{{ path('admin_booking_toggle_active', { id: booking.id }) }}" data-csrf-token="{{ csrf_token('toggle-booking-' ~ booking.id) }}" {% if booking.isActive %} checked {% endif %}>
+								<span class="slider round"></span>
+							</div>
+							<p class="a_Input_booking-status" data-booking-status-text="{{ booking.id }}">{{ booking.isActive ? '✅ Active' : '⛔️ Inactive' }}</p>
+						</td>
+
+						<td class="m_Table_actions">
+							{% include 'components/atoms/_button.html.twig' with {
+                                label: 'Modifier',
+                                class: 'a_Button-primary',
+                                url: path('admin_booking_edit', { id: booking.id })
+                            } %}
+
+							<form method="post" action="{{ path('admin_booking_delete', { id: booking.id }) }}" onsubmit="return confirm('Supprimer cette réservation ?');">
+								<input type="hidden" name="_token" value="{{ csrf_token('delete-booking-' ~ booking.id) }}">
+								{% include 'components/atoms/_button.html.twig' with {
+                                    label: 'Supprimer',
+                                    class: 'a_Button-quarternary',
+                                } %}
+							</form>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="8">Aucune réservation enregistrée.</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</section>
 {% endblock %}

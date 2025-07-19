@@ -15,7 +15,7 @@ class AdminController extends AbstractController
     {
         $today = new \DateTimeImmutable();
 
-        $bookingsToday = $bookingRepository->findBy(['effectiveDate' => $today]);
+        $bookingsToday = $bookingRepository->findBookingsForDate($today);
         $dogsPresent = array_filter($bookingsToday, fn($b) => $b->isActive());
 
         return $this->render('admin/index.html.twig', [
