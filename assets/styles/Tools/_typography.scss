@@ -1,88 +1,94 @@
-@use "../Settings/variables";
-@use "../Settings/responsive_variables";
+@use '../Settings/variables';
+@use '../Settings/responsive_variables';
 
 @font-face {
-   font-family: 'Bellerose';
-   src: url('../../fonts/Bellerose/Bellerose.woff2') format('woff2'),
-      url('../../fonts/Bellerose/Bellerose.woff') format('woff');
-   font-weight: 300;
-   font-style: normal;
-   font-display: swap;
+  font-family: 'Bellerose';
+  src: url('../../fonts/bellerose/Bellerose.woff2') format('woff2'),
+    url('../../fonts/bellerose/Bellerose.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
 // Text
-@mixin fontSize($size: 16px,
-   $lineHeight: ($size + 10px,
-   )) {
-   font-size: $size;
-   line-height: $lineHeight;
+@mixin fontSize(
+  $size: 16px,
+  $lineHeight: (
+    $size + 10px,
+  )
+) {
+  font-size: $size;
+  line-height: $lineHeight;
 }
 
-@mixin fontStyle($size: 16px,
-   $weight: 300,
-   $lineHeight: ($size + 10px,
-   )) {
-   @include fontSize($size, $lineHeight);
-   font-weight: $weight;
+@mixin fontStyle(
+  $size: 16px,
+  $weight: 300,
+  $lineHeight: (
+    $size + 10px,
+  )
+) {
+  @include fontSize($size, $lineHeight);
+  font-weight: $weight;
 }
 
 @mixin title($weight: 300) {
-   font-family: variables.$font-title;
-   font-weight: $weight;
-   text-transform: uppercase;
+  font-family: variables.$font-title;
+  font-weight: $weight;
+  text-transform: uppercase;
 }
 
 @mixin resetTitle($weight: 300) {
-   font-family: variables.$font-text;
-   font-weight: $weight;
-   text-transform: initial;
+  font-family: variables.$font-text;
+  font-weight: $weight;
+  text-transform: initial;
 }
 
 @mixin h1 {
-   @include title($weight: 300);
-   @include fontSize(36px, 46px);
+  @include title($weight: 300);
+  @include fontSize(36px, 46px);
 
-   @media screen and (min-width: responsive_variables.$screen-m-min) {
-      @include fontSize(48px, 58px);
-   }
+  @media screen and (min-width: responsive_variables.$screen-m-min) {
+    @include fontSize(48px, 58px);
+  }
 }
 
 @mixin h2 {
-   @include title;
-   @include fontSize(24px, 34px);
+  @include title;
+  @include fontSize(24px, 34px);
 
-   @media screen and (min-width: responsive_variables.$screen-m-min) {
-      @include fontSize(36px, 46px);
-   }
+  @media screen and (min-width: responsive_variables.$screen-m-min) {
+    @include fontSize(36px, 46px);
+  }
 }
 
 @mixin h3 {
-   @include title;
-   @include fontSize(20px, 30px);
+  @include title;
+  @include fontSize(20px, 30px);
 
-   @media screen and (min-width: responsive_variables.$screen-m-min) {
-      @include fontSize(32px, 42px);
-   }
+  @media screen and (min-width: responsive_variables.$screen-m-min) {
+    @include fontSize(32px, 42px);
+  }
 }
 
 @mixin h4 {
-   @include title;
-   @include fontSize(16px, 26px);
+  @include title;
+  @include fontSize(16px, 26px);
 
-   @media screen and (min-width: responsive_variables.$screen-m-min) {
-      @include fontSize(24px, 34px);
-   }
+  @media screen and (min-width: responsive_variables.$screen-m-min) {
+    @include fontSize(24px, 34px);
+  }
 }
 
 @mixin body {
-   @include fontSize(14px, 30px);
+  @include fontSize(14px, 30px);
 
-   @media screen and (min-width: responsive_variables.$screen-m-min) {
-      @include fontSize(16px, 32px);
-   }
+  @media screen and (min-width: responsive_variables.$screen-m-min) {
+    @include fontSize(16px, 32px);
+  }
 }
 
 @mixin body-bold($weight: 600) {
-   @include body;
-   font-weight: $weight;
+  @include body;
+  font-weight: $weight;
 }
