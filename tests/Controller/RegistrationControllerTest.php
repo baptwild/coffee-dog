@@ -15,7 +15,7 @@ class RegistrationControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/register');
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h1', 'Inscription');
+        $this->assertSelectorTextContains('h1', text: 'Créer un compte');
 
         // Remplir le formulaire d'inscription
         $form = $crawler->selectButton('Continuer')->form([
