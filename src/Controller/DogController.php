@@ -6,9 +6,11 @@ use App\Entity\Dog;
 use App\Form\DogType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/dog', name: 'app_dog_')]
 final class DogController extends AbstractController
@@ -16,21 +18,17 @@ final class DogController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(EntityManagerInterface $entityManager): Response
     {
-        $user = $this->getUser();
-
-        $dogs = $entityManager->getRepository(Dog::class)->findBy(['owner' => $user]);
+        $dogs = $entityManager->getRepository(Dog::class)->findBy(['owner' => $this->getUser()]);
 
         return $this->render('dog/index.html.twig', [
             'dogs' => $dogs,
         ]);
     }
 
-
     #[Route('/new', name: 'new')]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $em, SluggerInterface $slugger): Response
     {
         $dog = new Dog();
-
         $form = $this->createForm(DogType::class, $dog);
         $form->handleRequest($request);
 
@@ -39,8 +37,14 @@ final class DogController extends AbstractController
             $dog->setCreatedAt(new \DateTime());
             $dog->setUpdatedAt(new \DateTime());
 
-            $entityManager->persist($dog);
-            $entityManager->flush();
+            $photoFile = $form->get('photo')->getData();
+            if ($photoFile instanceof UploadedFile) {
+                $filename = $this->uploadDogImage($photoFile, $slugger);
+                $dog->setPhoto($filename);
+            }
+
+            $em->persist($dog);
+            $em->flush();
 
             $this->addFlash('success', 'Chien ajouté avec succès !');
             return $this->redirectToRoute('app_dog_index');
@@ -52,9 +56,9 @@ final class DogController extends AbstractController
     }
 
     #[Route('/edit/{id}', name: 'edit')]
-    public function edit(Request $request, EntityManagerInterface $entityManager, Dog $dog): Response
+    public function edit(Request $request, EntityManagerInterface $em, Dog $dog, SluggerInterface $slugger): Response
     {
-        if (!$dog || $dog->getOwner() !== $this->getUser()) {
+        if ($dog->getOwner() !== $this->getUser()) {
             throw $this->createNotFoundException('Chien non trouvé ou accès non autorisé.');
         }
 
@@ -64,7 +68,13 @@ final class DogController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $dog->setUpdatedAt(new \DateTime());
 
-            $entityManager->flush();
+            $photoFile = $form->get('photo')->getData();
+            if ($photoFile instanceof UploadedFile) {
+                $filename = $this->uploadDogImage($photoFile, $slugger);
+                $dog->setPhoto($filename);
+            }
+
+            $em->flush();
 
             $this->addFlash('success', 'Chien modifié avec succès !');
             return $this->redirectToRoute('app_dog_index');
@@ -77,15 +87,15 @@ final class DogController extends AbstractController
     }
 
     #[Route('/delete/{id}', name: 'delete')]
-    public function delete(Request $request, EntityManagerInterface $entityManager, Dog $dog): Response
+    public function delete(Request $request, EntityManagerInterface $em, Dog $dog): Response
     {
-        if (!$dog || $dog->getOwner() !== $this->getUser()) {
+        if ($dog->getOwner() !== $this->getUser()) {
             throw $this->createNotFoundException('Chien non trouvé ou accès non autorisé.');
         }
 
         if ($request->isMethod('POST')) {
-            $entityManager->remove($dog);
-            $entityManager->flush();
+            $em->remove($dog);
+            $em->flush();
 
             $this->addFlash('success', 'Chien supprimé avec succès !');
             return $this->redirectToRoute('app_dog_index');
@@ -99,12 +109,23 @@ final class DogController extends AbstractController
     #[Route('/show/{id}', name: 'show')]
     public function show(Dog $dog): Response
     {
-        if (!$dog || $dog->getOwner() !== $this->getUser()) {
+        if ($dog->getOwner() !== $this->getUser()) {
             throw $this->createNotFoundException('Chien non trouvé ou accès non autorisé.');
         }
 
         return $this->render('dog/show.html.twig', [
             'dog' => $dog,
         ]);
+    }
+
+    private function uploadDogImage(UploadedFile $file, SluggerInterface $slugger): string
+    {
+        $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $safeFilename = $slugger->slug($originalFilename);
+        $newFilename = $safeFilename . '-' . uniqid() . '.' . $file->guessExtension();
+
+        $file->move($this->getParameter('dogs_images_directory'), $newFilename);
+
+        return $newFilename;
     }
 }
