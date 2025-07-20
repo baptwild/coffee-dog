@@ -21,15 +21,14 @@ class ProfileController extends AbstractController
         EntityManagerInterface $em,
         DogRepository $dogRepository,
         BookingRepository $bookingRepository
-    ): Response
-    {
+    ): Response {
         $user = $this->getUser();
         if (!$user) {
             $this->addFlash('error', 'Vous devez être connecté pour accéder à votre profil.');
             return $this->redirectToRoute('app_login');
         }
 
-        $dogs = $dogRepository->findOneBy(['owner' => $user]);
+        $dogs = $dogRepository->findBy(['owner' => $user]);
 
         $startOfMonth = (new \DateTime())->modify('first day of this month');
         $endOfMonth = (new \DateTime())->modify('last day of this month');
@@ -64,8 +63,7 @@ class ProfileController extends AbstractController
     public function infos(
         Request $request,
         EntityManagerInterface $em
-    ): Response
-    {
+    ): Response {
         $user = $this->getUser();
         if (!$user) {
             $this->addFlash('error', 'Vous devez être connecté pour accéder à votre profil.');

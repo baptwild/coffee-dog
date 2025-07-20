@@ -20,9 +20,10 @@
 						<th>Utilisateur</th>
 					{% endif %}
 					<th>Chien</th>
-					<th>Statut</th>
-					<th>Arrivée</th>
-					<th>Départ</th>
+					<th>Statut de la réservation</th>
+					<th>Date de la réservation</th>
+					<th>Heure d'arrivée</th>
+					<th>Heure de départ</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -34,8 +35,9 @@
 						{% endif %}
 						<td>{{ booking.dog.name ?? '—' }}</td>
 						<td>{{ booking.status }}</td>
-						<td>{{ booking.arrivalDatetime|date('Y-m-d H:i') }}</td>
-						<td>{{ booking.departureDatetime|date('Y-m-d H:i') }}</td>
+						<td>{{ booking.effectiveDate|date('d/m/Y') }}</td>
+						<td>{{ booking.arrivalDatetime|date('H:i') }}</td>
+						<td>{{ booking.departureDatetime|date('H:i') }}</td>
 						<td>
 							{% include 'components/atoms/_button.html.twig' with {
 							label: 'Modifier',
