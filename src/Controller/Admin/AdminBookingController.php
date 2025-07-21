@@ -43,7 +43,7 @@ class AdminBookingController extends AbstractController
             // Envoi de l’email via le service
             // $bookingMailer->sendStatusUpdate($booking);
 
-            $this->addFlash('success', 'Réservation mise à jour avec succès et email envoyé.');
+            $this->addFlash('success', 'La réservation a bien été mise à jour avec succès, et un email vous a été envoyé !');
             return $this->redirectToRoute('admin_booking_index');
         }
 
@@ -61,7 +61,7 @@ class AdminBookingController extends AbstractController
         EntityManagerInterface $em
     ): JsonResponse {
         if (!$this->isCsrfTokenValid('toggle-booking-' . $booking->getId(), $request->request->get('_token'))) {
-            $this->addFlash('error', 'Token CSRF invalide.');
+            $this->addFlash('error', 'Erreur lors de la mise à jour du statut de la réservation. Veuillez réessayer.');
             return new JsonResponse(['message' => 'Invalid CSRF token.'], 403);
         }
 
@@ -71,8 +71,6 @@ class AdminBookingController extends AbstractController
 
         $em->persist($booking);
         $em->flush();
-
-        $this->addFlash('success', 'Statut de réservation mis à jour avec succès.');
 
         return new JsonResponse([
             'status' => 'success',
@@ -88,7 +86,7 @@ class AdminBookingController extends AbstractController
         if ($this->isCsrfTokenValid('delete-booking-' . $booking->getId(), $request->request->get('_token'))) {
             $em->remove($booking);
             $em->flush();
-            $this->addFlash('success', 'Réservation supprimée avec succès.');
+            $this->addFlash('success', 'La réservation a bien été supprimée avec succès.');
         }
 
         return $this->redirectToRoute('admin_booking_index');

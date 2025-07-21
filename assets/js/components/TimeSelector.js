@@ -16,16 +16,13 @@ export const TimeSelector = ($containerElement, options = {}) => {
 
     const targetInputSelector = dom.container.dataset.target
     if (!targetInputSelector) {
-      console.error(
-        'TimeSelector: Missing data-target attribute on container.',
-        dom.container
-      )
+      console.error('TimeSelector: Missing data-target', dom.container)
       return false
     }
     dom.targetInput = document.querySelector(targetInputSelector)
     if (!dom.targetInput) {
       console.error(
-        'TimeSelector: Target input element not found for selector:',
+        'TimeSelector: Target input element not found',
         targetInputSelector
       )
       return false
@@ -33,7 +30,7 @@ export const TimeSelector = ($containerElement, options = {}) => {
 
     if (!Array.isArray(timesArray) || timesArray.length === 0) {
       console.error(
-        'TimeSelector: timesArray option is missing or empty.',
+        'TimeSelector: timesArray option is missing or empty',
         timesArray
       )
       return false

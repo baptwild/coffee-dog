@@ -8,17 +8,21 @@
 		<h1 class="o_Dashboard_title">Tableau de bord - Administrateur</h1>
 
 		<div class="o_Dashboard_section">
-			<h2 class="o_Dashboard_section-title">Réservations du jour ({{ bookingsToday|length }})</h2>
+			<h2 class="o_Dashboard_section-title">Réservations du jour (
+				{{ bookingsToday|length }}
+				)</h2>
 			{% if bookingsToday %}
-				<ul>
+				<ul class="o_Dashboard_section-list">
 					{% for booking in bookingsToday %}
 						<li>
-							{{ booking.dog.name }}
+							<span class="o_Dashboard_section-list-bold">
+								{{ booking.dog.name }}
+							</span>
 							–
 							{{ booking.arrivalDatetime|date('H:i') }}
 							→
 							{{ booking.departureDatetime|date('H:i') }}
-							({{ booking.status }}) -
+							({{ booking.displayStatus }}) -
 							{{ booking.isActive ? '✅ Active' : '⛔️ Inactive' }}
 						</li>
 					{% endfor %}
@@ -30,18 +34,18 @@
 
 		<div class="o_Dashboard_section">
 			<h2 class="o_Dashboard_section-title">Liens rapides</h2>
-			<div class="o_Dashboard_section-buttons">
+			<div class="o_Dashboard_section-links">
 				{% include 'components/atoms/_button.html.twig' with {
-                    label: 'Voir toutes les réservations',
-                    class: 'a_Button-quarternary',
-                    url: path('admin_booking_index')
-                } %}
+               label: 'Voir toutes les réservations',
+               class: 'a_Button-quarternary',
+               url: path('admin_booking_index')
+            } %}
 
 				{% include 'components/atoms/_button.html.twig' with {
-                    label: 'Créer une nouvelle réservation',
-                    class: 'a_Button-primary',
-                    url: path('admin_booking_index')
-                } %}
+               label: 'Créer une nouvelle réservation',
+               class: 'a_Button-primary',
+               url: path('admin_booking_index')
+            } %}
 			</div>
 		</div>
 	</section>

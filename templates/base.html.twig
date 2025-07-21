@@ -24,16 +24,9 @@
 		{% include 'components/layout/_header.html.twig' with { isTransparent: isTransparent|default(false) } %}
 		{% include 'components/molecules/_mobileMenu.html.twig' %}
 
-		{% block body %}
-			{% for label, messages in app.flashes %}
-				{% for message in messages %}
-					<div class="alert alert-{{ label }}">
-						{{ message }}
-					</div>
-				{% endfor %}
-			{% endfor %}
+		<div id="modal" class="m_Modal" data-flash-messages="{{ app.flashes|json_encode(constant('JSON_HEX_APOS')) }}"></div>
 
-		{% endblock %}
+		{% block body %}{% endblock %}
 
 		{% include 'components/layout/_footer.html.twig' %}
 	</body>

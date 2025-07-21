@@ -16,15 +16,19 @@
    &_list {
       display: flex;
       flex-direction: column;
-      gap: 3rem;
+      row-gap: 3rem;
+      width: 100%;
    }
 
    &_button {
       margin-top: 3rem;
    }
 
-   @media screen and (min-width: responsive_variables.$screen-m-min) {
-      flex-direction: row;
-      flex-wrap: wrap;
+   @media screen and (min-width: responsive_variables.$screen-s-min) {
+      &_list {
+         flex-direction: row;
+         flex-wrap: wrap;
+         justify-content: space-between;
+      }
    }
 }

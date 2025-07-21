@@ -22,10 +22,10 @@
 							{{ app.user.userIdentifier }}
 						</p>
 						{% include 'components/atoms/_button.html.twig' with {
-                            label: 'Se déconnecter',
-                            class: 'a_Button-primary',
-                            url: path('app_logout'),
-                        } %}
+                     label: 'Se déconnecter',
+                     class: 'a_Button-primary',
+                     url: path('app_logout'),
+                  } %}
 					</div>
 				{% endif %}
 
@@ -42,19 +42,19 @@
 				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 				{% include 'components/atoms/_button.html.twig' with {
-                    label: 'Connexion',
-                    class: 'a_Button-primary m_Form_button',
-                    type: 'submit'
-                } %}
+               label: 'Connexion',
+               class: 'a_Button-primary m_Form_button',
+               type: 'submit'
+            } %}
 			</form>
 		</div>
 		<div class="m_Form_navigate">
 			<p class="m_Form_navigate-text">Je n'ai pas de compte :</p>
 			{% include 'components/atoms/_button.html.twig' with {
-                label: 'Créer un compte',
-                class: 'a_Button-primary',
-                url: path('register')
-            } %}
+            label: 'Créer un compte',
+            class: 'a_Button-primary',
+            url: path('register')
+      	} %}
 		</div>
 	</div>
 {% endblock %}

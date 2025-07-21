@@ -37,11 +37,11 @@ final class BookingController extends AbstractController
     {
         $user = $this->getUser();
         if (!$user) {
-            throw $this->createAccessDeniedException('Vous devez être connecté.');
+            throw $this->createAccessDeniedException('Vous devez être connecté pour créer une réservation.');
         }
 
         if (count($user->getDogs()) === 0) {
-            $this->addFlash('warning', 'Vous devez enregistrer un chien avant de réserver.');
+            $this->addFlash('warning', 'Vous devez avoir enregistré un chien avant de réserver.');
             return $this->redirectToRoute('app_dog_new');
         }
 
@@ -80,7 +80,7 @@ final class BookingController extends AbstractController
                 !in_array((int) $arrivalTime->format('H'), $validArrivalHours) ||
                 !in_array((int) $arrivalTime->format('i'), $validMinutes)
             ) {
-                $this->addFlash('danger', 'Heure d\'arrivée invalide (08h00 à 13h30, par 30 min).');
+                $this->addFlash('danger', 'Heure d\'arrivée invalide (entre 08h00 et 13h30, par tranches de 30 min).');
                 return $this->redirectToRoute('app_booking_new');
             }
 
@@ -88,7 +88,7 @@ final class BookingController extends AbstractController
                 !in_array((int) $departureTime->format('H'), $validDepartureHours) ||
                 !in_array((int) $departureTime->format('i'), $validMinutes)
             ) {
-                $this->addFlash('danger', 'Heure de départ invalide (11h00 à 18h30, par 30 min).');
+                $this->addFlash('danger', 'Heure de départ invalide (entre 11h00 et 18h30, par tranches de 30 min).');
                 return $this->redirectToRoute('app_booking_new');
             }
 
@@ -101,7 +101,7 @@ final class BookingController extends AbstractController
             // Règle 5 : Le chien appartient à l'utilisateur connecté
             $dog = $form->get('dog')->getData();
             if ($dog->getOwner() !== $user) {
-                $this->addFlash('danger', 'Vous ne pouvez réserver qu\'avec vos propres chiens.');
+                $this->addFlash('danger', 'Vous ne pouvez réserver que pour vos vos propres chiens.');
                 return $this->redirectToRoute('app_booking_new');
             }
 

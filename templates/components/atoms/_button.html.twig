@@ -3,7 +3,7 @@
 		{{ label }}
 	</a>
 {% else %}
-	<button type="{{ type|default('button') }}"" class="a_Button {{ class|default('') }}">
+	<button type="{{ type|default('button') }}" class="a_Button {{ class|default('') }}" {% if attr is defined %} {% for key, value in attr %} {{ key }}="{{ value }}" {% endfor %} {% endif %}>
 		{{ label }}
 	</button>
 {% endif %}

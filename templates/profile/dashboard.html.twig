@@ -1,53 +1,125 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon tableau de bord | Le Café des Chiens{% endblock %}
+{% block title %}Mon tableau de bord | Le Café des Chiens
+{% endblock %}
 
 {% block body %}
-    <div class="m_ProfileDashboard l_Wrapper">
-        <h1 class="m_ProfileDashboard_title">Bienvenue {{ user.firstName }} 👋</h1>
+	<div class="o_Dashboard l_Wrapper">
+		<div class="o_Dashboard_header">
+			<h1 class="o_Dashboard_title">Bienvenue
+				{{ user.firstName }}
+				! 👋</h1>
+			{% if is_granted('ROLE_ADMIN') %}
+				{% include 'components/atoms/_button.html.twig' with {
+               label: 'Gestion des réservations', 
+               class: 'a_Button-primary o_Dashboard_header-button',
+               url: path('admin_dashboard')
+            } %}
+			{% else %}
+				{% include 'components/atoms/_button.html.twig' with {
+               label: 'Nouvelle réservation', 
+               class: 'a_Button-primary o_Dashboard_header-button',
+               url: path('app_booking_new')
+            } %}
+			{% endif %}
+		</div>
+		<section class="o_Dashboard_section">
+			<h2 class="o_Dashboard_section-title">Mes infos</h2>
+			<ul class="o_Dashboard_section-list">
+				<li>
+					<span class="o_Dashboard_section-list-bold">Prénom :</span>
+					{{ user.firstName }}
+				</li>
+				<li>
+					<span class="o_Dashboard_section-list-bold">Nom :</span>
+					{{ user.lastName }}
+				</li>
+				<li>
+					<span class="o_Dashboard_section-list-bold">Email :</span>
+					{{ user.email }}
+				</li>
+			</ul>
+			{% include 'components/atoms/_button.html.twig' with {
+            label: 'Voir / Modifier mes informations', 
+            class: 'a_Button-primary o_Dashboard_section-button',
+            url: path('profile_infos')
+         } %}
+		</section>
+		<section class="o_Dashboard_section">
+			<h2 class="o_Dashboard_section-title">
+				{% if dogs is not empty %}
+					{% if dogs|length == 1 %}
+						Ses infos
+					{% else %}
+						Leurs infos
+					{% endif %}
+				{% else %}
+					Vos chiens
+				{% endif %}
+			</h2>
+			{% if dogs is not empty %}
+				{% for dog in dogs %}
+					<p>
+						<span class="o_Dashboard_section-list-bold">{{ dog.name }}</span>
+						({{ dog.breed }})
+					</p>
+				{% endfor %}
+				{% include 'components/atoms/_button.html.twig' with {
+               label: 'Voir mes chiens', 
+               class: 'a_Button-primary o_Dashboard_section-button',
+               url: path('app_dog_index')
+            } %}
+			{% else %}
+				<p>Vous n'avez pas encore ajouté de chien.</p>
+				{% include 'components/atoms/_button.html.twig' with {
+               label: 'Ajouter mon chien', 
+               class: 'a_Button-primary o_Dashboard_section-button',
+               url: path('app_dog_new')
+            } %}
+			{% endif %}
+		</section>
 
-        <section class="m_ProfileDashboard_section">
-            <h2 class="m_ProfileDashboard_subtitle">Infos principales</h2>
-            <ul class="m_ProfileDashboard_infoList">
-                <li><strong>Nom :</strong> {{ user.lastName }}</li>
-                <li><strong>Email :</strong> {{ user.email }}</li>
-            </ul>
-            <a href="{{ path('profile_infos') }}" class="a_Button-quarternary">Voir / Modifier mes infos</a>
-        </section>
+		<section class="o_Dashboard_section">
+			<h2 class="o_Dashboard_section-title">Mes réservations ce mois-ci</h2>
 
-        <section class="m_ProfileDashboard_section">
-            <h2 class="m_ProfileDashboard_subtitle">Mes chiens</h2>
-            {% if dogs %}
-                <p><strong>{{ dogs.name }}</strong> ({{ dogs.breed }})</p>
-                <a href="{{ path('app_dog_index') }}" class="a_Button-quarternary">Voir mes chiens</a>
-            {% else %}
-                <p>Vous n'avez pas encore ajouté de chien.</p>
-                <a href="{{ path('app_dog_new') }}" class="a_Button-primary">Ajouter un chien</a>
-            {% endif %}
-        </section>
+			{% if bookings|length > 0 %}
+				<ul class="o_Dashboard_section-list">
+					{% for booking in bookings %}
+						<li>
+							Le
+							<span class="o_Dashboard_section-list-bold">
+								{{ booking.effectiveDate|date('d/m/Y') }}
+							</span>
+							de
+							{{ booking.arrivalDatetime|date('H:i') }}
+							à
+							{{ booking.departureDatetime|date('H:i') }}
+							{% if booking.dog %}
+								– pour
+								<span class="o_Dashboard_section-list-bold">{{ booking.dog.name }}</span>
+							{% endif %}
+							– Statut :
+							<em>{{ booking.displayStatus }}</em>
 
-        <section class="m_ProfileDashboard_section">
-            <h2 class="m_ProfileDashboard_subtitle">Mes réservations ce mois-ci</h2>
+						</li>
+					{% endfor %}
+				</ul>
 
-            {% if bookings|length > 0 %}
-                <ul class="m_ProfileDashboard_bookingList">
-                    {% for booking in bookings %}
-                        <li>
-                            Du {{ booking.arrivalDatetime|date('d/m/Y') }}
-                            au {{ booking.departureDatetime|date('d/m/Y') }}
-                            {% if booking.dog %}
-                                – pour <strong>{{ booking.dog.name }}</strong>
-                            {% endif %}
-                            – Statut : <em>{{ booking.status|capitalize }}</em>
-                        </li>
-                    {% endfor %}
-                </ul>
-
-                <p><strong>Total :</strong> {{ totalBookings }} réservation(s), {{ totalCost|number_format(2, ',', ' ') }} €</p>
-                <a href="{{ path('app_booking_index') }}" class="a_Button-quarternary">Voir toutes mes réservations</a>
-            {% else %}
-                <p>Aucune réservation ce mois-ci.</p>
-            {% endif %}
-        </section>
-    </div>
+				<p>
+					<span class="o_Dashboard_section-list-bold">Total :</span>
+					{{ totalBookings }}
+					réservation(s),
+					{{ totalCost|number_format(2, ',', ' ') }}
+					€
+				</p>
+				{% include 'components/atoms/_button.html.twig' with {
+               label: 'Voir toutes mes réservations', 
+               class: 'a_Button-primary o_Dashboard_section-button',
+               url: path('app_booking_index')
+            } %}
+			{% else %}
+				<p>Aucune réservation ce mois-ci.</p>
+			{% endif %}
+		</section>
+	</div>
 {% endblock %}

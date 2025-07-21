@@ -35,13 +35,6 @@
 					} %}
 				</li>
 				<li class="l_Footer_menu_item">
-					{% include 'components/atoms/_link.html.twig' with {
-						url: path('home'),
-						label: 'Réservation',
-						class: 'l_Footer_menu_item'
-					} %}
-				</li>
-				<li class="l_Footer_menu_item">
 					{% if app.user %}
 						{% include 'components/atoms/_button.html.twig' with {
 							url: path('app_logout'),

@@ -10,13 +10,11 @@ export const DateSelector = ($containerElement) => {
 
   const initializeElements = () => {
     if (!dom.container) {
-      console.error('DateSelector: Container element (.date-cards) is missing.')
+      console.error('DateSelector: Container is missing')
       return false
     }
     if (!dom.dateInput) {
-      console.error(
-        'DateSelector: Target date input (.js-datepicker) is missing.'
-      )
+      console.error('DateSelector: Target date input is missing')
       return false
     }
     return true
@@ -36,7 +34,10 @@ export const DateSelector = ($containerElement) => {
       })
       option.innerHTML = `<div>${day}</div><div>${num}</div>`
 
-      option.dataset.value = date.toISOString().split('T')[0]
+      const year = date.getFullYear()
+      const month = String(date.getMonth() + 1).padStart(2, '0')
+      const dayOfMonth = String(date.getDate()).padStart(2, '0')
+      option.dataset.value = `${year}-${month}-${dayOfMonth}`
 
       option.addEventListener('click', () => handleCardClick(option))
 

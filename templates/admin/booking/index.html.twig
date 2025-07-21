@@ -12,8 +12,9 @@
 		<table class="m_Table">
 			<thead>
 				<tr>
+					<th>Client</th>
 					<th>Chien</th>
-					<th>Date</th>
+					<th>Date de la réservation</th>
 					<th>Heure d'arrivée</th>
 					<th>Heure de départ</th>
 					<th>Statut de la réservation</th>
@@ -24,11 +25,12 @@
 			<tbody>
 				{% for booking in bookings %}
 					<tr>
+						<td>{{ booking.user.email }}</td>
 						<td>{{ booking.dog ? booking.dog.name : '—' }}</td>
 						<td>{{ booking.effectiveDate|date('d/m/Y') }}</td>
 						<td>{{ booking.arrivalDatetime|date('H:i') }}</td>
 						<td>{{ booking.departureDatetime|date('H:i') }}</td>
-						<td>{{ booking.status }}</td>
+						<td>{{ booking.displayStatus }}</td>
 						<td>
 							<div class="a_ToggleSwitch switch js-admin-booking-toggle-container">
 								<input type="checkbox" class="js-toggle-input" data-booking-id="{{ booking.id }}" data-toggle-url="{{ path('admin_booking_toggle_active', { id: booking.id }) }}" data-csrf-token="{{ csrf_token('toggle-booking-' ~ booking.id) }}" {% if booking.isActive %} checked {% endif %}>
