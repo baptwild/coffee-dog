@@ -8,17 +8,21 @@
 		<h1 class="o_Dashboard_title">Tableau de bord - Administrateur</h1>
 
 		<div class="o_Dashboard_section">
-			<h2 class="o_Dashboard_section-title">Réservations du jour ({{ bookingsToday|length }})</h2>
+			<h2 class="o_Dashboard_section-title">Réservations du jour (
+				{{ bookingsToday|length }}
+				)</h2>
 			{% if bookingsToday %}
-				<ul>
+				<ul class="o_Dashboard_section-list">
 					{% for booking in bookingsToday %}
 						<li>
-							{{ booking.dog.name }}
+							<span class="o_Dashboard_section-list-bold">
+								{{ booking.dog.name }}
+							</span>
 							–
 							{{ booking.arrivalDatetime|date('H:i') }}
 							→
 							{{ booking.departureDatetime|date('H:i') }}
-							({{ booking.status }}) -
+							({{ booking.displayStatus }}) -
 							{{ booking.isActive ? '✅ Active' : '⛔️ Inactive' }}
 						</li>
 					{% endfor %}

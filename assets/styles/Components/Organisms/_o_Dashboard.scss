@@ -43,6 +43,13 @@
          @include mixins.underline;
       }
 
+      &-list {
+         &-bold {
+            @include typography.body-bold;
+            color: variables.$color-secondary;
+         }
+      }
+
       &-links {
          display: flex;
          flex-direction: column;

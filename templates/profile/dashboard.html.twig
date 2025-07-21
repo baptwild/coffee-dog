@@ -27,15 +27,15 @@
 			<h2 class="o_Dashboard_section-title">Mes infos</h2>
 			<ul class="o_Dashboard_section-list">
 				<li>
-					<strong>Prénom :</strong>
+					<span class="o_Dashboard_section-list-bold">Prénom :</span>
 					{{ user.firstName }}
 				</li>
 				<li>
-					<strong>Nom :</strong>
+					<span class="o_Dashboard_section-list-bold">Nom :</span>
 					{{ user.lastName }}
 				</li>
 				<li>
-					<strong>Email :</strong>
+					<span class="o_Dashboard_section-list-bold">Email :</span>
 					{{ user.email }}
 				</li>
 			</ul>
@@ -60,8 +60,9 @@
 			{% if dogs is not empty %}
 				{% for dog in dogs %}
 					<p>
-						<strong>{{ dog.name }}</strong>
-						({{ dog.breed }})</p>
+						<span class="o_Dashboard_section-list-bold">{{ dog.name }}</span>
+						({{ dog.breed }})
+					</p>
 				{% endfor %}
 				{% include 'components/atoms/_button.html.twig' with {
                label: 'Voir mes chiens', 
@@ -86,23 +87,26 @@
 					{% for booking in bookings %}
 						<li>
 							Le
-							{{ booking.effectiveDate|date('d/m/Y') }}
+							<span class="o_Dashboard_section-list-bold">
+								{{ booking.effectiveDate|date('d/m/Y') }}
+							</span>
 							de
 							{{ booking.arrivalDatetime|date('H:i') }}
 							à
 							{{ booking.departureDatetime|date('H:i') }}
 							{% if booking.dog %}
 								– pour
-								<strong>{{ booking.dog.name }}</strong>
+								<span class="o_Dashboard_section-list-bold">{{ booking.dog.name }}</span>
 							{% endif %}
 							– Statut :
-							<em>{{ booking.status|capitalize }}</em>
+							<em>{{ booking.displayStatus }}</em>
+
 						</li>
 					{% endfor %}
 				</ul>
 
 				<p>
-					<strong>Total :</strong>
+					<span class="o_Dashboard_section-list-bold">Total :</span>
 					{{ totalBookings }}
 					réservation(s),
 					{{ totalCost|number_format(2, ',', ' ') }}

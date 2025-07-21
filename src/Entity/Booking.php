@@ -153,10 +153,20 @@ class Booking
         if (!in_array($status, $allowed, true)) {
             throw new \InvalidArgumentException("Invalid status: $status");
         }
-        
+
         $this->status = $status;
 
         return $this;
+    }
+
+    public function getDisplayStatus(): string
+    {
+        return match ($this->status) {
+            self::STATUS_EN_ATTENTE => 'En attente',
+            self::STATUS_CONFIRME => 'Confirmée',
+            self::STATUS_ANNULE => 'Annulée',
+            default => ucfirst(str_replace('_', ' ', $this->status)),
+        };
     }
 
     public function getInvoice(): ?Invoice

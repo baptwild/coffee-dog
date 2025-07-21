@@ -34,7 +34,7 @@
 							<td>{{ booking.user.email }}</td>
 						{% endif %}
 						<td>{{ booking.dog.name ?? '—' }}</td>
-						<td>{{ booking.status }}</td>
+						<td>{{ booking.displayStatus }}</td>
 						<td>{{ booking.effectiveDate|date('d/m/Y') }}</td>
 						<td>{{ booking.arrivalDatetime|date('H:i') }}</td>
 						<td>{{ booking.departureDatetime|date('H:i') }}</td>
