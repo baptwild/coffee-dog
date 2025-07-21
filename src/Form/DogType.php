@@ -53,7 +53,7 @@ class DogType extends AbstractType
                 'required' => false,
             ])
             ->add('notes', TextareaType::class, [
-                'label' => 'Informations supplémentaires (facultatif)',
+                'label' => 'Informations supplémentaires (facultatif) :',
                 'required' => false,
             ])
         ;

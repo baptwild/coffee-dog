@@ -30,13 +30,13 @@
 		<div class="m_MobileMenu_footer">
 			<div class="m_MobileMenu_login">
 				{% if app.user %}
-					{# {% if 'ROLE_ADMIN' in app.user.roles %}
-											{% include 'components/atoms/_button.html.twig' with {
-												label: 'Admin',
-												class: 'a_Button-secondary',
-												url: path('admin')
-											} %}
-										{% endif %} #}
+					{% if 'ROLE_ADMIN' in app.user.roles %}
+						{% include 'components/atoms/_button.html.twig' with {
+							label: 'Tableau de bord',
+							class: 'a_Button-secondary',
+							url: path('admin_dashboard')
+						} %}
+					{% endif %}
 					{% include 'components/atoms/_button.html.twig' with {
 						label: 'Déconnexion',
 						class: 'a_Button-secondary',
@@ -52,11 +52,11 @@
 			</div>
 			<div class="m_MobileMenu_social">
 				{% include 'components/atoms/_link.html.twig' with {
-  				url: 'https://www.facebook.com/cafedeschiens',
-  				icon: 'bi bi-facebook',
-            class: 'm_MobileMenu_social-link',
-  				target: '_blank'
-			} %}
+					url: 'https://www.facebook.com/cafedeschiens',
+					icon: 'bi bi-facebook',
+					class: 'm_MobileMenu_social-link',
+					target: '_blank'
+				} %}
 				{% include 'components/atoms/_link.html.twig' with {
 				url: 'https://www.instagram.com/cafedeschiens',
 				icon: 'bi bi-instagram',
@@ -64,7 +64,6 @@
 				target: '_blank'
 			} %}
 			</div>
-
 		</div>
 	</div>
 </div>

@@ -16,7 +16,7 @@
 					<div class="m_DogCard">
 						<div class="m_DogCard_image">
 							{% if dog.photo %}
-								<img src="{{ asset('uploads/dogs' ~ dog.photo) }}" alt="Photo de {{ dog.name }}">
+								<img src="{{ asset('uploads/dogs/' ~ dog.photo) }}" alt="Photo de {{ dog.name }}">
 							{% else %}
 								<img src="{{ asset('images/default-dog.png') }}" alt="Chien par défaut">
 							{% endif %}

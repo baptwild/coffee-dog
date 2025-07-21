@@ -11,16 +11,16 @@
 				! 👋</h1>
 			{% if is_granted('ROLE_ADMIN') %}
 				{% include 'components/atoms/_button.html.twig' with {
-                    label: 'Gestion des réservations', 
-                    class: 'a_Button-primary o_Dashboard_header-button',
-                    url: path('admin_dashboard')
-                } %}
+               label: 'Gestion des réservations', 
+               class: 'a_Button-primary o_Dashboard_header-button',
+               url: path('admin_dashboard')
+            } %}
 			{% else %}
 				{% include 'components/atoms/_button.html.twig' with {
-                    label: 'Nouvelle réservation', 
-                    class: 'a_Button-primary o_Dashboard_header-button',
-                    url: path('app_booking_new')
-                } %}
+               label: 'Nouvelle réservation', 
+               class: 'a_Button-primary o_Dashboard_header-button',
+               url: path('app_booking_new')
+            } %}
 			{% endif %}
 		</div>
 		<section class="o_Dashboard_section">
@@ -40,10 +40,10 @@
 				</li>
 			</ul>
 			{% include 'components/atoms/_button.html.twig' with {
-                label: 'Voir / Modifier mes informations', 
-                class: 'a_Button-primary o_Dashboard_section-button',
-                url: path('profile_infos')
-            } %}
+            label: 'Voir / Modifier mes informations', 
+            class: 'a_Button-primary o_Dashboard_section-button',
+            url: path('profile_infos')
+         } %}
 		</section>
 		<section class="o_Dashboard_section">
 			<h2 class="o_Dashboard_section-title">
@@ -64,19 +64,17 @@
 						({{ dog.breed }})</p>
 				{% endfor %}
 				{% include 'components/atoms/_button.html.twig' with {
-                    label: 'Voir mes chiens', 
-                    class: 'a_Button-primary o_Dashboard_section-button',
-                    url: path('app_dog_index')
-                } %}
-
+               label: 'Voir mes chiens', 
+               class: 'a_Button-primary o_Dashboard_section-button',
+               url: path('app_dog_index')
+            } %}
 			{% else %}
 				<p>Vous n'avez pas encore ajouté de chien.</p>
 				{% include 'components/atoms/_button.html.twig' with {
-                    label: 'Ajouter mon chien', 
-                    class: 'a_Button-primary o_Dashboard_section-button',
-                    url: path('app_dog_new')
-                } %}
-
+               label: 'Ajouter mon chien', 
+               class: 'a_Button-primary o_Dashboard_section-button',
+               url: path('app_dog_new')
+            } %}
 			{% endif %}
 		</section>
 
@@ -111,11 +109,10 @@
 					€
 				</p>
 				{% include 'components/atoms/_button.html.twig' with {
-                    label: 'Voir toutes mes réservations', 
-                    class: 'a_Button-primary o_Dashboard_section-button',
-                    url: path('app_booking_index')
-                } %}
-
+               label: 'Voir toutes mes réservations', 
+               class: 'a_Button-primary o_Dashboard_section-button',
+               url: path('app_booking_index')
+            } %}
 			{% else %}
 				<p>Aucune réservation ce mois-ci.</p>
 			{% endif %}

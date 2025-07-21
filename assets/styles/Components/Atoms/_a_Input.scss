@@ -4,6 +4,8 @@
 @use '../../Tools/mixins';
 
 .a_Input {
+   $self: &;
+
    display: flex;
    flex-direction: column;
    gap: 1rem;
@@ -79,9 +81,30 @@
             border-color: variables.$color-white;
          }
       }
+   }
 
-      .hidden {
-         display: none;
+   &-dog {
+      &_image-preview {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: flex-start;
+         gap: 1rem;
+         overflow: hidden;
+         border-radius: variables.$border-radius;
+
+         img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: variables.$border-radius;
+            border: 1px solid rgba(variables.$color-black, 0.1);
+         }
+      }
+
+      &_button-change,
+      &_button-upload {
+         width: max-content;
       }
    }
 
@@ -121,6 +144,14 @@
 
       &-dog {
          margin-left: -10%;
+
+         &_image-preview {
+            align-items: flex-end;
+            justify-content: space-between;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 45%;
+         }
       }
    }
 }

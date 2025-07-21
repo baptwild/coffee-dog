@@ -44,18 +44,44 @@
 			</div>
 
 			{% if form.photo is defined %}
-				<div class="a_Input a_Input-dog">
+				<div class="a_Input a_Input-dog js-image-preview">
 					{{ form_label(form.photo) }}
-					{{ form_widget(form.photo, { attr: { class: 'a_Input_field' } }) }}
+					{{ form_widget(form.photo, { attr: { class: 'a_Input_field hidden js-hidden-file-input', 'data-preview-target': 'photo' } }) }}
 					{{ form_errors(form.photo) }}
+
+
+					{% if dog is defined and dog.photo %}
+						<div class="a_Input-dog_image-preview">
+							<img data-preview-image src="{{ asset('uploads/dogs/' ~ dog.photo) }}" alt="Photo de {{ dog.name }}" class="a_Input-dog_existing-image" data-original-src="{{ asset('uploads/dogs/' ~ dog.photo) }}"/>
+
+							{% include 'components/atoms/_button.html.twig' with {
+								label: 'Modifier la photo',
+								class: 'a_Button-primary a_Input-dog_button-change',
+								attr: {'data-upload-button': ''}
+							} %}
+						</div>
+
+					{% else %}
+						<div class="a_Input-dog_image-preview">
+							<img data-preview-image src="#" alt="Nouvelle image" style="display: none;"/>
+
+							{% include 'components/atoms/_button.html.twig' with {
+								label: 'Choisir une photo',
+								class: 'a_Button-primary a_Input-dog_button-upload',
+								attr: {'data-upload-button': ''}
+							} %}
+						</div>
+
+					{% endif %}
 				</div>
 			{% endif %}
 
+
 			{% include 'components/atoms/_button.html.twig' with {
-                label: dog is defined and dog.id ? 'Mettre à jour' : 'Ajouter',
-                class: 'a_Button-primary m_Form_button',
-                type: 'submit'
-            } %}
+            label: dog is defined and dog.id ? 'Mettre à jour' : 'Ajouter',
+            class: 'a_Button-primary m_Form_button',
+            type: 'submit'
+         } %}
 
 			{{ form_end(form) }}
 		</div>
