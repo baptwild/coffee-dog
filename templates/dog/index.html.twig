@@ -31,12 +31,12 @@
                            url: path('app_dog_edit', {'id': dog.id})
                         } %}
 
-								<form method="post" action="{{ path('app_dog_delete', {'id': dog.id}) }}" onsubmit="return confirm('Voulez-vous vraiment supprimer ce chien ?');" style="display:inline;">
+								<form method="post" action="{{ path('app_dog_delete', {'id': dog.id}) }}" class="js-delete-dog-form" data-dog-name="{{ dog.name }}" style="display:inline;">
 									<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ dog.id) }}">
 									{% include 'components/atoms/_button.html.twig' with {
                               label: 'Supprimer',
-                              class: 'a_Button-quarternary',
-                              type: 'submit'
+										class: 'a_Button-quarternary js-delete-dog-button',
+										type: 'submit'
                            } %}
 								</form>
 							</div>

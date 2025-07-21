@@ -46,7 +46,7 @@ final class DogController extends AbstractController
             $em->persist($dog);
             $em->flush();
 
-            $this->addFlash('success', 'Chien ajouté avec succès !');
+            $this->addFlash('success', 'Votre chien a bien été ajouté avec succès !');
             return $this->redirectToRoute('app_dog_index');
         }
 
@@ -76,7 +76,7 @@ final class DogController extends AbstractController
 
             $em->flush();
 
-            $this->addFlash('success', 'Chien modifié avec succès !');
+            $this->addFlash('success', 'Les informations de votre chien ont bien été modifiées avec succès !');
             return $this->redirectToRoute('app_dog_index');
         }
 
@@ -97,7 +97,7 @@ final class DogController extends AbstractController
             $em->remove($dog);
             $em->flush();
 
-            $this->addFlash('success', 'Chien supprimé avec succès !');
+            $this->addFlash('success', 'Les informations de votre chien ont bien été supprimées avec succès !');
             return $this->redirectToRoute('app_dog_index');
         }
 

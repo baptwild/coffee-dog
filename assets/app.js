@@ -8,6 +8,7 @@ import HeaderScroll from './js/components/HeaderScroll.js'
 import MobileMenu from './js/components/MobileMenu.js'
 import TextImageBlockReveal from './js/components/TextImageBlockReveal.js'
 import ImagePreview from './js/components/ImagePreview.js'
+import MessageModal from './js/components/MessageModal.js'
 
 import ToggleSwitchForm from './js/components/ToggleSwitchForm.js'
 import ToggleSwitchTable from './js/components/ToggleSwitchTable.js'
@@ -20,6 +21,12 @@ import { ARRIVAL_TIMES, DEPARTURE_TIMES } from './js/utils/timeUtils.js'
 // Initialize JavaScript components
 const initializeComponents = () => {
   console.log('Initializing JavaScript components...')
+
+  // MessageModal
+  document.querySelectorAll('#modal').forEach((container) => {
+    const flashModalComponent = MessageModal(container)
+    flashModalComponent.init()
+  })
 
   // HeaderScroll
   const headerElement = document.querySelector('.l_Header-transparent')

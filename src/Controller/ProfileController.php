@@ -76,7 +76,7 @@ class ProfileController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setUpdatedAt(new \DateTime());
             $em->flush();
-            $this->addFlash('success', 'Profil mis à jour');
+            $this->addFlash('success', 'Les informations de votre profil ont bien été mises à jour !');
             return $this->redirectToRoute('profile_infos');
         }
 
